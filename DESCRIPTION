@@ -1,0 +1,13 @@
+Package: REAT
+Type: Package
+Title: Regional Economic Analysis Tools
+Version: 1.0.0
+Date: 2016-03-27
+Author: Thomas Wieland
+Maintainer: Thomas Wieland <thomas.wieland.geo@googlemail.com>
+Description: Collection of analysis methods used in regional and urban economics and (quantitative) economic geography, e.g. measures of inequality, regional disparities and regional specialization. 
+License: GPL (>= 2)
+NeedsCompilation: no
+Packaged: 2016-04-26 19:13:23 UTC; Thomas
+Repository: CRAN
+Date/Publication: 2016-04-27 13:30:50
