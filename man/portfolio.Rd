@@ -8,8 +8,8 @@ Portfolio matrix
 Portfolio matrix plot comparing two numeric vectors
 }
 \usage{
-portfolio(x, y, z, label_x = "X", label_y = "Y", heading = "Portfolio", pcol = "given", 
-colsp = 0, leg = FALSE, leg_vec = 0, leg_fsize = 1, 
+portfolio(x, y, z, label_x = "X", label_y = "Y", heading = "Portfolio", 
+pcol = "given", colsp = 0, leg = FALSE, leg_vec = 0, leg_fsize = 1, 
 leg_x = -max_val, leg_y = -max_val/2)
 }
 
@@ -33,13 +33,13 @@ Label for the y axis
 Heading for the plot
 }
   \item{pcol}{
-indicates of the colors of the points are given by the user (\code{pcol = "given"}) and defined by the vector \code{colsp} or set by random (\code{pcol = "random"})  
+indicates if the colors of the points are given by the user (\code{pcol = "given"}) and defined by the vector \code{colsp} or set by random (\code{pcol = "random"})  
 }
   \item{colsp}{
 a vector representing the user-defined colors of the points
 }
   \item{leg}{
-boolean argument that indicates if the plot has a legend or not (default: \code{leg = FALSE})
+logical argument that indicates if the plot has a legend or not (default: \code{leg = FALSE})
 }
   \item{leg_vec}{
 if \code{leg = TRUE}, this vector defines the values for the plot legend
@@ -55,7 +55,7 @@ if \code{leg = TRUE}: y coordinate for the legend (default: \code{leg_y=-max_val
 }
 }
 \details{
-The \emph{portfolio matrix} is a graphic tool displaying the development of one variable compared to another variable. The plot shows the regarded variable on the \eqn{x} axis and a variable with which it is confronted on the \eqn{y} axis while the graph is divided in four quadrants. Originally, the \emph{portfolio matrix} was developed by the \emph{Boston Consulting Group} to analyze the performance of product lines in marketing, also known as the \emph{growth-share matrix}. The quadrants show the performace of the regarded objects (stars, cash cows, question marks, dogs) (Henderson 1973). But the \emph{portfolio matrix} can also be used to analyze/illustrate the world market integration of a region or a national economy by confronting e.g. the increase in world market share (\eqn{x} axis) and the world trade growth (\eqn{y} axis) (Baker et al. 2002). Another option is to analyze/illustrate the economic performance of a region (Howard 2007). E.g. it is possible to confront the growth of industries in a region with their all-over growth in the national economy. 
+The \emph{portfolio matrix} is a graphic tool displaying the development of one variable compared to another variable. The plot shows the regarded variable on the \eqn{x} axis and a variable with which it is confronted on the \eqn{y} axis while the graph is divided in four quadrants. Originally, the \emph{portfolio matrix} was developed by the \emph{Boston Consulting Group} to analyze the performance of product lines in marketing, also known as the \emph{growth-share matrix}. The quadrants show the performace of the regarded objects (stars, cash cows, question marks, dogs) (Henderson 1973). But the \emph{portfolio matrix} can also be used to analyze/illustrate the world market integration of a region or a national economy by confronting e.g. the increase in world market share (\eqn{x} axis) and the world trade growth (\eqn{y} axis) (Baker et al. 2002). Another option is to analyze/illustrate the economic performance of a region (Howard 2007). E.g. it is possible to confront the growth of industries in a region with the all-over growth of these industries in the national economy. 
 }
 \value{
 A plot of the portfolio matrix

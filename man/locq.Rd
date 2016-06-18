@@ -5,7 +5,7 @@
 Location quotient
 }
 \description{
-Calculation the \emph{location quotient}
+Calculating the \emph{location quotient}
 }
 \usage{
 locq(e_ij, e_j, e_i, e)
@@ -13,16 +13,16 @@ locq(e_ij, e_j, e_i, e)
 
 \arguments{
   \item{e_ij}{
-single numeric value with the employment of industry \eqn{i} in region \eqn{j}
+a single numeric value with the employment of industry \eqn{i} in region \eqn{j}
 }
   \item{e_j}{
-single numeric value with the over-all employment in region \eqn{j}
+a single numeric value with the over-all employment in region \eqn{j}
 }
   \item{e_i}{
-single numeric value with the over-all employment in industry \eqn{i}
+a single numeric value with the over-all employment in industry \eqn{i}
 }
   \item{e}{
-single numeric value with the over-all employment in all regions
+a single numeric value with the over-all employment in all regions
 }
 }
 \details{

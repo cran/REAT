@@ -6,7 +6,7 @@
 Regional Economic Analysis Tools
 }
 \description{
-This package contains a collection of analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided in five groups: (1) analysis of regional disparities and inequality (including \emph{Gini coefficient} and \emph{Lorenz curve}), (2) specialization of regions (including \emph{spatial Gini coefficient} and \emph{Krugman coefficient for regional specialization}), (3) concentration of industries (including \emph{spatial Gini coefficient for industry concentration}), (4) regional growth (including traditional \emph{shift-share analysis}) and (5) additional tools for data preparation und visualization. The package also contains data examples and will be extended. 
+This package contains a collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided in six groups: (1) analysis of regional disparities and inequality (including \emph{Gini coefficient} and \emph{Lorenz curve}), (2) specialization of regions (including \emph{spatial Gini coefficient} and \emph{Krugman coefficient for regional specialization}), (3) spatial concentration of industries (including \emph{spatial Gini coefficient for industry concentration}), (4) regional growth (including traditional \emph{shift-share analysis}), spatial interaction models (including \emph{Huff model} and \emph{Hansen accessibility}) and (6) additional tools for data preparation und visualization. The package also contains data examples. 
 }
 
 \author{
@@ -25,4 +25,7 @@ Farhauer, O./Kroell, A. (2013): \dQuote{Standorttheorien: Regional- und Stadtoek
 Guessefeldt, J. (1999): \dQuote{Regionalanalyse}. Muenchen : Oldenbourg.
 
 Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. 
+
+Loeffler, G. (1998): \dQuote{Market areas - a methodological reflection on their boundaries}. In: \emph{GeoJournal}, \bold{45}, 4, p. 265-272
+
 }

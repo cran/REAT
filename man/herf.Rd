@@ -5,7 +5,7 @@
 Herfindahl-Hirschman coefficient
 }
 \description{
-Calculating the \emph{Herfindahl-Hirschman coefficient} of concentration, standardized and non-standardized
+Calculating the Herfindahl-Hirschman coefficient of concentration, standardized and non-standardized
 }
 
 \usage{
@@ -17,7 +17,7 @@ herf(x, norm = FALSE)
 A numeric vector (e.g. dataset of sales turnover or size of firms)
 }
   \item{norm}{
-boolean argument that indicates if the function output is the non-standardized or the standardized Herfindahl-Hirschman coefficient (default: \code{norm = FALSE}, that means the non-standardized Herfindahl-Hirschman coefficient is returned)
+logical argument that indicates if the function output is the non-standardized or the standardized Herfindahl-Hirschman coefficient (default: \code{norm = FALSE}, that means the non-standardized Herfindahl-Hirschman coefficient is returned)
 }
 }
 \details{

@@ -16,7 +16,7 @@ cv(x, norm = FALSE)
 a \code{numeric} vector
 }
   \item{norm}{
-boolean argument that indicates if the function output is the standardized cv or not (default: \code{norm = FALSE})
+logical argument that indicates if the function output is the standardized cv or not (default: \code{norm = FALSE})
 }
 }
 \details{

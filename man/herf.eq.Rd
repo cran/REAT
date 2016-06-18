@@ -5,7 +5,7 @@
 Herfindahl-Hirschman coefficient equivalent number
 }
 \description{
-Calculating the \emph{Herfindahl-Hirschman coefficient} equivalent number of objects
+Calculating the Herfindahl-Hirschman coefficient equivalent number of objects
 }
 \usage{
 herf.eq(x)

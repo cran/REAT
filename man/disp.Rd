@@ -17,10 +17,10 @@ a \code{numeric vector} containing the regarded objects
 }
 }
 \details{
-The \emph{Gini coefficient} and the \emph{Herfindahl-Hirschman coefficient} are measures of the degree of a concentration (e.g. household income, sales or market shares of firms in an industry, distribution of facilities in regions). This function returns both coefficients as non-standardized (\eqn{GINI}, \eqn{HHI}) and standardized values (\eqn{GINI*}, \eqn{HHI*}) and the HHI equivalent number (\eqn{HHI_{eq}}). For more information about the coefficients, see the single function documentations (\emph{gini}, \emph{herf}, \emph{herf.eq}).
+The \emph{Gini coefficient} and the \emph{Herfindahl-Hirschman coefficient} are measures of the degree of a concentration (e.g. household income, sales or market shares of firms in an industry, distribution of facilities in regions). This function returns both coefficients as non-standardized (\eqn{G}, \eqn{HHI}) and standardized values (\eqn{G*}, \eqn{HHI*}) and the HHI equivalent number (\eqn{HHI_{eq}}). For more information about the coefficients, see the single function documentations (\emph{gini}, \emph{herf}, \emph{herf.eq}).
 }
 \value{
-a \code{numeric vector} with the five result values (\eqn{HHI, HHI*, HHI_{eq}, GINI, GINI*})
+a \code{numeric vector} with the five result values (\code{HHI, HHI*, HHI_{eq}, G, G*})
 }
 \references{
 Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heidenau : PD-Verlag.

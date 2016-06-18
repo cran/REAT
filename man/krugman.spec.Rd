@@ -26,7 +26,7 @@ a single numeric value reflecting the employment in region \eqn{l}
 }
 }
 \details{
-The \emph{Krugman coefficient of regional specialization} (\eqn{K_{jl}}) is a measure for the dissimilarity of the industrial structure of two regions (\eqn{j} and \eqn{l}) regarding the employment in the \eqn{i} industries in there regions. The coefficient \eqn{K_{jl}} varies between 0 (no specialization/same structure) and 2 (maximum difference, that means there is no single industy localized in both regions).
+The \emph{Krugman coefficient of regional specialization} (\eqn{K_{jl}}) is a measure for the dissimilarity of the industrial structure of two regions (\eqn{j} and \eqn{l}) regarding the employment in the \eqn{i} industries in these regions. The coefficient \eqn{K_{jl}} varies between 0 (no specialization/same structure) and 2 (maximum difference, that means there is no single industry localized in both regions).
 }
 \value{
 A single numeric value (\eqn{0 < K_{jl} < 2})
