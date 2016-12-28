@@ -38,14 +38,15 @@ Reilly, W. J. (1929): \dQuote{Methods for the Study of Retail Relationships}. \e
 
 Reilly, W. J. (1931): \dQuote{The Law of Retail Gravitation}. New York.
 }
+
 \author{
 Thomas Wieland
 }
 
-
 \seealso{
-\code{\link{huff}}, \code{\link{reilly}}, \code{\link{reilly.lambda}}
+\code{\link{huff}}, \code{\link{reilly}}
 }
+
 \examples{
 # Example from Huff (1962):
 converse (400000, 200000, 80)

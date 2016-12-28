@@ -13,5 +13,6 @@ function (e_ij, e_il, e_j, e_l) {
   
   K_jl <- sum(abs(s_ij-s_il))
 
-    return(K_jl)
+  return(K_jl)
+  
 }

@@ -2,10 +2,12 @@ portfolio <-
 function (x, y, z, label_x="X", label_y="Y", heading="Portfolio", pcol="given", 
                        colsp=0, leg=FALSE, leg_vec=0, leg_fsize=1, 
                        leg_x=-max_val, leg_y=-max_val/2) 
-  {
+{
   
   x_count <- length(x)
+
   max_val <- max(x,y)
+
   point_col <- character()
   
   if (pcol=="random") { point_col <- sample(colours(), x_count) }

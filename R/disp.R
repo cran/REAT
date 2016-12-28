@@ -1,11 +1,14 @@
 disp <-
 function (x) {
   H <- herf(x)
-  H.norm <- herf(x, norm=1)
+  H.norm <- herf(x, coefnorm = TRUE)
   H.eq <- herf.eq(x)
   G <- gini(x)
-  G.norm <- gini(x, norm=1)
-  dispvalues <- c(H, H.norm, H.eq, G, G.norm)
-  names(dispvalues) <- c("HHI","HHI*","HHI_eq","GINI","GINI*")
+  G.norm <- gini(x, coefnorm = TRUE)
+  cv <- cv(x)
+  cv.norm <- cv(x, coefnorm = TRUE)
+  
+  dispvalues <- list(HHI=H, HHIn=H.norm, HHIeq=H.eq, GINI=G, GINIn=G.norm, CV=cv, CVn=cv.norm)
+ 
   return (dispvalues)
 }

@@ -9,15 +9,15 @@ Calculating the Herfindahl-Hirschman coefficient of concentration, standardized 
 }
 
 \usage{
-herf(x, norm = FALSE)
+herf(x, coefnorm = FALSE)
 }
 
 \arguments{
   \item{x}{
 A numeric vector (e.g. dataset of sales turnover or size of firms)
 }
-  \item{norm}{
-logical argument that indicates if the function output is the non-standardized or the standardized Herfindahl-Hirschman coefficient (default: \code{norm = FALSE}, that means the non-standardized Herfindahl-Hirschman coefficient is returned)
+  \item{coefnorm}{
+logical argument that indicates if the function output is the non-standardized or the standardized Herfindahl-Hirschman coefficient (default: \code{coefnorm = FALSE}, that means the non-standardized Herfindahl-Hirschman coefficient is returned)
 }
 }
 \details{
@@ -46,6 +46,6 @@ sales <- c(20,50,20,10)
 # sales turnover of four car manufacturing companies
 herf(sales)
 # returns the non-standardized HHI (0.34)
-herf(sales, norm=TRUE)
+herf(sales, coefnorm=TRUE)
 # returns the standardized HHI (0.12)
 }

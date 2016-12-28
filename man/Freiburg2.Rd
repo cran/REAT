@@ -24,13 +24,14 @@ Wieland, T. (2015): \dQuote{Nahversorgung im Kontext raumoekonomischer Entwicklu
 
 \examples{
 data(Freiburg1)
+# Distance matrix for grocery stores in Freiburg
 data(Freiburg2)
-# Loads the data
-
-huff (Freiburg1, "district", "store", "salesarea", "distance")
-# Huff probabilities with standard values (gamma = 1, lambda = -2)
-
-huff (Freiburg1, "district", "store", "salesarea", "distance", gamma=1, lambda=-2, atype="pow", 
-dtype="pow", gamma2 = NULL, lambda2=NULL, output_total = TRUE, Freiburg2, "ppower")
-# Calculation of total sales using district data in Freiburg2
+# Statistical districts of Freiburg
+groceryfr <- huff (Freiburg1, "district", "store", "salesarea", "distance", gamma=1, lambda=-2)
+# Huff interaction matrix for given grocery stores in Freiburg
+# with standard weighting (power function with gamma=1 and lambda=-2)
+groceryfr_total <- huff (Freiburg1, "district", "store", "salesarea", "distance", 
+gamma=1, lambda=-2, localmarket_dataset = Freiburg2, origin_id = "district", 
+localmarket = "ppower", output="total")
+# Calculating total sales of the stores
 }

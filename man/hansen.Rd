@@ -9,7 +9,8 @@ Calculating the Hansen accessibility for given origins and destinations
 }
 \usage{
 hansen(od_dataset, origins, destinations, attrac, dist, gamma = 1, lambda = -2, 
-atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL)
+atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL, dist_const = 0, 
+dist_max = NULL, extract_local = FALSE, accnorm = FALSE, check_df = TRUE)
 }
 
 \arguments{
@@ -26,13 +27,13 @@ the column in the interaction matrix \code{od_dataset} containing the destinatio
 the column in the interaction matrix \code{od_dataset} containing the "attractivity" variable of the destinations (e.g. no. of opportunities)
 }
   \item{dist}{
-the column in the interaction matrix \code{od_dataset} containing the transport costs (e.g. travelling time)
+the column in the interaction matrix \code{od_dataset} containing the transport costs (e.g. travelling time, distance)
 }
   \item{gamma}{
-a single numeric value for the exponential weighting of size (default: 1)
+a single numeric value for the exponential weighting (\eqn{\gamma}) of size (default: 1)
 }
   \item{lambda}{
-a single numeric value for the exponential weighting of distance (transport costs, default: -2)
+a single numeric value for the exponential weighting (\eqn{\lambda}) of distance (transport costs, default: -2)
 }
   \item{atype}{
 Type of attractivity weighting function: \code{atype = "pow"} (power function), \code{atype = "exp"} (exponential function) or \code{atype = "logistic"} (default: \code{atype = "pow"})
@@ -46,31 +47,69 @@ if \code{atype = "logistic"} a second \eqn{\gamma} parameter is needed
   \item{lambda2}{
 if \code{dtype = "logistic"} a second \eqn{\lambda} parameter is needed
 }
+  \item{dist_const}{
+a \code{numeric} value of a constant to be added to the transport costs (e.g. 1)
 }
+  \item{dist_max}{
+a \code{numeric} value of a maximal value of transport costs for the opportunities to be recognized
+}
+  \item{extract_local}{
+logical argument that indicates if the start points should be included in the analysis or not (if \eqn{i=j}). Default value: \code{extract_local = FALSE}
+}
+  \item{accnorm}{
+logical argument that indicates if the Hansen accessibility should be standardized
+}
+  \item{check_df}{
+logical argument that indicates if the given dataset is checked for correct input, only for internal use, should not be deselected (default: \code{TRUE})
+}
+}
+
 \details{
-The \emph{Hansen accessibility} (Hansen 1959) can be regarded as a \emph{potential model} of \emph{spatial interaction}. From a theoretical perspective, the accessibility (\eqn{A}) can be seen as the sum of all utilities of every opportunity outgoing from given starting points (\eqn{O_{j}}) and weighted by the distance to them (\eqn{d_{ij}}) (Orpana/Lampinen 2003). Originally the weighting function of distance is not explicitly given and the "attractivities" (e.g. size of the activity at the destinations) is not weighted(\eqn{A_{ij} = \sum_{j}{O_{j} f(d_{ij})}}). This specification is relaxed is this case, so both variables can be weighted by a power (e.g. \eqn{d_{ij}^-\lambda}), exponential or logistic function. 
+The \emph{Hansen accessibility} (Hansen 1959) can be regarded as a \emph{potential model} of \emph{spatial interaction}. From a theoretical perspective, the accessibility of a region or zone \eqn{i}, (\eqn{A_i}), can be seen as the sum of all utilities of every opportunity \eqn{O_{j}} outgoing from given starting points and weighted by the distance to them (\eqn{d_{ij}}) (Orpana/Lampinen 2003). Originally the weighting function of distance is not explicitly stated and the "attractivities" (e.g. size of the activity at the destinations) is not weighted(\eqn{A_{i} = \sum_{j}{O_{j} f(d_{ij})}}). This specification is relaxed is this case, so both variables can be weighted by a power, exponential or logistic function. If \code{accnorm = TRUE}, the \emph{Hansen accessibility} is standardized by weighting the non-standardized values by the sum of all opportunities without regarding transport costs; the standardized \emph{Hansen accessibility} has a range between 0 and 1.
 }
+
 \value{
 Returns a \code{data frame} with the origins and the accessibility values (column \code{accessibility}).
 }
+
 \references{
+Fueloep, G./Kopetsch, T./Schoepe, P. (2011): \dQuote{Catchment areas of medical practices and the role played by geographical distance in the patient's choice of doctor}. In: \emph{The Annals of Regional Science}, \bold{46}, 3, p. 691-706.
+
 Hansen, W. G. (1959): \dQuote{How Accessibility Shapes Land Use}. In: \emph{Journal of the American Institute of Planners}, \bold{25}, 2, p. 73-76. 
 
 Orpana, T./Lampinen, J. (2003): \dQuote{Building spatial choice models from aggregate data}. In: \emph{Journal of Regional Science}, \bold{43}, 2, p. 319-347.
 }
+
 \author{
 Thomas Wieland
 }
 
 \seealso{
 \code{\link{huff}}
+
 }
 \examples{
+# Hansen accessibility for grocery stores in Freiburg: 
 data(Freiburg1)
+# Distance matrix for grocery stores in Freiburg
 data(Freiburg2)
-# Loads the data
-
+# Statistical districs of Freiburg
 hansen (Freiburg1, "district", "store", "salesarea", "distance", gamma = 1, lambda = -2)
 # Computes the Hansen accessibility from the statistical districts of Freiburg
 # regarding the grocery stores and their sizes
+
+# Hansen accessibility for psychotherapists in South Lower Saxony: 
+data(health1)
+# Health service locations in South Lower Saxony
+data(health5)
+# Distance matrix for health service locations and subregions in South Lower Saxony
+psycho <- merge (health5, health1[health1$type == "psych",], 
+by.x = "location_to", by.y = "location")
+# Extracting psychotherapists
+psycho <- psycho[sample(nrow(psycho), 10), ]
+# Random sample of 10 rows (psychotherapists)
+hansen_psych <- hansen(psycho, "region_from", "location_to", attrac = 1, 
+"drvtime", lambda = -0.11, dtype = "exp", dist_const = 5)
+# Hansen accessibility for psychotherapists with an exponential distance decay function
+# with a weighting of lambda = -0.11
 }

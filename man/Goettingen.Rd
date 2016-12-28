@@ -5,7 +5,7 @@
 Grocery store supply in Goettingen
 }
 \description{
-Grocery stores and their sales areas in Goettingen (Germany) on the level of 69 statistical districts, data from Wieland (2011)
+Grocery stores and their sales areas in Goettingen (Germany) on the level of 69 statistical districts
 }
 \usage{data("Goettingen")}
 \format{
@@ -33,6 +33,6 @@ cv(Goettingen$stores_p1000p)
 # cv of stores per 1.000 inhabitants
 cv(Goettingen$salesarea_p1000p)
 # cv of sales area per 1.000 inhabitants
-cv(Goettingen$salesarea_p1000p, norm=TRUE)
+cv(Goettingen$salesarea_p1000p, coefnorm = TRUE)
 # standardized cv of sales area per 1.000 inhabitants
 }

@@ -44,4 +44,3 @@ valuesindex <- data.index(timeseries, "values", "year", "2012")
 timeseries2 <- data.frame(timeseries, valuesindex)
 # add index values to data
 }
-

@@ -8,7 +8,7 @@ Gini coefficient and Lorenz curve
 Calculating the Gini coefficient of inequality (or concentration), standardized and non-standardized, and plotting the Lorenz curve
 }
 \usage{
-gini(x, norm = FALSE, lc = FALSE, lcx = "\% of objects", 
+gini(x, coefnorm = FALSE, lc = FALSE, lcx = "\% of objects", 
 lcy = "\% of regarded variable", lctitle = "Lorenz curve", lcg = FALSE, 
 lcgn = FALSE)
 }
@@ -17,8 +17,8 @@ lcgn = FALSE)
   \item{x}{
 A numeric vector (e.g. dataset of household income, sales turnover or supply)
 }
-  \item{norm}{
-logical argument that indicates if the function output is the non-standardized or the standardized Gini coefficient (default: \code{norm = FALSE}, that means the non-standardized Gini coefficient is returned)
+  \item{coefnorm}{
+logical argument that indicates if the function output is the non-standardized or the standardized Gini coefficient (default: \code{coefnorm = FALSE}, that means the non-standardized Gini coefficient is returned)
 }
   \item{lc}{
 logical argument that indicates if the Lorenz curve is plotted additionally (default: \code{lc = FALSE}, so no Lorenz curve is displayed)
@@ -74,6 +74,10 @@ gini(sales, lc=TRUE, lcx="percentage of companies", lcy="percentrage of sales",
 lctitle="Lorenz curve of sales", lcg=TRUE, lcgn=TRUE)
 # returs the non-standardized Gini coefficient (0.3) and 
 # plots the Lorenz curve with user-defined title and labels 
-gini(sales, norm=TRUE)
+gini(sales, coefnorm=TRUE)
 # returns the standardized Gini coefficient (0.4)
+
+# Gini concentration of physicians
+data(health4)
+gini(health4$phys_gen)
 }
