@@ -1,4 +1,4 @@
-export("converse", "cv", "data.index", "disp", "dist", "dist.buf", "dist.mat", "gini", "gini.conc", "gini.spec", "hansen", "herf", "herf.eq", "huff", "krugman.spec", "locq", "portfolio", "reilly", "shift")
+export("converse", "cv", "data.index", "disp", "dist", "dist.buf", "dist.mat", "gini", "gini.conc", "gini.spec", "hansen", "herf", "herf.eq", "hoover", "huff", "krugman.spec", "lm.beta", "locq", "portfolio", "reilly", "shift")
 importFrom("grDevices", "colours")
 importFrom("graphics", "abline", "legend", "lines", "plot", "text")
 importFrom("stats", "sd", "lm", "aggregate")

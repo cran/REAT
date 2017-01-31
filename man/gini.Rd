@@ -47,6 +47,8 @@ A single numeric value of the \emph{Gini coefficient} (\eqn{0 < G < 1}) or the \
 }
 
 \references{
+Aoyama, Y./Murphy, J. T./Hanson, S. (2011): \dQuote{Key Concepts in Economic Geography}. London : SAGE.
+
 Cerlani, L./Verme, P. (2012): \dQuote{The origins of the Gini index: extracts from Variabilita e Mutabilita (1912) by Corrado Gini}. In: \emph{The Journal of Economic Inequality}, \bold{10}, 3, p. 421-443. 
 
 Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heidenau : PD-Verlag.
@@ -80,4 +82,11 @@ gini(sales, coefnorm=TRUE)
 # Gini concentration of physicians
 data(health4)
 gini(health4$phys_gen)
+
+# Regional disparities in Germany:
+gdp <- c(460.69, 549.19, 124.16, 65.29, 31.59, 109.27, 263.44, 39.87, 258.53, 
+645.59, 131.95, 35.03, 112.66, 56.22, 85.61, 56.81)
+# GDP of german regions 2015 (in billion EUR)
+gini(gdp)
+# returs the non-standardized Gini coefficient (0.5009)
 }

@@ -73,7 +73,7 @@ Returns a \code{data frame} with the origins and the accessibility values (colum
 }
 
 \references{
-Fueloep, G./Kopetsch, T./Schoepe, P. (2011): \dQuote{Catchment areas of medical practices and the role played by geographical distance in the patient's choice of doctor}. In: \emph{The Annals of Regional Science}, \bold{46}, 3, p. 691-706.
+Aoyama, Y./Murphy, J. T./Hanson, S. (2011): \dQuote{Key Concepts in Economic Geography}. London : SAGE.
 
 Hansen, W. G. (1959): \dQuote{How Accessibility Shapes Land Use}. In: \emph{Journal of the American Institute of Planners}, \bold{25}, 2, p. 73-76. 
 
