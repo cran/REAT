@@ -27,7 +27,10 @@ A single numeric value (\eqn{0 < G_{i} < 1})
 }
 \references{
 Farhauer, O./Kroell, A. (2013): \dQuote{Standorttheorien: Regional- und Stadtoekonomik in Theorie und Praxis}. Wiesbaden : Springer.
+
+Nakamura, R./Morrison Paul, C. J. (2009): \dQuote{Measuring agglomeration}. In: Capello, R./Nijkamp, P. (eds.): \emph{Handbook of Regional Growth and Development Theories}. Cheltenham: Elgar. p. 305-328.
 }
+
 \author{
 Thomas Wieland
 }
@@ -43,5 +46,4 @@ E_j <- c(20000,15000,20000,40000,5000)
 # employment in the five regions
 gini.conc (E_ij, E_j)
 # Returns the Gini coefficient of industry concentration (0.4068966)
-
 }

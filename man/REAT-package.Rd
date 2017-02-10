@@ -3,10 +3,28 @@
 \alias{REAT}
 \docType{package}
 \title{
-Regional Economic Analysis Tools
+Regional Economic Analysis Toolbox
 }
 \description{
-This package contains a collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided in seven groups: (1) analysis of regional disparities and inequality (including \emph{Gini coefficient} and \emph{Lorenz curve}), (2) specialization of regions (including \emph{spatial Gini coefficient of regional specialization} and \emph{Krugman coefficient for regional specialization}), (3) spatial concentration of industries (including \emph{spatial Gini coefficient for industry concentration}), (4) regional growth (including traditional \emph{shift-share analysis}), (5) spatial interaction and accessibility models (including \emph{Huff model} and \emph{Hansen accessibility}), (6) proximity analysis (including calculation of \emph{distance matrices} and \emph{buffers}) and (7) additional tools for data preparation und visualization. The package also contains data examples. 
+In regional and urban economics and economic geography, very frequent research fields are the existence and evolution of agglomerations due to (internal and external) agglomeration economies, regional economic growth and regional disparities, where these concepts and relationships are closely related to each other (Capello/Nijkamp 2009, Dinc 2015, Farhauer/Kroell 2013, McCann/van Oort 2009). Also accessibility and spatial interaction modeling is mostly regarded as related to these disciplines (Aoyama et al. 2011, Guessefeldt 1999). The group of the related analysis methods is sometimes summarized by the term \emph{regional analysis} or \emph{regional economic analysis} (Dinc 2015, Guessefeldt 1999, Isard 1960). 
+
+This package contains a collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided in seven groups: 
+
+(1) analysis of regional disparities and inequality, including \emph{Gini coefficient}, the \emph{Lorenz curve} and the \emph{(weighted) coefficient of variation}
+
+(2) specialization of regions, including \emph{spatial Gini coefficient of regional specialization} and \emph{Krugman coefficient for regional specialization}
+
+(3) spatial concentration of industries, including \emph{location quotients} and \emph{spatial Gini coefficient for industry concentration}
+
+(4) regional growth and convergence, including traditional \emph{shift-share analysis} and \emph{analysis of beta and sigma convergence for cross-sectional data}
+
+(5) spatial interaction and accessibility models, including \emph{Huff Model} and \emph{Hansen accessibility}
+
+(6) proximity analysis, including calculation of \emph{distance matrices} and \emph{buffers} 
+
+(7) additional tools for data preparation und visualization. 
+
+The package also contains data examples. 
 }
 
 \author{
@@ -16,15 +34,17 @@ Maintainer: Thomas Wieland \email{thomas.wieland.geo@googlemail.com}
 }
 
 \references{
-Dinc, M. (2002): \dQuote{Regional and Local Economic Analysis Tools}. Prepared for the Public Finance, Decentralization and Poverty Reduction Program (World Bank Institute). Washington, D.C. : The World Bank. 
+Aoyama, Y./Murphy, J. T./Hanson, S. (2011): \dQuote{Key Concepts in Economic Geography}. London: SAGE.
 
-Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heidenau : PD-Verlag.
+Capello, R./Nijkamp, P. (2009): \dQuote{Introduction: regional growth and development theories in the twenty-first century - recent theoretical advances and future challenges}. In: Capello, R./Nijkamp, P. (eds.): \emph{Handbook of Regional Growth and Development Theories}. Cheltenham: Elgar. p. 1-16.
 
-Farhauer, O./Kroell, A. (2013): \dQuote{Standorttheorien: Regional- und Stadtoekonomik in Theorie und Praxis}. Wiesbaden : Springer.
+Dinc, M. (2015): \dQuote{Introduction to Regional Economic Development. Major Theories and Basic Analytical Tools}. Cheltenham: Elgar. 
 
-Guessefeldt, J. (1999): \dQuote{Regionalanalyse}. Muenchen : Oldenbourg.
+Farhauer, O./Kroell, A. (2013): \dQuote{Standorttheorien: Regional- und Stadtoekonomik in Theorie und Praxis}. Wiesbaden: Springer.
 
-Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. 
+Guessefeldt, J. (1999): \dQuote{Regionalanalyse}. Muenchen: Oldenbourg.
 
-Loeffler, G. (1998): \dQuote{Market areas - a methodological reflection on their boundaries}. In: \emph{GeoJournal}, \bold{45}, 4, p. 265-272.
+Isard, W. (1960): \dQuote{Methods of Regional Analysis: an Introduction to Regional Science}. Cambridge: M.I.T. Press.
+
+McCann, P./van Oort, F. (2009): \dQuote{Theories of agglomeration and regional economic growth: a historical review}. In: Capello, R./Nijkamp, P. (eds.): \emph{Handbook of Regional Growth and Development Theories}. Cheltenham: Elgar. p. 19-32.
 }

@@ -1,5 +1,5 @@
-\name{dist}
-\alias{dist}
+\name{dist.calc}
+\alias{dist.calc}
 
 \title{
 Euclidean distance between coordinates
@@ -8,7 +8,7 @@ Euclidean distance between coordinates
 Calculation of the euclidean distance between two points with stated coordinates (lat, lon)
 }
 \usage{
-dist(lat1, lon1, lat2, lon2, unit = "km")
+dist.calc(lat1, lon1, lat2, lon2, unit = "km")
 }
 
 \arguments{
@@ -41,6 +41,6 @@ Thomas Wieland
 \code{\link{dist.buf}}, \code{\link{dist.mat}}
 }
 \examples{
-dist(51.556307, 9.947375, 49.009603, 8.417004)
+dist.calc(51.556307, 9.947375, 49.009603, 8.417004)
 # about 304 kilometers
 }

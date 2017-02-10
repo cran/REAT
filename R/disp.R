@@ -2,7 +2,7 @@ disp <-
 function (x) {
   H <- herf(x)
   H.norm <- herf(x, coefnorm = TRUE)
-  H.eq <- herf.eq(x)
+  H.eq <- herf(x, output = "eq")
   G <- gini(x)
   G.norm <- gini(x, coefnorm = TRUE)
   cv <- cv(x)

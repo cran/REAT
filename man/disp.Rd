@@ -31,6 +31,8 @@ a \code{list} with the 7 entires (=result values):
 }
 
 \references{
+Bahrenberg, G./Giese, E./Mevenkamp, N./Nipper, J. (2010): \dQuote{Statistische Methoden in der Geographie. Band 1: Univariate und bivariate Statistik}. Stuttgart: Borntraeger.
+
 Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heidenau : PD-Verlag.
 
 Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/link/ifodb_2005_3_25-33.pdf}.
@@ -41,8 +43,9 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{gini}}, \code{\link{herf}}, \code{\link{herf.eq}}, \code{\link{cv}}
+\code{\link{gini}}, \code{\link{herf}}, \code{\link{cv}}
 }
+
 \examples{
 # Example from Doersam (2004)
 # (Sales of four car manufacturing firms)

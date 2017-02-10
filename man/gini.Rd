@@ -40,7 +40,9 @@ if \code{lc = TRUE} (plot of Lorenz curve), the logical argument \code{lcgn} def
 }
 }
 \details{
-The \emph{Gini coefficient} (Gini 1912) is a popular measure of statistical dispersion, especially used for analyzing inequality or concentration of income, wealth or sales turnover of competing firms. The coefficient (\eqn{G}) varies between 0 (no inequality/concentration) and 1 (complete inequality/concentration). The \emph{Lorenz curve} (Lorenz 1905), though developed independently, can be regarded as a graphical representation of the degree of inequality calculated by the \emph{Gini coefficient} and can also be used for additional interpretations of \eqn{G}. The curve displays the deviations of the empirical distribution from a perfectly equal distribution as the difference between two graphs (the distribution curve and a diagonal line of perfect equality). This function calculates \eqn{G} and plots the \emph{Lorenz curve} optionally. As there are several ways to calculate the \emph{Gini coefficient}, this function uses the formula given in Doersam (2004). Because the maximum of \eqn{G} is not equal to 1, also a standardized coefficient (\eqn{G*}) with a maximum equal to 1 can be calculated alternatively.      
+The \emph{Gini coefficient} (Gini 1912) is a popular measure of statistical dispersion, especially used for analyzing inequality or concentration. The \emph{Lorenz curve} (Lorenz 1905), though developed independently, can be regarded as a graphical representation of the degree of inequality/concentration calculated by the \emph{Gini coefficient} (\eqn{G}) and can also be used for additional interpretations of it. In an economic-geographical context, these methods are frequently used to analyse the concentration/inequality of income or wealth within countries (Aoyama et al. 2011). Other areas of application are analyzing regional disparities (Lessmann 2005, Nakamura 2008) and concentration in markets (sales turnover of competing firms) which makes Gini and Lorenz part of economic statistics in general (Doersam 2004, Roberts 2014).
+
+The \emph{Gini coefficient} (\eqn{G}) varies between 0 (no inequality/concentration) and 1 (complete inequality/concentration). The \emph{Lorenz curve} displays the deviations of the empirical distribution from a perfectly equal distribution as the difference between two graphs (the distribution curve and a diagonal line of perfect equality). This function calculates \eqn{G} and plots the \emph{Lorenz curve} optionally. As there are several ways to calculate the \emph{Gini coefficient}, this function uses the formula given in Doersam (2004). Because the maximum of \eqn{G} is not equal to 1, also a standardized coefficient (\eqn{G*}) with a maximum equal to 1 can be calculated alternatively.      
 }
 \value{
 A single numeric value of the \emph{Gini coefficient} (\eqn{0 < G < 1}) or the \emph{standardized Gini coefficient} (\eqn{0 < G* < 1}) and, optionally, a plot of the \emph{Lorenz curve}.
@@ -48,6 +50,8 @@ A single numeric value of the \emph{Gini coefficient} (\eqn{0 < G < 1}) or the \
 
 \references{
 Aoyama, Y./Murphy, J. T./Hanson, S. (2011): \dQuote{Key Concepts in Economic Geography}. London : SAGE.
+
+Bahrenberg, G./Giese, E./Mevenkamp, N./Nipper, J. (2010): \dQuote{Statistische Methoden in der Geographie. Band 1: Univariate und bivariate Statistik}. Stuttgart: Borntraeger.
 
 Cerlani, L./Verme, P. (2012): \dQuote{The origins of the Gini index: extracts from Variabilita e Mutabilita (1912) by Corrado Gini}. In: \emph{The Journal of Economic Inequality}, \bold{10}, 3, p. 421-443. 
 
@@ -60,7 +64,11 @@ Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuc
 
 Lorenz, M. O. (1905): \dQuote{Methods of Measuring the Concentration of Wealth}. In: \emph{Publications of the American Statistical Association}, \bold{9}, 70, p. 209-219.
 
+Nakamura, R. (2008): \dQuote{Agglomeration Effects on Regional Economic Disparities: A Comparison between the UK and Japan}. In: \emph{Urban Studies}, \bold{45}, 9, p. 1947-1971.
+
+Roberts, T. (2014): \dQuote{When Bigger Is Better: A Critique of the Herfindahl-Hirschman Index's Use to Evaluate Mergers in Network Industries}. In: \emph{Pace Law Review}, \bold{34}, 2, p. 894-946.
 }
+
 \author{
 Thomas Wieland
 }
@@ -68,6 +76,7 @@ Thomas Wieland
 \seealso{
 \code{\link{cv}}, \code{\link{gini.conc}}, \code{\link{gini.spec}}, \code{\link{herf}}
 }
+
 \examples{
 # Example from Doersam (2004):
 sales <- c(20,50,20,10)

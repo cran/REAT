@@ -1,7 +1,7 @@
-lm.beta <- 
-function (linmod, dummy.na = TRUE)
+lm.beta <-
+function (linmod, dummy.na = TRUE) 
 {
-  
+
   linmod_data <- linmod$model
   var_dep <- linmod_data[,1]
 
@@ -28,6 +28,7 @@ function (linmod, dummy.na = TRUE)
 
   sd_vardep <- sd(var_dep) 
 
+  
   for (i in 1:var_ind_count)
   {
     coeff[i] <- linmod$coefficients[i+var_dep_col]

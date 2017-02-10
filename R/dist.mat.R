@@ -4,7 +4,7 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
   startpoints_count <- as.numeric(nrow(startpoints))
   
   endpoints_count <- as.numeric(nrow(endpoints))
-
+  
   startpoints_df <- data.frame(startpoints[[sp_id]], startpoints[[lat_start]], startpoints[[lon_start]])
   colnames(startpoints_df) <- c("s_id", "s_lat", "s_lon")
 
@@ -28,7 +28,7 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
     to[i] <- as.character(mat_startend$e_id[i])
     from_to[i] <- paste0(from[i], "-", to[i])
 
-    distance[i] <- dist(mat_startend$s_lat[i], mat_startend$s_lon[i], mat_startend$e_lat[i], mat_startend$e_lon[i], unit = unit)
+    distance[i] <- dist.calc(mat_startend$s_lat[i], mat_startend$s_lon[i], mat_startend$e_lat[i], mat_startend$e_lon[i], unit = unit)
   }
   
   distmat <- data.frame(from, to, from_to, distance)

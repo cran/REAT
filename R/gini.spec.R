@@ -5,14 +5,12 @@ function (e_ij, e_i) {
 
   e <- sum(e_i)
 
-  if (e_j > e) { return (NA) }
-
   industries <- length(e_ij)
 
   R_i <- vector()
 
   for (i in 1:industries) { 
-    R_i[i] <- (e_ij[i]/e_j)/(e_i[i]/e)
+    R_i[i] <- locq (e_ij[i], e_j, e_i[i], e)
   }
   
   R_i_sort <- sort(R_i)

@@ -1,6 +1,7 @@
-dist <-
+dist.calc <-
 function (lat1, lon1, lat2, lon2, unit = "km")
 {
+
   lat1_r <- lat1*pi/180
   lon1_r <- lon1*pi/180
   lat2_r <- lat2*pi/180

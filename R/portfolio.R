@@ -28,5 +28,6 @@ function (x, y, z, label_x="X", label_y="Y", heading="Portfolio", pcol="given",
   
   if (leg==TRUE) {
     legend(leg_x, leg_y, leg_vec, point_col, cex=leg_fsize, ncol=2, bg="white")
+
   }
 }

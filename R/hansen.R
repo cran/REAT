@@ -6,6 +6,7 @@ function (od_dataset, origins, destinations, attrac, dist,
 {
 
   if (check_df == TRUE) 
+
   {
     if (exists(as.character(substitute(od_dataset)))) { 
 
@@ -20,6 +21,7 @@ function (od_dataset, origins, destinations, attrac, dist,
     else {
       stop(paste("Dataset", as.character(substitute(od_dataset))), " not found", call. = FALSE)
     }
+
   }
   
   if (!is.null(dist_max))

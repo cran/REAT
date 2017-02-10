@@ -65,7 +65,9 @@ logical argument that indicates if the given dataset is checked for correct inpu
 }
 
 \details{
-The \emph{Hansen accessibility} (Hansen 1959) can be regarded as a \emph{potential model} of \emph{spatial interaction}. From a theoretical perspective, the accessibility of a region or zone \eqn{i}, (\eqn{A_i}), can be seen as the sum of all utilities of every opportunity \eqn{O_{j}} outgoing from given starting points and weighted by the distance to them (\eqn{d_{ij}}) (Orpana/Lampinen 2003). Originally the weighting function of distance is not explicitly stated and the "attractivities" (e.g. size of the activity at the destinations) is not weighted(\eqn{A_{i} = \sum_{j}{O_{j} f(d_{ij})}}). This specification is relaxed is this case, so both variables can be weighted by a power, exponential or logistic function. If \code{accnorm = TRUE}, the \emph{Hansen accessibility} is standardized by weighting the non-standardized values by the sum of all opportunities without regarding transport costs; the standardized \emph{Hansen accessibility} has a range between 0 and 1.
+Accessibility and the inhibiting effect of transport costs on spatial interactions belong to the key concepts of economic geography (Aoyama et al. 2011). The \emph{Hansen accessibility} (Hansen 1959) can be regarded as a \emph{potential model} of \emph{spatial interaction} that describes accessibility as the sum of all opportunities \eqn{O} in the regions \eqn{j}, \eqn{O_{j}}, weighted by distance or other types of transport costs from the origins, \eqn{i}, to them, \eqn{d_{ij}}: \eqn{A_{i} = \sum_{j}{O_{j} f(d_{ij})}}. The distance/travel time is weighted by a distance decay function (\eqn{f(d_{ij})}) to reflect the disutility (opportunity costs) of distance. From a microeconomic perspective, the accessibility of a region or zone can be seen as the sum of all utilities of every opportunity outgoing from given starting points, given an utility function containing the opportunities (utility) and transport costs (disutility) (Orpana/Lampinen 2003). As the accessibility model originally comes from urban land use theory, it can also be used to model spatial concentration/agglomeration, e.g. to quantify the rate of agglomeration of retail locations (Orpana/Lampinen 2003, Wieland 2015). 
+
+Originally the weighting function of distance is not explicitly stated and the "attractivities" (e.g. size of the activity at the destinations) is not weighted. These specifications are relaxed is this function, so both variables can be weighted by a power, exponential or logistic function. If \code{accnorm = TRUE}, the \emph{Hansen accessibility} is standardized by weighting the non-standardized values by the sum of all opportunities without regarding transport costs; the standardized \emph{Hansen accessibility} has a range between 0 and 1.
 }
 
 \value{
@@ -78,6 +80,8 @@ Aoyama, Y./Murphy, J. T./Hanson, S. (2011): \dQuote{Key Concepts in Economic Geo
 Hansen, W. G. (1959): \dQuote{How Accessibility Shapes Land Use}. In: \emph{Journal of the American Institute of Planners}, \bold{25}, 2, p. 73-76. 
 
 Orpana, T./Lampinen, J. (2003): \dQuote{Building spatial choice models from aggregate data}. In: \emph{Journal of Regional Science}, \bold{43}, 2, p. 319-347.
+
+Wieland, T. (2015): \dQuote{Raeumliches Einkaufsverhalten und Standortpolitik im Einzelhandel unter Beruecksichtigung von Agglomerationseffekten. Theoretische Erklaerungsansaetze, modellanalytische Zugaenge und eine empirisch-oekonometrische Marktgebietsanalyse anhand eines Fallbeispiels aus dem laendlichen Raum Ostwestfalens/Suedniedersachsens}. \emph{Geographische Handelsforschung}, \bold{23}. 289 pages. Mannheim : MetaGIS.
 }
 
 \author{

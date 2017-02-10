@@ -9,8 +9,7 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
   {
     distmat_workfile <- distmat_workfile[as.character(distmat_workfile$from) != as.character(distmat_workfile$to),]
   }
-  
-  
+
   i <- 0
 
   for (i in 1:nrow(distmat_workfile))

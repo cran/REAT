@@ -18,20 +18,22 @@ A numeric vector (dataset of regional income, e.g. GDP)
   \item{pop}{
 A numeric vector (dataset of regional population). If \code{pop = NULL}, the shares of income are compared with the shares of regions (\eqn{1/n})
 }
-
 }
 
 \details{
-The \emph{Hoover Concentration Index} (\eqn{CI}) measures the economic concentration of income across space by comparing the share of income (e.g. GDP - Gross Domestic Product) with the share of population. The index varies between 0 (no inequality/concentration) and 1 (complete inequality/concentration).      
+The \emph{Hoover Concentration Index} (\eqn{CI}) measures the economic concentration of income across space by comparing the share of income (e.g. GDP - Gross Domestic Product) with the share of population. The index varies between 0 (no inequality/concentration) and 1 (complete inequality/concentration). It can be used for economic inequality and/or regional disparities (Huang/Leung 2009).    
 }
+
 \value{
 A single numeric value of the \emph{Hoover Concentration Index} (\eqn{0 < CI < 1}).
 }
 
 \references{
-Huang, Y./Leung, Y. (2009): \dQuote{Measuring Regional Inequality: A Comparison of Coefficient of Variation and Hoover Concentration Index}. In: In: \emph{The Open Geography Journal}, \bold{2}, p. 25-34.
+Bahrenberg, G./Giese, E./Mevenkamp, N./Nipper, J. (2010): \dQuote{Statistische Methoden in der Geographie. Band 1: Univariate und bivariate Statistik}. Stuttgart: Borntraeger.
 
+Huang, Y./Leung, Y. (2009): \dQuote{Measuring Regional Inequality: A Comparison of Coefficient of Variation and Hoover Concentration Index}. In: In: \emph{The Open Geography Journal}, \bold{2}, p. 25-34.
 }
+
 \author{
 Thomas Wieland
 }
@@ -39,6 +41,7 @@ Thomas Wieland
 \seealso{
 \code{\link{cv}}, \code{\link{gini}}, \code{\link{herf}}
 }
+
 \examples{
 # Regional disparities in Germany:
 gdp <- c(460.69, 549.19, 124.16, 65.29, 31.59, 109.27, 263.44, 39.87, 258.53, 
