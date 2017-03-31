@@ -8,8 +8,8 @@ Coefficient of variation
 Calculating the coefficient of variation (cv), standardized and non-standardized, weighted and non-weighted
 }
 \usage{
-cv(x, is.sample = TRUE, coefnorm = FALSE, weighting = NULL, 
-output = "cv")
+cv (x, is.sample = TRUE, coefnorm = FALSE, weighting = NULL, 
+wmean = FALSE, na.rm = FALSE)
 }
 
 \arguments{
@@ -25,9 +25,13 @@ logical argument that indicates if the function output is the standardized cv (\
   \item{weighting}{
 a \code{numeric} vector containing weighting data to compute the weighted coefficient of variation (instead of the non-weighted cv)
 }
-  \item{output}{
-determines the output (default: \code{output = "cv"}). If \code{output = "sd"}, the function output is the standard deviation and if \code{output = "mean"}, the output is the arithmetic mean of \code{x}. These alternative output options only make sense if the data is weighted with a vector given in \code{weighting} (the non-weighted values could be simply calculated by the base function \code{sd} and \code{mean}, respectively)
+  \item{wmean}{
+logical argument that indicates if the weighted mean is used when calculating the weighted coefficient of variation
 }
+  \item{na.rm}{
+logical argument that whether NA values should be extracted or not
+}
+
 }
 \details{
 The \emph{coefficient of variation}, \eqn{v}, is a dimensionless measure of statistical dispersion (\eqn{0 < v < \infty}), based on variance and standard deviation, respectively. From a regional economic perspective, it is closely linked to the concept of \emph{sigma convergence} (\eqn{\sigma}) which means a harmonization of regional economic output or income over time, while the other type of convergence, \emph{beta convergence} (\eqn{\beta}), means a decline of dispersion because poor regions have a stronger growth than rich regions (Capello/Nijkamp 2009). The cv allows to summarize regional disparities (e.g. disparities in regional GDP per capita) in one indicator and is more frequently used for this purpose than the standard deviation, especially in analyzing of \eqn{\sigma} convergence over a long period (e.g. Lessmann 2005, Huang/Leung 2009, Siljak 2015). But the cv can also be used for any other types of disparities or dispersion, such as disparities in supply (e.g. density of physicians or grocery stores). 
@@ -36,7 +40,7 @@ The cv (variance, standard deviation) can be weighted by using a second weightin
 }
 
 \value{
-Single numeric value. If \code{coefnorm = FALSE} the function returns the non-standardized cv (\eqn{0 < v < \infty}). If \code{coefnorm = TRUE} the standardized cv (\eqn{0 < v* < 1}) is returned. If \code{output = "sd"}, the functions returns the (weighted) standard deviation. If \code{output = "mean"}, the functions returns the (weighted) arithmetic mean. 
+Single numeric value. If \code{coefnorm = FALSE} the function returns the non-standardized cv (\eqn{0 < v < \infty}). If \code{coefnorm = TRUE} the standardized cv (\eqn{0 < v* < 1}) is returned. 
 }
 
 \references{
@@ -73,28 +77,4 @@ years <- 2000:2014
 plot(years, cvs, "l", ylim=c(0.3,0.6), xlab = "year", 
 ylab = "CV of GDP per capita")
 # Plot cv over time
-
-# Supply of grocery stores:
-data(Goettingen)
-# Loads the data
-# (Grocery stores in Goettingen, Germany, at the level of 69 statistical districts:
-# number and sales area of stores, absolute values and per 1.000 inhabitants)
-cv(Goettingen$stores_p1000p)
-# cv of stores per 1.000 inhabitants
-cv(Goettingen$salesarea_p1000p)
-# cv of sales area per 1.000 inhabitants
-cv(Goettingen$salesarea_p1000p, coefnorm=TRUE)
-# standardized cv of sales area per 1.000 inhabitants
-
-# Supply of physicians:
-data(health2)
-# Demographic data for 420 small regions
-data(health4)
-# Medical supply in the 420 regions
-supply_physgen <- merge(health4, health2)
-supply_physgen$physgen_pop <- supply_physgen$phys_gen/supply_physgen$pop*1000
-# Calculation: physicians per 1.000 inhabitants
-supply_physgen[is.na(supply_physgen$physgen_pop),]$physgen_pop <- 0
-cv(supply_physgen$physgen_pop)
-# cv of physician supply
 }

@@ -50,8 +50,8 @@ function (gdp1, time1, gdp2, time2, output = "all", sigma.measure = "cv", sigma.
   }
   
   if (sigma.measure == "sd") {
-    sd1 <- cv(gdp1, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting, output = "sd")
-    sd2 <- cv(gdp2, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting, output = "sd")
+    sd1 <- sd2(gdp1, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
+    sd2 <- sd2(gdp2, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
     sigmaconv <- round(sd1-sd2, digs)
   }
   else {
