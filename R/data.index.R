@@ -1,10 +1,11 @@
 data.index <-
-function (dataset, col_index, col_ref, value_ref) {
+function (dataset, col.index, col.ref, value.ref) {
   
-  refcolumn <- dataset[[col_ref]]
+  refcolumn <- dataset[[col.ref]]
   
-  refvaluerows <- which (dataset[[col_ref]] == value_ref)
+  refvaluerows <- which (dataset[[col.ref]] == value.ref)
   
-  index_values <- dataset[[col_index]]/dataset[[col_index]][refvaluerows]*100
+  index_values <- dataset[[col.index]]/dataset[[col.index]][refvaluerows]*100
+  
   return(index_values)
 }

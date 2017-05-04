@@ -10,11 +10,12 @@ function (x, coefnorm = FALSE, weighting = NULL,
                   add.lc = FALSE) 
 {   
 
+  
   if (!is.null(weighting))
   {
     if (length(x) != length(weighting))
     {
-      stop("Frequency and weighting differ in length")
+      stop("Frequency and weighting differ in length", call. = FALSE)
     }
   }
   

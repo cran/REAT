@@ -49,9 +49,13 @@ If a relation is stated instead of weighting parameters, a single numeric value 
 }
 
 \references{
+Berman, B. R./Evans, J. R. (2012): \dQuote{Retail Management: A Strategic Approach}. 12th edition. Bosten : Pearson.
+
 Converse, P. D. (1949): \dQuote{New Laws of Retail Gravitation}. In: \emph{Journal of Marketing}, \bold{14}, 3, p. 379-384.
 
 Huff, D. L. (1962): \dQuote{Determination of Intra-Urban Retail Trade Areas}. Los Angeles : University of California.
+
+Levy, M./Weitz, B. A. (2012): \dQuote{Retailing management}. 8th edition. New York : McGraw-Hill Irwin.
 
 Loeffler, G. (1998): \dQuote{Market areas - a methodological reflection on their boundaries}. In: \emph{GeoJournal}, \bold{45}, 4, p. 265-272
 

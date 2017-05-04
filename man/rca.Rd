@@ -95,13 +95,13 @@ Thomas Wieland
 \code{\link{cv}}
 }
 
-\examples{
+\examples{ 
 # Regional disparities / beta and sigma convergence in Germany
-data(gdppc)
+data(G.counties.gdp)
 # GDP per capita for German counties (Landkreise)
-rca (gdppc$gdppc2005, 2005, gdppc$gdppc2009, 2009, digs=5)
+rca (G.counties.gdp$gdppc2005, 2005, G.counties.gdp$gdppc2009, 2009, digs=5)
 # returns a list
-convergence <- rca (gdppc$gdppc2005, 2005, gdppc$gdppc2009, 2009, digs=5)
+convergence <- rca (G.counties.gdp$gdppc2005, 2005, G.counties.gdp$gdppc2009, 2009, digs=5)
 beta <- convergence$beta
 # Beta convergence value
 }

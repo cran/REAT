@@ -7,20 +7,20 @@ Creating index values
 Standardizing a variable as an index
 }
 \usage{
-data.index(dataset, col_index, col_ref, value_ref)
+data.index(dataset, col.index, col.ref, value.ref)
 }
 
 \arguments{
   \item{dataset}{
 regarded \code{data.frame}
 }
-  \item{col_index}{
+  \item{col.index}{
 column to be converted to index values
 }
-  \item{col_ref}{
+  \item{col.ref}{
 column with the reference values of the index (e.g. years or months)
 }
-  \item{value_ref}{
+  \item{value.ref}{
 value from the reference column which is the reference value (=100)
 }
 }

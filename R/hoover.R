@@ -1,18 +1,28 @@
 hoover <-
-function (inc, pop = NULL)
+function (x, weighting = NULL)
 {
-  inc_share <- inc/sum(inc)
-
-  if (is.null(pop))
+  
+  if (!is.null(weighting))
   {
-    pop_share <- 1/length(inc)
+    if (length(x) != length(weighting))
+    {
+      stop("Frequency and weighting differ in length", call. = FALSE)
+    }
   }
-  else { pop_share <- pop/sum(pop) }
+  
+  x_share <- x/sum(x)
 
-  share_comp <- abs(inc_share-pop_share)
-  share_comp_sum <- sum(share_comp)
+  if (is.null(weighting)) {
+    w_share <- 1/length(x)
+  }
+  else { 
+    w_share <- weighting/sum(weighting) 
+  }
 
-  CI <- share_comp_sum/2
+  x_comp <- abs(x_share-w_share)
+  x_comp_sum <- sum(x_comp)
+
+  CI <- x_comp_sum/2
 
   return(CI)
 }

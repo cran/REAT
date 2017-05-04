@@ -89,31 +89,32 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{huff}}
-
+\code{\link{converse}}, \code{\link{dist.calc}}, \code{\link{dist.mat}}, \code{\link{dist.buf}}, \code{\link{huff}}, \code{\link{reilly}}
 }
-\examples{
-# Hansen accessibility for grocery stores in Freiburg: 
-data(Freiburg1)
-# Distance matrix for grocery stores in Freiburg
-data(Freiburg2)
-# Statistical districs of Freiburg
-hansen (Freiburg1, "district", "store", "salesarea", "distance", gamma = 1, lambda = -2)
-# Computes the Hansen accessibility from the statistical districts of Freiburg
-# regarding the grocery stores and their sizes
 
-# Hansen accessibility for psychotherapists in South Lower Saxony: 
-data(health1)
-# Health service locations in South Lower Saxony
-data(health5)
-# Distance matrix for health service locations and subregions in South Lower Saxony
-psycho <- merge (health5, health1[health1$type == "psych",], 
-by.x = "location_to", by.y = "location")
-# Extracting psychotherapists
-psycho <- psycho[sample(nrow(psycho), 10), ]
-# Random sample of 10 rows (psychotherapists)
-hansen_psych <- hansen(psycho, "region_from", "location_to", attrac = 1, 
-"drvtime", lambda = -0.11, dtype = "exp", dist_const = 5)
-# Hansen accessibility for psychotherapists with an exponential distance decay function
-# with a weighting of lambda = -0.11
+\examples{
+# Example from Levy/Weitz (2009):
+# Data for the existing and the new location
+locations <- c("Existing Store", "New Store")
+S_j <- c(5000, 10000)
+location_data <- data.frame(locations, S_j)
+# Data for the two communities (Rock Creek and Oak Hammock)
+communities <- c("Rock Creek", "Oak Hammock")
+C_i <- c(5000000, 3000000)
+community_data <- data.frame(communities, C_i)
+# Combining location and submarket data in the interaction matrix
+interactionmatrix <- merge (community_data, location_data)
+# Adding driving time:
+interactionmatrix[1,5] <- 10
+interactionmatrix[2,5] <- 5
+interactionmatrix[3,5] <- 5
+interactionmatrix[4,5] <- 15
+colnames(interactionmatrix) <- c("communities", "C_i", "locations", "S_j", "d_ij")
+shoppingcenters1 <- interactionmatrix
+save(shoppingcenters1, file="shoppingcenters1.rda")
+huff_shares <- huff(shoppingcenters1, "communities", "locations", "S_j", "d_ij")
+# Market shares of the new location:
+huff_shares[huff_shares$locations == "New Store",]
+# Hansen accessibility for Oak Hammock and Rock Creek:
+hansen (huff_shares, "communities", "locations", "S_j", "d_ij")
 }

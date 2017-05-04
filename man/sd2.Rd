@@ -61,14 +61,14 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{gini}}, \code{\link{herf}}, \code{\link{hoover}}, \code{\link{rca}}
+\code{\link{gini}}, \code{\link{herf}}, \code{\link{hoover}}, \code{\link{mean2}}, \code{\link{rca}}
 }
 
 \examples{
 # Regional disparities / sigma convergence in Germany
-data(gdppc)
+data(G.counties.gdp)
 # GDP per capita for German counties (Landkreise)
-sd_gdppc <- apply (gdppc[3:17], MARGIN = 2, FUN = sd)
+sd_gdppc <- apply (G.counties.gdp[54:68], MARGIN = 2, FUN = sd)
 # Calculating standard deviation for the years 2000-2014
 years <- 2000:2014
 # vector of years (2000-2014)

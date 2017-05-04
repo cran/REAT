@@ -1,7 +1,6 @@
-krugman.specg <-
-function (e_ij, e_il) 
-{
-  
+krugman.spec2 <-
+function (e_ij, e_il) {
+
   compreg <- length(e_il)
   
   industries <- nrow(e_il)
@@ -30,6 +29,7 @@ function (e_ij, e_il)
       
       e_l[j] <- sum (e_il[,j]) 
       s_il[j,i] <- e_il[i,j]/e_l[j]
+
     }
     
   }
@@ -41,5 +41,5 @@ function (e_ij, e_il)
   K_j <- sum(s_ij_minus_mean)
   
   return(K_j)
-  
+ 
 }

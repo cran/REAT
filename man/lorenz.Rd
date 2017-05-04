@@ -10,13 +10,13 @@ Calculating and plotting the Lorenz curve
 }
 
 \usage{
-lorenz(x, weighting = NULL, 
+lorenz(x, weighting = NULL, z = NULL,
 lcx = "\% of objects", lcy = "\% of regarded variable", 
 lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
 lsize = 1.5, ltype = "solid", bg.col = "gray95", bgrid = TRUE, 
 bgrid.col = "white", bgrid.size = 2, bgrid.type = "solid",
 lcg = FALSE, lcgn = FALSE, lcg.caption = NULL, lcg.lab.x = 0, 
-lcg.lab.y = 1, add.lc = FALSE) 
+lcg.lab.y = 1, add.lc = FALSE, plot.lc = TRUE) 
 }
 
 \arguments{
@@ -25,6 +25,9 @@ A numeric vector (e.g. dataset of household income, sales turnover or supply)
 }
   \item{weighting}{
 A numeric vector containing the weighting data (e.g. size of income classes when calculating a Lorenz curve for aggregated income data)
+}
+  \item{z}{
+A numeric vector for (optionally) comparing the cumulative distribution 
 }
   \item{lcx}{
 defines the x axis label
@@ -79,6 +82,9 @@ specifies the y coordinate of the label
 }
   \item{add.lc}{
 specifies if a new Lorenz curve is plotted (\code{add.lc = "FALSE"}) or the plot is added to an existing Lorenz curve plot (\code{add.lc = "TRUE"})
+}
+  \item{plot.lc}{
+logical argument that indicates if the Lorenz curve itself is plotted (if \code{plot.lc = FALSE}, only the line of equality is plotted))
 }
 }
 

@@ -1,7 +1,7 @@
 portfolio <-
-function (x, y, z, label_x="X", label_y="Y", heading="Portfolio", pcol="given", 
-                       colsp=0, leg=FALSE, leg_vec=0, leg_fsize=1, 
-                       leg_x=-max_val, leg_y=-max_val/2) 
+function (x, y, z, label_x = "X", label_y = "Y", heading = "Portfolio", pcol = "given", 
+                       colsp = 0, leg = FALSE, leg_vec = 0, leg_fsize = 1, 
+                       leg_x = -max_val, leg_y = -max_val/2) 
 {
   
   x_count <- length(x)
@@ -28,6 +28,5 @@ function (x, y, z, label_x="X", label_y="Y", heading="Portfolio", pcol="given",
   
   if (leg==TRUE) {
     legend(leg_x, leg_y, leg_vec, point_col, cex=leg_fsize, ncol=2, bg="white")
-
   }
 }

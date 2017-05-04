@@ -69,15 +69,21 @@ The \emph{Huff Model} (Huff 1962, 1963, 1964) is the most popular \emph{spatial 
 
 This function computes the market shares from a given interaction matrix and given weighting parameters. If \code{output = "shares"}, the function returns an estimated interaction matrix. If \code{output = "total"} you need local market information about the origins (e.g. purchasing power, population size etc.) filed in another \code{data.frame} and the function results are the total sales/shares of the given stores/locations. Note that each attractivity or distance value must be greater than zero.
 }
+
 \value{
 Returns either the input interaction matrix including the calculated shares (\code{p_ij}) (if \code{output = "shares"}) or the total sales (\code{sum_E_j}) and total shares (\code{share_j}) of the stores locations (if \code{output = "total"}). Both results are \code{data.frame}.
 }
+
 \references{
+Berman, B. R./Evans, J. R. (2012): \dQuote{Retail Management: A Strategic Approach}. 12th edition. Bosten : Pearson.
+
 Huff, D. L. (1962): \dQuote{Determination of Intra-Urban Retail Trade Areas}. Los Angeles : University of California.
 
 Huff, D. L. (1963): \dQuote{A Probabilistic Analysis of Shopping Center Trade Areas}. In: \emph{Land Economics}, \bold{39}, 1, p. 81-90.
 
 Huff, D. L. (1964): \dQuote{Defining and Estimating a Trading Area}. In: \emph{Journal of Marketing}, \bold{28}, 4, p. 34-38.
+
+Levy, M./Weitz, B. A. (2012): \dQuote{Retailing management}. 8th edition. New York : McGraw-Hill Irwin.
 
 Loeffler, G. (1998): \dQuote{Market areas - a methodological reflection on their boundaries}. In: \emph{GeoJournal}, \bold{45}, 4, p. 265-272.
 
@@ -93,15 +99,42 @@ Thomas Wieland
 }
 
 \examples{
-data(Freiburg1)
-# Distance matrix for grocery stores in Freiburg
-data(Freiburg2)
-# Statistical districts of Freiburg
-groceryfr <- huff (Freiburg1, "district", "store", "salesarea", "distance", gamma=1, lambda=-2)
-# Huff interaction matrix for given grocery stores in Freiburg
-# with standard weighting (power function with gamma=1 and lambda=-2)
-groceryfr_total <- huff (Freiburg1, "district", "store", "salesarea", "distance", 
-gamma=1, lambda=-2, localmarket_dataset = Freiburg2, origin_id = "district", 
-localmarket = "ppower", output="total")
-# Calculating total sales of the stores
+# Example from Levy/Weitz (2009):
+# Data for the existing and the new location
+locations <- c("Existing Store", "New Store")
+S_j <- c(5000, 10000)
+location_data <- data.frame(locations, S_j)
+# Data for the two communities (Rock Creek and Oak Hammock)
+communities <- c("Rock Creek", "Oak Hammock")
+C_i <- c(5000000, 3000000)
+community_data <- data.frame(communities, C_i)
+# Combining location and submarket data in the interaction matrix
+interactionmatrix <- merge (community_data, location_data)
+# Adding driving time:
+interactionmatrix[1,5] <- 10
+interactionmatrix[2,5] <- 5
+interactionmatrix[3,5] <- 5
+interactionmatrix[4,5] <- 15
+colnames(interactionmatrix) <- c("communities", "C_i", "locations", "S_j", "d_ij")
+shoppingcenters1 <- interactionmatrix
+save(shoppingcenters1, file="shoppingcenters1.rda")
+huff_shares <- huff(shoppingcenters1, "communities", "locations", "S_j", "d_ij")
+# Market shares of the new location:
+huff_shares[huff_shares$locations == "New Store",]
+# Hansen accessibility for Oak Hammock and Rock Creek:
+hansen (huff_shares, "communities", "locations", "S_j", "d_ij")
+
+# Example from Berman/Evans (2012):
+locations <- c(1, 2, 3)
+S_j <- c(200, 300, 500)
+location_data <- data.frame(locations, S_j)
+d_ij <- c(7, 10, 15)
+interactionmatrix <- data.frame(location_data, d_ij)
+interactionmatrix$cgroup <- 1
+shoppingcenters2 <- interactionmatrix
+huff (shoppingcenters2, "cgroup", "locations", "S_j", "d_ij")
+}
+
+\note{
+This function contains code from the authors' package MCI.
 }

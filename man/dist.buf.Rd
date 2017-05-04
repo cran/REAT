@@ -74,16 +74,13 @@ Thomas Wieland
 }
 
 \examples{
-# Pharmacies in a 500 m buffer:
-data(health1)
-# Health service locations (physicians and pharmacies)
-data(health2)
-# 420 regions
-health2_city <- health2[health2$city == 1,] 
-# only regions in the city of Goettingen (city=1)
-pharmacy <- health1[health1$type == "pharm",] 
-# Only pharmacies
-pharm_city <- dist.buf(health2_city, "region", "lat", "lon", pharmacy, 
-"location", "lat", "lon", bufdist = 500)
-# Pharmacies in a 500 m buffer from the statistical districts in Goettingen
+citynames <- c("Goettingen", "Karlsruhe", "Freiburg")
+lat <- c(51.556307, 49.009603, 47.9874)
+lon <- c(9.947375, 8.417004, 7.8945)
+citynames <- c("Goettingen", "Karlsruhe", "Freiburg")
+cities <- data.frame(citynames, lat, lon)
+dist.mat (cities, "citynames", "lat", "lon", cities, "citynames", "lat", "lon")
+# Euclidean distance matrix (3 x 3 cities = 9 distances)
+dist.buf (cities, "citynames", "lat", "lon", cities, "citynames", "lat", "lon", bufdist = 300000)
+# Cities within 300 km
 }

@@ -1,8 +1,8 @@
-\name{krugman.specg}
-\alias{krugman.specg}
+\name{krugman.spec2}
+\alias{krugman.spec2}
 
 \title{
-Generalized Krugman coefficient of regional specialization
+Krugman coefficient of regional specialization for more than two regions
 }
 
 \description{
@@ -10,7 +10,7 @@ Calculating the Krugman coefficient for the specialization of one region based o
 }
 
 \usage{
-krugman.specg(e_ij, e_il)
+krugman.spec2(e_ij, e_il)
 }
 
 \arguments{
@@ -18,7 +18,7 @@ krugman.specg(e_ij, e_il)
 a numeric vector with the employment of the industries \eqn{i} in region \eqn{j}
 }
   \item{e_il}{
-a data frame with the employment of the industries \eqn{i} in more that one other region \eqn{l}
+a data frame with the employment of the industries \eqn{i} in \eqn{l} regions 
 }
 
 }
@@ -41,7 +41,7 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{gini.conc}}, \code{\link{gini.spec}}, \code{\link{krugman.spec}}
+\code{\link{gini.conc}}, \code{\link{gini.spec}}, \code{\link{krugman.spec}}, \code{\link{krugman.conc}}, \code{\link{krugman.conc2}}, \code{\link{locq}}
 }
 
 \examples{
@@ -54,7 +54,7 @@ Island <- c(40000, 6000, 11000, 2000, 12000)
 # industry jobs in five industries for five countries
 countries <- data.frame(Norway, Denmark, Finland, Island)
 # data frame with all comparison countries
-krugman.specg(Sweden, countries)
+krugman.spec2(Sweden, countries)
 # returns the Krugman coefficient for the specialization
 # of sweden compared to Norway, Denmark, Finland and Island
 # 0.1595

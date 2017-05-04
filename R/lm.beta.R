@@ -1,5 +1,5 @@
 lm.beta <-
-function (linmod, dummy.na = TRUE) 
+function (linmod, dummy.na = TRUE) # funktioniert!
 {
 
   linmod_data <- linmod$model
@@ -28,13 +28,12 @@ function (linmod, dummy.na = TRUE)
 
   sd_vardep <- sd(var_dep) 
 
-  
   for (i in 1:var_ind_count)
   {
     coeff[i] <- linmod$coefficients[i+var_dep_col]
 
     if ((dummy.na == TRUE) && (all(linmod_data[,i+1] %in% c(1,0)))) { coeff_stand[i] <- NA }
-
+   
     else
     {
       sd_varind[i] <- sd(linmod_data[,i+1])

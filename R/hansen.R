@@ -6,7 +6,6 @@ function (od_dataset, origins, destinations, attrac, dist,
 {
 
   if (check_df == TRUE) 
-
   {
     if (exists(as.character(substitute(od_dataset)))) { 
 
@@ -21,7 +20,6 @@ function (od_dataset, origins, destinations, attrac, dist,
     else {
       stop(paste("Dataset", as.character(substitute(od_dataset))), " not found", call. = FALSE)
     }
-
   }
   
   if (!is.null(dist_max))
@@ -60,7 +58,7 @@ function (od_dataset, origins, destinations, attrac, dist,
   if (dtype=="logistic") { dist_w <- (max(distance))/(1+exp(lambda2+lambda*distance)) }
   
   U_ij <- attrac_w * dist_w 
-
+ 
   hansenworkfile$U_ij <- U_ij
 
   accessibility <- vector()
@@ -82,7 +80,7 @@ function (od_dataset, origins, destinations, attrac, dist,
     if (dtype=="logistic") { dist_w_c <- 1/(1+exp(lambda2+lambda*dist_const)) }
     
     U_ij_c <- attrac_w * dist_w_c 
-
+   
     hansenworkfile$U_ij_c <- U_ij_c
 
     accessibility_c <- vector()

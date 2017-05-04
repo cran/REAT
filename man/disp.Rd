@@ -52,9 +52,4 @@ Thomas Wieland
 sales <- c(20,50,20,10)
 disp(sales)
 
-# Supply and distribution of physicians:
-data(health4)
-# Medical supply in the 420 regions
-disp(health4$phys_gen)
-
 }

@@ -4,7 +4,6 @@ function (huffdataset, origins, locations, attrac, dist,
                          gamma2 = NULL, lambda2 = NULL, output = "shares",
                          localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, 
                          check_df = TRUE)
-
 {   
   
   if (check_df == TRUE)
@@ -53,7 +52,7 @@ function (huffdataset, origins, locations, attrac, dist,
   if (dtype=="logistic") { dist_w <- (1/(1+exp(lambda2+lambda*huffworkfile[[dist]]))) }
   
   U_ij <- attrac_w * dist_w 
-
+ 
   huffworkfile$U_ij <- as.numeric(U_ij)
 
   sum_U_ij <- vector()
@@ -66,7 +65,7 @@ function (huffdataset, origins, locations, attrac, dist,
     sum_U_ij_i <- sum(as.numeric(origin_i$U_ij))
 
     for (j in 1:locations_count) {   
-
+ 
       sum_U_ij_all <- rbind(sum_U_ij_all, list(sum_U_ij_i)) 
     }
   }

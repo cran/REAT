@@ -69,9 +69,9 @@ Thomas Wieland
 
 \examples{
 # Regional disparities / sigma convergence in Germany
-data(gdppc)
+data(G.counties.gdp)
 # GDP per capita for German counties (Landkreise)
-cvs <- apply (gdppc[3:17], MARGIN = 2, FUN = cv)
+cvs <- apply (G.counties.gdp[54:68], MARGIN = 2, FUN = cv)
 # Calculating cv for the years 2000-2014
 years <- 2000:2014
 plot(years, cvs, "l", ylim=c(0.3,0.6), xlab = "year", 

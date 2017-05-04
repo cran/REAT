@@ -64,12 +64,13 @@ Thomas Wieland
 }
 
 \examples{
-# Distances between geocoded pharmacies:
-data(health1)
-# Health service locations (physicians and pharmacies)
-pharmacy <- health1[health1$type=="pharm",]
-# Only pharmacies
-pharmdistmat <- dist.mat (pharmacy[1:10,], "location", "lat", "lon", 
-pharmacy, "location", "lat", "lon")
-# Distance matrix for the first 10 pharmacy locations
+citynames <- c("Goettingen", "Karlsruhe", "Freiburg")
+lat <- c(51.556307, 49.009603, 47.9874)
+lon <- c(9.947375, 8.417004, 7.8945)
+citynames <- c("Goettingen", "Karlsruhe", "Freiburg")
+cities <- data.frame(citynames, lat, lon)
+dist.mat (cities, "citynames", "lat", "lon", cities, "citynames", "lat", "lon")
+# Euclidean distance matrix (3 x 3 cities = 9 distances)
+dist.buf (cities, "citynames", "lat", "lon", cities, "citynames", "lat", "lon", bufdist = 300000)
+# Cities within 300 km
 }

@@ -11,6 +11,7 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
   endpoints_df <- data.frame(endpoints[[ep_id]], endpoints[[lat_end]], endpoints[[lon_end]])
   colnames(endpoints_df) <- c("e_id", "e_lat", "e_lon")
 
+
   mat_startend <- merge (startpoints_df, endpoints_df)
 
   mat_nr <- nrow(mat_startend)
