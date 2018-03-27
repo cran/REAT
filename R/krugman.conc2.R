@@ -26,7 +26,7 @@ function (e_ij, e_uj) {
   {
     
     for (i in 1:regions) {
-      
+    
       e_l[j] <- sum (e_uj[,j]) 
       s_uj[j,i] <- e_uj[i,j]/e_l[j]
 

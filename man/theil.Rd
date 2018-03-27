@@ -24,7 +24,7 @@ Since there are several Theil measures of inequality, this function uses the for
 }
 
 \value{
-A single numeric value of the \emph{Hoover Concentration Index} (\eqn{0 < CI < 1}).
+A single numeric value of the \emph{Theil inequality index} (\eqn{0 < TI < 1}).
 }
 
 \references{

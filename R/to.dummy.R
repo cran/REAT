@@ -1,4 +1,4 @@
-data.dummy <-
+to.dummy <-
 function (x) {
   
   x_length <- length(x)   
@@ -24,13 +24,13 @@ function (x) {
   dummydataset <- data.frame(matrix(0, nrow=x_length, ncol=x_count))
 
   names(dummydataset) <- dummyvarnames
- 
+
   for (i in 1:x_count) {   
 
     positionstrue <- which(x_fac == lev[i])
 
     dummydataset[positionstrue,i] <- 1
- }
+  }
   
   return(dummydataset)
 }

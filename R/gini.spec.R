@@ -7,7 +7,8 @@ function (e_ij, e_i,
                        bg.col = "gray95", 
                        bgrid = TRUE, bgrid.col = "white", bgrid.size = 2, bgrid.type = "solid",
                        lcg = FALSE, lcgn = FALSE, lcg.caption = NULL, lcg.lab.x = 0, lcg.lab.y = 1, 
-                       add.lc = FALSE, plot.lc = TRUE) {
+                       add.lc = FALSE, plot.lc = TRUE)
+  {
 
   e_j <- sum(e_ij)
 
@@ -19,6 +20,7 @@ function (e_ij, e_i,
 
   for (i in 1:industries) { 
     R_i[i] <- locq (e_ij[i], e_j, e_i[i], e)
+
   }
   
   R_i_sort <- sort(R_i)

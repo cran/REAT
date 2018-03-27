@@ -1,16 +1,16 @@
-\name{shift}
-\alias{shift}
+\name{shifti}
+\alias{shifti}
 
 \title{
 Shift-share analysis
 }
 
 \description{
-Analyzing regional growth with the shift-share analysis 
+Analyzing industry-specific regional growth with the shift-share analysis 
 }
 
 \usage{
-shift(region1, region2, nation1, nation2, industry.names = NULL, 
+shifti(region1, region2, nation1, nation2, industry.names = NULL, 
 shift.method = "Dunn", output.results = TRUE, plot.results = FALSE, 
 plot.colours = NULL, plot.title = NULL, plot.portfolio = FALSE, ...)
 }
@@ -59,16 +59,16 @@ The \emph{shift-share analysis} (Dunn 1960) adresses the regional growth (or dec
 
 As there is more than one way to calculate a Dunn-type \emph{shift-share analysis} and the terms are not used consequently in the regional economic literature, this function and the documentation use the formulae and terms given in Farhauer/Kroell (2013). If \code{shift.method = "Dunn"}, this function calculates the \emph{net proportionality shift} (\eqn{nps}), the \emph{net differential shift} (\eqn{nds}) and the \emph{net total shift} (\eqn{nts}) where the last one represents the residuum of (positive) regional factors.
 
-This function calculates a shift-share analysis for two years.
+This function calculates a shift-share analysis for at least two years and results industry-specific shift-share components.
 }
 
 \value{
 A \code{list} containing the following objects:
 \item{components }{A \code{matrix} containing the shift-share components related to the chosen method}
+\item{components.industry }{A \code{matrix} containing the shift-share components for each industry}
 \item{growth }{A \code{matrix} containing the industry-specific growth values}
 \item{method }{The chosen method, e.g. "Dunn"}
 }
-
 
 \references{
 Arcelus, F. J. (1984): \dQuote{An Extension of Shift-Share Analysis}. In: In: \emph{Growth and Change}, \bold{15}, 1, p. 3-8.
@@ -92,7 +92,7 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{portfolio}}, \code{\link{shiftd}}, \code{\link{shifti}}, , \code{\link{shift.growth}}
+\code{\link{portfolio}}, \code{\link{shift}}, \code{\link{shifti}}, \code{\link{shift.growth}}
 }
 
 \examples{
@@ -103,23 +103,6 @@ region_A_t1 <- c(100,40,10,55)
 nation_X_t <- c(400,150,150,400)
 nation_X_t1 <- c(440,210,135,480)
 # data for the national economy (time t and t+1)
-resultsA <- shift(region_A_t, region_A_t1, nation_X_t, nation_X_t1)
-# results for region A
-region_B_t <- c(60,30,30,40)
-region_B_t1 <- c(85,55,40,35)
-# data for region B (time t and t+1)
-resultsB <- shift(region_B_t, region_B_t1, nation_X_t, nation_X_t1)
-# results for region B
-region_C_t <- c(250,100,110,300)
-region_C_t1 <- c(255,115,85,390)
-# data for region C (time t and t+1)
-resultsC <- shift(region_C_t, region_C_t1, nation_X_t, nation_X_t1)
-# results for region C
-
-# Example Freiburg dataset
-data(Freiburg)
-# Loads the data
-shift(Freiburg$e_Freiburg2008, Freiburg$e_Freiburg2014, Freiburg$e_Germany2008, 
-Freiburg$e_Germany2014)
-# results for Freiburg and Germany (2008 vs. 2014)
+shifti(region_A_t, region_A_t1, nation_X_t, nation_X_t1,
+plot.results = TRUE, plot.portfolio = TRUE, psize = region_A_t1)
 }

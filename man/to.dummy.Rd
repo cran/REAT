@@ -1,5 +1,5 @@
-\name{data.dummy}
-\alias{data.dummy}
+\name{to.dummy}
+\alias{to.dummy}
 
 \title{
 Creating dummy variables
@@ -10,7 +10,7 @@ This function creates a dataset of dummy variables based on an input character v
 }
 
 \usage{
-data.dummy(x)
+to.dummy(x)
 }
 
 \arguments{
@@ -38,7 +38,7 @@ Thomas Wieland
 \examples{
 charvec <- c("Peter", "Paul", "Peter", "Mary", "Peter", "Paul")
 # Creates a vector with three names (Peter, Paul, Mary)
-data.dummy(charvec)
+to.dummy(charvec)
 # Returns a data frame with 3 dummy variables
 # (Mary_DUMMY, Paul_DUMMY, Peter_DUMMY)
 }

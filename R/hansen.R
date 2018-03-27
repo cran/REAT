@@ -2,7 +2,8 @@ hansen <-
 function (od_dataset, origins, destinations, attrac, dist, 
                     gamma = 1, lambda = -2, atype = "pow", dtype = "pow", 
                     gamma2 = NULL, lambda2 = NULL, dist_const = 0, dist_max = NULL,
-                    extract_local = FALSE, accnorm = FALSE, check_df = TRUE)
+                    extract_local = FALSE, accnorm = FALSE, check_df = TRUE,
+                    output.results = TRUE)
 {
 
   if (check_df == TRUE) 
@@ -40,6 +41,11 @@ function (od_dataset, origins, destinations, attrac, dist,
 
   origins_count <- nlevels(as.factor(hansenworkfile[[origins]]))   
 
+  locations_single <- levels(as.factor(as.character(hansenworkfile[[destinations]])))
+
+  locations_count <- nlevels(as.factor(as.character(hansenworkfile[[destinations]])))
+
+  
   if (attrac == 1) {
     attractivity <- 1
   }
@@ -49,16 +55,23 @@ function (od_dataset, origins, destinations, attrac, dist,
   
   distance <- dist_const+hansenworkfile[[dist]]
   
-  if (atype=="pow") { attrac_w <- attractivity^gamma }
-  if (atype=="exp") { attrac_w <- exp(gamma*attractivity) }
-  if (atype=="logistic") { attrac_w <- (max(attractivity))/(1+exp(gamma2+gamma*attractivity)) }
-  
-  if (dtype=="pow") { dist_w <- distance^lambda } 
-  if (dtype=="exp") { dist_w <- exp(lambda*distance) }
-  if (dtype=="logistic") { dist_w <- (max(distance))/(1+exp(lambda2+lambda*distance)) }
+  if (atype == "exp") { attrac_w <- exp(gamma*attractivity) }
+  else if (atype == "logistic") { attrac_w <- (1/(1+exp(gamma2+gamma*attractivity))) }
+  else { 
+    atype <- "pow"
+    attrac_w <- attractivity^gamma 
+  }
+
+  if (dtype == "exp") { dist_w <- exp(lambda*distance) }
+  else if (dtype == "logistic") { dist_w <- (1/(1+exp(lambda2+lambda*distance))) }
+  else { 
+    dtype <- "pow"
+    dist_w <- distance^lambda 
+  }
+
   
   U_ij <- attrac_w * dist_w 
- 
+
   hansenworkfile$U_ij <- U_ij
 
   accessibility <- vector()
@@ -80,7 +93,7 @@ function (od_dataset, origins, destinations, attrac, dist,
     if (dtype=="logistic") { dist_w_c <- 1/(1+exp(lambda2+lambda*dist_const)) }
     
     U_ij_c <- attrac_w * dist_w_c 
-   
+
     hansenworkfile$U_ij_c <- U_ij_c
 
     accessibility_c <- vector()
@@ -98,6 +111,33 @@ function (od_dataset, origins, destinations, attrac, dist,
   results <- data.frame(origins=origins_single, accessibility)
   colnames(results)[1] <- names(od_dataset[origins])
 
-  return(results)
+  
+  cat ("Hansen Accessibility", "\n")
+  cat ("\n")
+  cat ("Summary:", "\n")
+  cat (locations_count, "locations with mean attractivity =", mean(attractivity), "\n")
+  cat (origins_count, "origins with mean transport costs =", mean(distance), "\n")
+  
+  if (atype == "logistic") {
+    cat (paste0("Attractivity weighting (", atype, ") with Gamma1 = ", gamma, " and Gamma2 = ", gamma2), "\n")  
+  }
+  else { 
+    cat (paste0("Attractivity weighting (", atype, ") with Gamma = ", gamma), "\n")
+  }
+  
+  if (dtype == "logistic") {
+    cat (paste0("Distance weighting (", dtype, ") with Lambda1 = ", lambda, " and Lambda2 = ", lambda2), "\n")  
+  }
+  else {
+    cat (paste0("Distance weighting (", dtype, ") with Lambda = ", lambda), "\n")  
+  }
+  
+  if (output.results == TRUE)
+  {
+    cat ("\n")
+    print(as.data.frame(results))
+  }
+  
+  invisible(results)
 
 }

@@ -80,6 +80,7 @@ The dataset contains the Gross Domestic Product (GDP) absolute and per capita (i
     \item{\code{gdppc2012}}{a numeric vector containing the GDP per capita for German counties (Landkreise) for 2012}
     \item{\code{gdppc2013}}{a numeric vector containing the GDP per capita for German counties (Landkreise) for 2013}
     \item{\code{gdppc2014}}{a numeric vector containing the GDP per capita for German counties (Landkreise) for 2014}
+    \item{\code{regional}}{Region \code{West} or \code{East}}
   }
 }
 
@@ -88,11 +89,11 @@ For the years 1992 to 1999, the GDP data is incomplete.
 }
 
 \source{
-Arbeitskreis "Volkswirtschaftliche Gesamtrechnungen der Laender" im Auftrag der Statistischen Aemter der 16 Bundeslaender, des Statistischen Bundesamtes und des Buergeramtes, Statistik und Wahlen, Frankfurt a. M. (2016): \dQuote{Bruttoinlandsprodukt, Bruttowertschoepfung in den kreisfreien Staedten und Landkreisen der Bundesrepublik Deutschland 1992 und 1994 bis 2014}. \url{https://www.destatis.de/DE/Publikationen/Thematisch/VolkswirtschaftlicheGesamtrechnungen/VGRderLaender/VGR_KreisergebnisseBand1_5820009147005.xlsx;jsessionid=67667AAEB4F8C8A23A70A5A2641C4D2C.cae3?__blob=publicationFile}
+Arbeitskreis "Volkswirtschaftliche Gesamtrechnungen der Laender" im Auftrag der Statistischen Aemter der 16 Bundeslaender, des Statistischen Bundesamtes und des Buergeramtes, Statistik und Wahlen, Frankfurt a. M. (2016): \dQuote{Bruttoinlandsprodukt, Bruttowertschoepfung in den kreisfreien Staedten und Landkreisen der Bundesrepublik Deutschland 1992 und 1994 bis 2014}. 
 }
 
 \references{
-Arbeitskreis "Volkswirtschaftliche Gesamtrechnungen der Laender" im Auftrag der Statistischen Aemter der 16 Bundeslaender, des Statistischen Bundesamtes und des Buergeramtes, Statistik und Wahlen, Frankfurt a. M. (2016): \dQuote{Bruttoinlandsprodukt, Bruttowertschoepfung in den kreisfreien Staedten und Landkreisen der Bundesrepublik Deutschland 1992 und 1994 bis 2014}. \url{https://www.destatis.de/DE/Publikationen/Thematisch/VolkswirtschaftlicheGesamtrechnungen/VGRderLaender/VGR_KreisergebnisseBand1_5820009147005.xlsx;jsessionid=67667AAEB4F8C8A23A70A5A2641C4D2C.cae3?__blob=publicationFile}
+Arbeitskreis "Volkswirtschaftliche Gesamtrechnungen der Laender" im Auftrag der Statistischen Aemter der 16 Bundeslaender, des Statistischen Bundesamtes und des Buergeramtes, Statistik und Wahlen, Frankfurt a. M. (2016): \dQuote{Bruttoinlandsprodukt, Bruttowertschoepfung in den kreisfreien Staedten und Landkreisen der Bundesrepublik Deutschland 1992 und 1994 bis 2014}. 
 }
 
 \examples{

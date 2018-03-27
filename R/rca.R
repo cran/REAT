@@ -1,65 +1,66 @@
 rca <-
-function (gdp1, time1, gdp2, time2, output = "all", sigma.measure = "cv", sigma.log = TRUE, sigma.norm = FALSE, sigma.weighting = NULL, digs = 5)
+function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL, conditions.startval = NULL,
+                 beta.estimate = "ols",
+                 beta.plot = FALSE, beta.plotPSize = 1, beta.plotPCol = "black", beta.plotLine = FALSE, beta.plotLineCol = "red", 
+                 beta.plotX = "Ln (initial)", beta.plotY = "Ln (growth)", beta.plotTitle = "Beta convergence",
+                 beta.bgCol = "gray95", beta.bgrid = TRUE, beta.bgridCol = "white", beta.bgridSize = 2, beta.bgridType = "solid",
+                 sigma.type = "anova", sigma.measure = "sd", sigma.log = TRUE, sigma.weighting = NULL, sigma.issample = FALSE,
+                 sigma.plot = FALSE, sigma.plotLSize = 1, sigma.plotLineCol = "black", sigma.plotRLine = FALSE, sigma.plotRLineCol = "blue", sigma.Ymin = 0,
+                 sigma.plotX = "Time", sigma.plotY = "Variation", sigma.plotTitle = "Sigma convergence",
+                 sigma.bgCol = "gray95", sigma.bgrid = TRUE, sigma.bgridCol = "white", sigma.bgridSize = 2, sigma.bgridType = "solid")
 {
+  cat ("Regional Beta and Sigma Convergence")
+  cat ("\n", "\n")
   
-  tinterval <- time2-time1
-  
-  ln_growth <- log (gdp2/gdp1) 
-
-  ln_initial <- log (gdp1)
-
-  conv_model <- lm (ln_growth ~ ln_initial)
-
-  if (output == "lm") 
-  { 
-    return(summary(conv_model)) 
-  }
-
-  if (output == "data") 
-  {
-    diff <- gdp2-gdp1
-    diff_rel <- diff/gdp1
-    transf_data <- data.frame(gdp1, gdp2, diff, diff_rel, ln_growth, ln_initial)
-    return(transf_data)
-  }
-
-  constant <- round(as.numeric(conv_model$coefficients[1]), digs)
-
-  betaconv <- round(as.numeric(conv_model$coefficients[2]), digs)
-
-  if (betaconv < 0)
-  {
-    lambda <- round((-log(1+betaconv))/tinterval, digs)  
-
-    halflife <- round(log(2)/lambda, digs)
-  }
-  else
-  {
-    lambda <- NA
-    halflife <- NA
+  if (beta.plot == TRUE) {
+    dev.new()
   }
   
-  rsq <- round(as.numeric(summary(conv_model)$r.squared), digs)
-
-  N <- length(gdp1)
-
-  if (sigma.log == TRUE)
+  if (beta.estimate == "nls")
   {
-    gdp1 <- log(gdp1)
-    gdp2 <- log(gdp2)
+    betaconv <- betaconv.nls (gdp1 = gdp1, time1 = time1, gdp2 = gdp2, time2 = time2, conditions = conditions, conditions.formula = conditions.formula, conditions.startval = conditions.startval,
+                       beta.plot = beta.plot, beta.plotPSize = beta.plotPSize, beta.plotPCol = beta.plotPCol, beta.plotLine = beta.plotLine, beta.plotLineCol = beta.plotLineCol, 
+                       beta.plotX = beta.plotX, beta.plotY = beta.plotY, beta.plotTitle = beta.plotTitle,
+                       beta.bgCol = beta.bgCol, beta.bgrid = beta.bgrid, beta.bgridCol = beta.bgridCol, beta.bgridSize = beta.bgridSize, beta.bgridType = beta.bgridType,
+                       output.results = TRUE)
+    
   }
   
-  if (sigma.measure == "sd") {
-    sd1 <- sd2(gdp1, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
-    sd2 <- sd2(gdp2, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
-    sigmaconv <- round(sd1-sd2, digs)
-  }
   else {
-    cv1 <- cv(gdp1, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
-    cv2 <- cv(gdp2, is.sample = FALSE, coefnorm = sigma.norm, weighting = sigma.weighting)
-    sigmaconv <- round(cv1-cv2, digs)
+    betaconv <- betaconv.ols (gdp1 = gdp1, time1 = time1, gdp2 = gdp2, time2 = time2, conditions = conditions, 
+                       beta.plot = beta.plot, beta.plotPSize = beta.plotPSize, beta.plotPCol = beta.plotPCol, beta.plotLine = beta.plotLine, beta.plotLineCol = beta.plotLineCol, 
+                       beta.plotX = beta.plotX, beta.plotY = beta.plotY, beta.plotTitle = beta.plotTitle,
+                       beta.bgCol = beta.bgCol, beta.bgrid = beta.bgrid, beta.bgridCol = beta.bgridCol, beta.bgridSize = beta.bgridSize, beta.bgridType = beta.bgridType,
+                       output.results = TRUE)
+    
   }
   
-  return (list(constant=constant, beta=betaconv, tinterval=tinterval, lambda=lambda, halflife=halflife, r.squared=rsq, N=N, sigma=sigmaconv))
+  cat ("\n")
   
+  if ((sigma.plot == TRUE) && sigma.type == "trend") {
+    dev.new()
+  }
+  
+  
+  if (sigma.type == "trend") 
+  {
+    sigmaconv <- sigmaconv.t (gdp1, time1, gdp2, time2, 
+                 sigma.measure = sigma.measure, sigma.log = sigma.log, sigma.weighting = sigma.weighting, sigma.issample = sigma.issample,
+                 sigma.plot = sigma.plot, sigma.plotLSize = sigma.plotLSize, sigma.plotLineCol = sigma.plotLineCol, sigma.plotRLine = sigma.plotRLine, sigma.plotRLineCol = sigma.plotRLineCol, sigma.Ymin = sigma.Ymin,
+                 sigma.plotX = sigma.plotX, sigma.plotY = sigma.plotY, sigma.plotTitle = sigma.plotTitle,
+                 sigma.bgCol = sigma.bgCol, sigma.bgrid = sigma.bgrid, sigma.bgridCol = sigma.bgridCol, sigma.bgridSize = sigma.bgridSize, sigma.bgridType = sigma.bgridType,
+                 output.results = TRUE)
+  } 
+  else {
+    sigmaconv <- sigmaconv (gdp1, time1, gdp2, time2, 
+                 sigma.measure = sigma.measure, sigma.log = sigma.log, sigma.weighting = sigma.weighting, sigma.issample = sigma.issample,
+                 output.results = TRUE)
+    
+  }
+  
+  results <- list (betaconv = betaconv, sigmaconv = sigmaconv)
+  
+  invisible(results)
+  
+
 }

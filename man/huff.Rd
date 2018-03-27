@@ -9,8 +9,10 @@ Calculating market areas using the probabilistic market area model by Huff
 }
 \usage{
 huff(huffdataset, origins, locations, attrac, dist, gamma = 1, lambda = -2, 
-atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL, output = "shares", 
-localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, check_df = TRUE)
+atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL,  
+localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, 
+output.shares = FALSE, output.totals = FALSE,
+check_df = TRUE)
 }
 
 \arguments{
@@ -47,9 +49,6 @@ if \code{atype = "logistic"} a second \eqn{\gamma} parameter is needed
   \item{lambda2}{
 if \code{dtype = "logistic"} a second \eqn{\lambda} parameter is needed
 }
-  \item{output}{
-argument that indicates the type of function output: if \code{output = "shares"}, the Huff function returns an interaction/probability matrix), if \code{output = "total"}, the function returns the total sales of the locations. Default: \code{output = "shares"} 
-}
   \item{localmarket_dataset}{
 if \code{output = "total"}, a \code{data.frame} is needed which contains data about the origins 
 }
@@ -59,6 +58,12 @@ the ID variable of the origins in \code{localmarket_dataset}
   \item{localmarket}{
 the customer/purchasing power potential of the origins in \code{localmarket_dataset}
 }
+  \item{output.shares}{
+logical argument that indicates if the market shares are shown (default: \code{FALSE})
+}
+  \item{output.totals}{
+logical argument that indicates if the location totals are shown (default: \code{FALSE})
+}
   \item{check_df}{
 logical argument that indicates if the given dataset is checked for correct input, only for internal use, should not be deselected (default: \code{TRUE})
 }
@@ -67,11 +72,13 @@ logical argument that indicates if the given dataset is checked for correct inpu
 \details{
 The \emph{Huff Model} (Huff 1962, 1963, 1964) is the most popular \emph{spatial interaction model} for retailing and services and belongs to the family of \emph{probabilistic market area models}. The basic idea of the model is that consumer decisions are not deterministic but probabilistic, so the decision of customers for a shopping location in a competitive environment cannot be predicted exactly. The results of the model are probabilities for these decisions, which can be interpreted as market shares of the regarded locations (\eqn{j}) in the customer origins (\eqn{i}), \eqn{p_{ij}}, which can be regarded as an equilibrium solution with logically consistent market shares (0 < \eqn{p_{ij}} < 1, \eqn{\sum_{j=1}^n{p_{ij} = 1}}). From a theoretical perspective, the model is based on an utility function with two explanatory variables ("attractivity" of the locations, transport costs between origins and locations), which are weighted by an exponent: \eqn{U_{ij}=A_{j}^\gamma d_{ij}^{-\lambda}}. This specification is relaxed is this case, so both variables can be weighted by a power, exponential or logistic function. 
 
-This function computes the market shares from a given interaction matrix and given weighting parameters. If \code{output = "shares"}, the function returns an estimated interaction matrix. If \code{output = "total"} you need local market information about the origins (e.g. purchasing power, population size etc.) filed in another \code{data.frame} and the function results are the total sales/shares of the given stores/locations. Note that each attractivity or distance value must be greater than zero.
+This function computes the market shares from a given interaction matrix and given weighting parameters. The function returns an estimated interaction matrix. If local market information about the origins (e.g. purchasing power, population size etc.) is stated, the location total turnovers are filed in another \code{data.frame}. Note that each attractivity or distance value must be greater than zero.
 }
 
 \value{
-Returns either the input interaction matrix including the calculated shares (\code{p_ij}) (if \code{output = "shares"}) or the total sales (\code{sum_E_j}) and total shares (\code{share_j}) of the stores locations (if \code{output = "total"}). Both results are \code{data.frame}.
+A \code{list} containing the following objects:
+\item{ijmatrix }{A data frame containing the Huff interaction matrix}
+\item{totals }{If total turnovers are estimated: a data frame containing the total values (turnovers) of each location}
 }
 
 \references{
@@ -95,44 +102,44 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{converse}}, \code{\link{reilly}}
+\code{\link{converse}}, \code{\link{reilly}}, \code{\link{hansen}}
 }
 
 \examples{
 # Example from Levy/Weitz (2009):
+
 # Data for the existing and the new location
 locations <- c("Existing Store", "New Store")
 S_j <- c(5000, 10000)
 location_data <- data.frame(locations, S_j)
+
 # Data for the two communities (Rock Creek and Oak Hammock)
 communities <- c("Rock Creek", "Oak Hammock")
 C_i <- c(5000000, 3000000)
 community_data <- data.frame(communities, C_i)
-# Combining location and submarket data in the interaction matrix
-interactionmatrix <- merge (community_data, location_data)
-# Adding driving time:
-interactionmatrix[1,5] <- 10
-interactionmatrix[2,5] <- 5
-interactionmatrix[3,5] <- 5
-interactionmatrix[4,5] <- 15
-colnames(interactionmatrix) <- c("communities", "C_i", "locations", "S_j", "d_ij")
-shoppingcenters1 <- interactionmatrix
-save(shoppingcenters1, file="shoppingcenters1.rda")
-huff_shares <- huff(shoppingcenters1, "communities", "locations", "S_j", "d_ij")
-# Market shares of the new location:
-huff_shares[huff_shares$locations == "New Store",]
-# Hansen accessibility for Oak Hammock and Rock Creek:
-hansen (huff_shares, "communities", "locations", "S_j", "d_ij")
 
-# Example from Berman/Evans (2012):
-locations <- c(1, 2, 3)
-S_j <- c(200, 300, 500)
-location_data <- data.frame(locations, S_j)
-d_ij <- c(7, 10, 15)
-interactionmatrix <- data.frame(location_data, d_ij)
-interactionmatrix$cgroup <- 1
-shoppingcenters2 <- interactionmatrix
-huff (shoppingcenters2, "cgroup", "locations", "S_j", "d_ij")
+# Combining location and submarket data in the interaction matrix
+interactionmatrix <- merge (communities, location_data)
+# Adding driving time:
+interactionmatrix[1,4] <- 10
+interactionmatrix[2,4] <- 5
+interactionmatrix[3,4] <- 5
+interactionmatrix[4,4] <- 15
+colnames(interactionmatrix) <- c("communities", "locations", "S_j", "d_ij")
+
+huff_shares <- huff(interactionmatrix, "communities", "locations", "S_j", "d_ij")
+huff_shares
+# Market shares of the new location:
+huff_shares$ijmatrix[huff_shares$ijmatrix$locations == "New Store",]
+
+
+huff_all <- huff(interactionmatrix, "communities", "locations", "S_j", "d_ij",
+localmarket_dataset = community_data, origin_id = "communities", localmarket = "C_i",
+output.totals = TRUE, output.shares = TRUE)
+
+huff_all
+
+huff_all$totals
 }
 
 \note{

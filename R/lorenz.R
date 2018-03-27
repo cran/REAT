@@ -10,10 +10,13 @@ function (x, weighting = NULL, z = NULL,
 {
   
   if (!is.null(weighting))
+
   {
     if (length(x) != length(weighting))
+
     {
       stop("Frequency and weighting differ in length", call. = FALSE)
+
     }
   }
   
@@ -22,6 +25,7 @@ function (x, weighting = NULL, z = NULL,
   i <- length(x)   
 
   if (add.lc == FALSE)
+
   {
     
     k <- c(0,1)
@@ -29,18 +33,22 @@ function (x, weighting = NULL, z = NULL,
 
     plot(k, l, type = "l", col = le.col, xlab = lcx, ylab = lcy, main = lctitle, lwd = lsize, lty = ltype)
 
+  
     rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = bg.col)
 
+    
     if (bgrid == TRUE)
+
     {
       grid (col = bgrid.col, lty = bgrid.type, lwd = bgrid.size)
     }   
     
     lines(k, l, col = le.col, xlab = lcx, ylab = lcy, main = lctitle, lwd = lsize, lty = ltype)
 
+    
   }
 
-  if (is.null(weighting)) { # Calculation from Doersam (2004), p. 40-41
+  if (is.null(weighting)) { 
 
   sum_x <- sum(x_sort)
   
@@ -75,7 +83,7 @@ function (x, weighting = NULL, z = NULL,
  
   }
   
-  else { # Calculation from Doersam (2004), p. 46-48
+  else { 
 
     n_j <- weighting
     n <- sum (n_j)

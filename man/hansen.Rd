@@ -10,7 +10,8 @@ Calculating the Hansen accessibility for given origins and destinations
 \usage{
 hansen(od_dataset, origins, destinations, attrac, dist, gamma = 1, lambda = -2, 
 atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL, dist_const = 0, 
-dist_max = NULL, extract_local = FALSE, accnorm = FALSE, check_df = TRUE)
+dist_max = NULL, extract_local = FALSE, accnorm = FALSE, check_df = TRUE,
+output.results = TRUE)
 }
 
 \arguments{
@@ -62,6 +63,9 @@ logical argument that indicates if the Hansen accessibility should be standardiz
   \item{check_df}{
 logical argument that indicates if the given dataset is checked for correct input, only for internal use, should not be deselected (default: \code{TRUE})
 }
+  \item{output.results}{
+logical argument that indicates if the results are shown (default: \code{TRUE})
+}
 }
 
 \details{
@@ -71,7 +75,9 @@ Originally the weighting function of distance is not explicitly stated and the "
 }
 
 \value{
-Returns a \code{data frame} with the origins and the accessibility values (column \code{accessibility}).
+A \code{list} containing the following objects:
+\item{origins }{A data frame containing the origins}
+\item{accessibility }{A data frame containing the calculatedaccessibility values (optional: standardized accessibilities)}
 }
 
 \references{
@@ -111,10 +117,9 @@ interactionmatrix[3,5] <- 5
 interactionmatrix[4,5] <- 15
 colnames(interactionmatrix) <- c("communities", "C_i", "locations", "S_j", "d_ij")
 shoppingcenters1 <- interactionmatrix
-save(shoppingcenters1, file="shoppingcenters1.rda")
 huff_shares <- huff(shoppingcenters1, "communities", "locations", "S_j", "d_ij")
 # Market shares of the new location:
-huff_shares[huff_shares$locations == "New Store",]
+huff_shares$ijmatrix[huff_shares$ijmatrix$locations == "New Store",]
 # Hansen accessibility for Oak Hammock and Rock Creek:
-hansen (huff_shares, "communities", "locations", "S_j", "d_ij")
+hansen (huff_shares$ijmatrix, "communities", "locations", "S_j", "d_ij")
 }

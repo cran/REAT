@@ -110,7 +110,7 @@ Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heide
 Gini, C. (1912): \dQuote{Variabilita e Mutabilita}. Contributo allo Studio delle Distribuzioni e delle Relazioni
 Statistiche. Bologna : Cuppini.
 
-Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/link/ifodb_2005_3_25-33.pdf}.
+Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/DocDL/ifodb_2005_3_25-33.pdf}.
 
 Lorenz, M. O. (1905): \dQuote{Methods of Measuring the Concentration of Wealth}. In: \emph{Publications of the American Statistical Association}, \bold{9}, 70, p. 209-219.
 

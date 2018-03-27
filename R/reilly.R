@@ -20,8 +20,8 @@ function (P_a, P_b, D_a, D_b, gamma = 1, lambda = 2, relation = NULL)
     B_a <- relation/(1+relation)   
 
     B_b <- 1-B_a
-   
-    results <- list(relation_AB=relation, prop_A=B_a, prop_B=B_b)   
+
+    results <- list(relation_AB = relation, prop_A = B_a, prop_B = B_b)   
 
     return(results)   
   }

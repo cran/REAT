@@ -2,7 +2,6 @@ dist.buf <-
 function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, lon_end, ep_sum = NULL, bufdist = 500, extract_local = TRUE, unit = "m")
 {
   
-
   distmat_workfile <- dist.mat(startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, lon_end, unit = "m")
   distmat_workfile <- distmat_workfile[!is.na(distmat_workfile$distance),]
 
@@ -11,6 +10,8 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
     distmat_workfile <- distmat_workfile[as.character(distmat_workfile$from) != as.character(distmat_workfile$to),]
   }
   
+  
+
   i <- 0
 
   for (i in 1:nrow(distmat_workfile))
@@ -25,6 +26,7 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
   colnames(count_table) <- c("from", paste0("count_", names(endpoints[ep_id])))
 
   
+
   if (!is.null(ep_sum))
   {
     count_table_full <- count_table

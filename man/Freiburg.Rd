@@ -29,12 +29,6 @@ Statistische Aemter des Bundes und der Laender: Regionaldatenbank Deutschland, T
 \examples{
 data(Freiburg)
 # Loads the data
-industries <- Freiburg$industry
-x <- Freiburg$e_g_Freiburg_0814
-y <- Freiburg$e_g_Germany_0814
-z <- Freiburg$e_Freiburg2014
-portfolio(x,y,z, "Freiburg", "Germany", "Growth portfolio Freiburg and Germany",
-pcol="given", colsp=Freiburg$color, leg=1, leg_vec=industries, leg_fsize=0.6)
-# Creates a portfolio comparing the industry growth in Freiburg and Germany
-
+growth(Freiburg$e_Freiburg2008, Freiburg$e_Freiburg2014, growth.type = "rate")
+# Industry-specific growth rates for Freiburg 2008 to 2014
 }

@@ -8,6 +8,7 @@ Standard deviation (extended)
 \description{
 Calculating the standard deviation (sd), weighted or non-weighted, for samples or populations
 }
+
 \usage{
 sd2 (x, is.sample = TRUE, weighting = NULL, wmean = FALSE, na.rm = FALSE)
 }
@@ -28,8 +29,8 @@ logical argument that indicates if the weighted mean is used when calculating th
   \item{na.rm}{
 logical argument that whether NA values should be extracted or not
 }
-
 }
+
 \details{
 The function calculates the \emph{standard deviation}. Unlike the R base \code{sd} function, the \code{sd2} function allows to choose if the data is treated as sample (denominator of variance is \eqn{n-1})) or not (denominator of variance is \eqn{n}))
 
@@ -47,7 +48,7 @@ Bahrenberg, G./Giese, E./Mevenkamp, N./Nipper, J. (2010): \dQuote{Statistische M
 
 Capello, R./Nijkamp, P. (2009): \dQuote{Introduction: regional growth and development theories in the twenty-first century - recent theoretical advances and future challenges}. In: Capello, R./Nijkamp, P. (eds.): \emph{Handbook of Regional Growth and Development Theories}. Cheltenham: Elgar. p. 1-16.
 
-Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/link/ifodb_2005_3_25-33.pdf}.
+Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/DocDL/ifodb_2005_3_25-33.pdf}.
 
 Huang, Y./Leung, Y. (2009): \dQuote{Measuring Regional Inequality: A Comparison of Coefficient of Variation and Hoover Concentration Index}. In: \emph{The Open Geography Journal}, \bold{2}, p. 25-34.
 
@@ -68,7 +69,7 @@ Thomas Wieland
 # Regional disparities / sigma convergence in Germany
 data(G.counties.gdp)
 # GDP per capita for German counties (Landkreise)
-sd_gdppc <- apply (G.counties.gdp[54:68], MARGIN = 2, FUN = sd)
+sd_gdppc <- apply (G.counties.gdp[54:68], MARGIN = 2, FUN = sd2)
 # Calculating standard deviation for the years 2000-2014
 years <- 2000:2014
 # vector of years (2000-2014)
