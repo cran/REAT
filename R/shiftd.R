@@ -1,7 +1,8 @@
 shiftd <-
 function (region1, region2, nation1, nation2, time1, time2,
                     industry.names = NULL, 
-                    shift.method = "Dunn", 
+                    shift.method = "Dunn",
+                    gerfin.shifts = "sum", 
                     output.results = TRUE, 
                     plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                     plot.portfolio = FALSE, ...)
@@ -78,7 +79,14 @@ function (region1, region2, nation1, nation2, time1, time2,
   colnames(components.year) <- years.growth
   rownames(components.year) <- rownames(shift_year$components)
 
-  components <- as.matrix(rowSums (components.year))
+  if ((shift.method == "Gerfin") && (gerfin.shifts == "mean"))
+  {
+    components <- as.matrix(rowMeans (components.year))
+  }
+  else {
+    components <- as.matrix(rowSums (components.year))
+  }
+  
   colnames(components) <- c("Components")
 
   

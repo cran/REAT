@@ -17,7 +17,7 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
   }
   
   
-  if (!shift.method %in% c("Dunn", "Gerfin")) {
+  if (!shift.method %in% c("Dunn", "Esteban", "Gerfin")) {
     shift.method <- "Dunn"
   }
   
@@ -53,9 +53,30 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
     components[5] <- sum.region2-(sum.region1*(sum.nation2/sum.nation1))
 
   }
+
   
+  if (shift.method == "Esteban") {
+
+    components <- matrix (nrow = 5, ncol = 1)
+    
+    rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional shift", "Allocation effect")
+    colnames(components) <- c("Components")
+    
+    components[1] <- growth (sum.region1, sum.region2, growth.type = "abs") #sum.region2-sum.region1
   
-  if (shift.method == "Gerfin")
+    components[2] <- sum.region1*sum.nation2/sum.nation1-sum.region1
+    
+    components[3] <- sum (region1*(nation2/nation1))-(sum.region1*(sum.nation2/sum.nation1))
+    
+    he_region1 <- sum.region1*(nation1/sum.nation1)
+    
+    components[4] <- sum (he_region1*(region2/region1-nation2/nation1))
+
+    components[5] <-  sum((region1-he_region1)*(region2/region1-nation2/nation1))
+  }
+
+
+    if (shift.method == "Gerfin")
   {
 
     components <- matrix (nrow = 3, ncol = 1)

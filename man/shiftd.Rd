@@ -11,7 +11,8 @@ Analyzing regional growth with the dynamic shift-share analysis
 
 \usage{
 shiftd(region1, region2, nation1, nation2, time1, time2, 
-industry.names = NULL, shift.method = "Dunn", output.results = TRUE, 
+industry.names = NULL, shift.method = "Dunn", 
+gerfin.shifts = "sum", output.results = TRUE, 
 plot.results = FALSE, plot.colours = NULL, plot.title = NULL, 
 plot.portfolio = FALSE, ...)
 }
@@ -40,6 +41,9 @@ Industry names
 }
   \item{shift.method}{
 Method of shift-share-analysis to be used ("Dunn", "Gerfin") (default: \code{shift.method = "Dunn"})
+}
+  \item{gerfin.shifts}{
+If \code{shift.method = "Gerfin"}: Logical argument that indicates if the shifts are calculated as sums or as means (default: \code{gerfin = "sum"})
 }
   \item{output.results}{
 Logical argument that indicates if the function shows the results or not
@@ -89,6 +93,8 @@ Dunn, E. S. Jr. (1960): \dQuote{A statistical and analytical technique for regio
 Esteban-Marquillas, J. M. (1972): \dQuote{Shift- and share analysis revisited}. In: \emph{Regional and Urban Economics}, \bold{2}, 3, p. 249-261.
 
 Farhauer, O./Kroell, A. (2013): \dQuote{Standorttheorien: Regional- und Stadtoekonomik in Theorie und Praxis}. Wiesbaden : Springer.
+
+Gerfin, H. (1964): \dQuote{Gesamtwirtschaftliches Wachstum und regionale Entwicklung}. In: \emph{Kyklos}, \bold{17}, 4, p. 565-593.
 
 Schoenebeck, C. (1996): \dQuote{Wirtschaftsstruktur und Regionalentwicklung: Theoretische und empirische
 Befunde fuer die Bundesrepublik Deutschland}. \emph{Dortmunder Beitraege zur Raumplanung}, \bold{75}. Dortmund.
