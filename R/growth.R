@@ -10,7 +10,7 @@ function (val1, val2, growth.type = "growth") {
 
     val_all <- cbind (val1, val2)
 
-    no_years <- ncol(val2)-1
+    no_years <- ncol(val2)
 
     i <- 0
 

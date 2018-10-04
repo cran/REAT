@@ -1,4 +1,4 @@
-4f2733de1ff4e753383d29b26c0c4aa0 *DESCRIPTION
+ecde0c7bae669b03fcdb08a617d913a8 *DESCRIPTION
 f3afe2a6130fd93a9e26951d8bae684f *NAMESPACE
 10d1eac38c025cc95f147d7241c98df9 *R/betaconv.nls.R
 f8270edb3db7f51d49bc0490c72ad75c *R/betaconv.ols.R
@@ -12,7 +12,7 @@ a4dcdf6078387eda6befacb076705fea *R/dist.calc.R
 accbb7735b833907576a8f6c3cf6055c *R/gini.R
 7060eb0e4a78d146b32746ea99fbee97 *R/gini.conc.R
 2119c6acb0bd16c1dda51f17cf01896b *R/gini.spec.R
-125a5bacc6bc4ac5138a5291fe0426c6 *R/growth.R
+201b6148b8f519089622879efd6fdddf *R/growth.R
 e1bb026a5496b4f3a682bb7c59e54f84 *R/hansen.R
 4dc480505d96a8fd62f0e8783de6a16b *R/herf.R
 9c00d119ae06fe53cb70f933cd82d24e *R/hoover.R
@@ -38,10 +38,10 @@ b984222842e719970915d65bc114554d *R/shifti.R
 a07ec662336ada795bc1c38d7aab9632 *R/theil.R
 a932460b87e016c518d0457b217c7e89 *R/to.dummy.R
 d5743fe5901ee627af84e43ce3ac6a30 *R/var2.R
-34abc47b7b28ae7d13d4b5d36cf47b2f *data/EU28.emp.rda
-6f2ae92cef4d0ed869f0c4ff285301cc *data/Freiburg.rda
-9ee6deabea293fb0f291939b7b4acc92 *data/G.counties.gdp.rda
-3ae33ce150ba24412cf6045404bc571e *data/G.regions.emp.rda
+18873560a27aa15caedf72d3d33b8958 *data/EU28.emp.rda
+c07e09da83fe030c9c097fcf0d51dcea *data/Freiburg.rda
+7b85babdf21c9ca39fb49370f68beefc *data/G.counties.gdp.rda
+d74571a6209978fbac919b231f63d46d *data/G.regions.emp.rda
 8576b556f283d1983586380c40d6fcdb *man/EU28.emp.Rd
 cc4942d2d5b73f451b1633e109375ebc *man/Freiburg.Rd
 0c70755e7a7766d959c107714b62369c *man/G.counties.gdp.Rd
