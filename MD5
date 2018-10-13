@@ -1,5 +1,5 @@
-ecde0c7bae669b03fcdb08a617d913a8 *DESCRIPTION
-f3afe2a6130fd93a9e26951d8bae684f *NAMESPACE
+b153fc25a890ebc5dae7266b6fb4f61f *DESCRIPTION
+b3e9508089432bcc2b46f8667ba6c847 *NAMESPACE
 10d1eac38c025cc95f147d7241c98df9 *R/betaconv.nls.R
 f8270edb3db7f51d49bc0490c72ad75c *R/betaconv.ols.R
 311aa7a0477c3ffbc987c979f9066af5 *R/betaconv.speed.R
@@ -25,6 +25,7 @@ cb6e12712a6a22d9ecf1f7ccc86cc920 *R/krugman.spec2.R
 4af5f6b442616ccd4ece81fd0e7af3eb *R/locq.R
 2053f6cbfe4bf136b457c1d40d4a5c60 *R/lorenz.R
 d3a4a9f0b6d5617c4aee13d927b48e16 *R/mean2.R
+7116414ce4568baba2c7a316feed6d17 *R/mssd.R
 8f6166eabda011c6ea4ee4edaa47380d *R/portfolio.R
 d5f30887894cd8bdc6de8239979f54d6 *R/rca.R
 a85ebb4c146c095e1faae3cff2a73ffa *R/reilly.R
@@ -48,7 +49,7 @@ cc4942d2d5b73f451b1633e109375ebc *man/Freiburg.Rd
 ff803bee142cbf8b855384e50389159a *man/G.regions.emp.Rd
 3c3fa2dbe734890bfae3b09b898a40d8 *man/REAT-package.Rd
 46589a84884729b0519efb1ec3f125b4 *man/betaconv.nls.Rd
-74411ad02ab1e875867fd9207e16f0f8 *man/betaconv.ols.Rd
+5a1001723d7c666bb8cebfbc4e3b6405 *man/betaconv.ols.Rd
 bdef05cee6f744d7c238b65f534e4d46 *man/betaconv.speed.Rd
 456d3d3a0eb2d8301be52d3873119c2c *man/converse.Rd
 f74e134116a518b6459004464787f8bd *man/cv.Rd
@@ -71,6 +72,7 @@ d5110024fa5421db51070ddb5797f6e6 *man/lm.beta.Rd
 712ff68dc9bb58cc01343989a919e523 *man/locq.Rd
 cf44eb6faabb4ab4cc210a0d2f968027 *man/lorenz.Rd
 e30c87553c19a40c2a0cc4c4c2ab8e6e *man/mean2.Rd
+5744a3b978dc41a38ef01c49331fe456 *man/mssd.Rd
 70e4eec3e9b52bc64263b89c1d0c1bf8 *man/portfolio.Rd
 ef84c3adc0111aec008e96f86c905209 *man/rca.Rd
 51ad42cf4ed0e65441738268e5879840 *man/reilly.Rd
@@ -80,7 +82,7 @@ a2bc36e5359e956b3f9b1f0c8b2c9b80 *man/sd2.Rd
 40799c61fc90c0159ab9c3329e79ddd9 *man/shiftd.Rd
 c0399759728f9e54b78248a8fbe87644 *man/shifti.Rd
 564287265f8bfff7f6dd93ea24aa2dbc *man/sigmaconv.Rd
-f94026c1e8d0df83bf1695c27a82309d *man/sigmaconv.t.Rd
+091a13bfc396132d3b61ff599230b8b4 *man/sigmaconv.t.Rd
 d097e7ac623bf1ef1be1b3d8fb491d58 *man/theil.Rd
 728143f978992cadaececf69ac6bb7f8 *man/to.dummy.Rd
 0747300d2916569eac4d678da45d4134 *man/var2.Rd

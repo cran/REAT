@@ -128,11 +128,12 @@ Thomas Wieland
 data(G.counties.gdp)
 # Loading GDP data for Germany (counties = Landkreise)
 
-sigmaconv.t (G.counties.gdp$gdppc2010, 2000, G.counties.gdp[11:12], 2002, 
+# Sigma convergence 2010-2014:
+sigmaconv.t (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:68], 2014, 
 sigma.plot = TRUE, output.results = TRUE)
 # Using the standard deviation with logged GDP per capita
 
-sigmaconv.t (G.counties.gdp$gdppc2010, 2000, G.counties.gdp[11:12], 2002, 
+sigmaconv.t (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:68], 2014, 
 sigma.measure = "cv", sigma.log = FALSE, output.results = TRUE)
-# Using the coefficient of variation
+# Using the coefficient of variation (GDP per capita not logged)
 }
