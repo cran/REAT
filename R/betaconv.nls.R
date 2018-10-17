@@ -60,8 +60,10 @@ function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL
       cond <- as.data.frame(list(conditions))
       cond_names <- colnames(cond)
 
+
       bcmodelc <- as.formula (paste("depvar_nls ~ alphan-((1-exp(-betan*tinterval))/tinterval)*ln_initial", conditions.formula))
 
+  
       abstartval <- list(alphan = -alpha, betan = beta)
       startval <- c(abstartval, conditions.startval)
       
@@ -106,7 +108,6 @@ function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL
     
     
 
-    
     if (output.results == TRUE) {
     
       cat ("Absolute Beta Convergence", "\n")

@@ -10,26 +10,26 @@ Analyzing regional growth with the shift-share analysis
 }
 
 \usage{
-shift(region1, region2, nation1, nation2, industry.names = NULL, 
+shift(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
 shift.method = "Dunn", output.results = TRUE, plot.results = FALSE, 
 plot.colours = NULL, plot.title = NULL, plot.portfolio = FALSE, ...)
 }
 
 \arguments{
-  \item{region1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 1
+  \item{e_ij1}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 1
 }
-  \item{region2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 2
+  \item{e_ij2}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 2
 }
-  \item{nation1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 1
+  \item{e_i1}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 1
 }
-  \item{nation2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 2
+  \item{e_i2}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 2
 }
   \item{industry.names}{
-Industry names
+Industry names (e.g. from the relevant statistical classification of economic activities)
 }
   \item{shift.method}{
 Method of shift-share-analysis to be used ("Dunn", "Esteban", "Gerfin") (default: \code{shift.method = "Dunn"})

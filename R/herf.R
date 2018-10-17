@@ -1,6 +1,11 @@
 herf <-
-function (x, coefnorm = FALSE, output = "HHI") 
+function (x, coefnorm = FALSE, output = "HHI", na.rm = TRUE) 
 {
+  
+  if (na.rm == TRUE) {
+    x <- x[!is.na(x)]
+  }
+  
   n <- length (x)
   a_i <- x/sum(x)
   a_i_2 <- a_i^2
@@ -9,6 +14,7 @@ function (x, coefnorm = FALSE, output = "HHI")
   if (output == "eq")
   {
     eq <- 1/H
+
     return(eq)
   }
   
@@ -21,6 +27,7 @@ function (x, coefnorm = FALSE, output = "HHI")
     else 
     {
       H.norm <- (H-1/n)/(1-1/n)
+
       return (H.norm)   
     }
   }

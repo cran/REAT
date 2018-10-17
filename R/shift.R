@@ -1,17 +1,18 @@
 shift <-
-function (region1, region2, nation1, nation2, industry.names = NULL, 
+function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
                    shift.method = "Dunn", 
                    output.results = TRUE, 
                    plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                    plot.portfolio = FALSE, ...) 
   {
 
-  if ((ncol(as.data.frame(region1)) > 1) | (ncol(as.data.frame(nation1)) > 1))
+
+  if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
   {
     stop (paste("Datasets for initial time period must consist of 1 column (= 1 time period)"), call. = FALSE)
   }
   
-  if ((ncol(as.data.frame(region2)) > 1) | (ncol(as.data.frame(nation2)) > 1))
+  if ((ncol(as.data.frame(e_ij2)) > 1) | (ncol(as.data.frame(e_i2)) > 1))
   {
     stop ("Use function shiftd() for dynamic shift-share-analysis", call. = FALSE)
   }
@@ -20,63 +21,74 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
   if (!shift.method %in% c("Dunn", "Esteban", "Gerfin")) {
     shift.method <- "Dunn"
   }
-  
-  industries <- length(region1)
+
+  industries <- length(e_ij1)
 
   if (is.null(industry.names)) {
     industry.names <- as.character(1:industries)
   }
   
-  sum.region1 <- sum(region1)
-  sum.region2 <- sum(region2)
-  sum.nation1 <- sum(nation1)
-  sum.nation2 <- sum(nation2)
+  e_j1 <- sum(e_ij1)
+  e_j2 <- sum(e_ij2)
+  e1 <- sum(e_i1)
+  e2 <- sum(e_i2)
 
-  growth <- shift.growth(region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, industry.names = industry.names)
+  growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
 
   if (shift.method == "Dunn") {
     
+
     components <- matrix (nrow = 5, ncol = 1)
 
     rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional shift", "Net total shift")
     colnames(components) <- c("Components")
     
-    components[1] <- growth (sum.region1, sum.region2, growth.type = "abs") 
+    components[1] <- growth (e_j1, e_j2, growth.type = "abs") 
 
-    components[2] <- sum.region1*sum.nation2/sum.nation1-sum.region1
-
-    components[3] <- sum (region1*(nation2/nation1))-(sum.region1*(sum.nation2/sum.nation1))
-
-    components[4] <- sum (region1*(region2/region1-nation2/nation1))
-
-    components[5] <- sum.region2-(sum.region1*(sum.nation2/sum.nation1))
-
+    components[2] <- e_j1*e2/e1-e_j1
+ 
+    
+    components[3] <- sum (e_ij1*(e_i2/e_i1))-(e_j1*(e2/e1))
+ 
+    components[4] <- sum (e_ij1*(e_ij2/e_ij1-e_i2/e_i1))
+ 
+    components[5] <- e_j2-(e_j1*(e2/e1))
+ 
+    
   }
-
   
+
   if (shift.method == "Esteban") {
+    
 
     components <- matrix (nrow = 5, ncol = 1)
-    
+
     rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional shift", "Allocation effect")
     colnames(components) <- c("Components")
     
-    components[1] <- growth (sum.region1, sum.region2, growth.type = "abs") #sum.region2-sum.region1
+    components[1] <- growth (e_j1, e_j2, growth.type = "abs") 
+
+    components[2] <- e_j1*e2/e1-e_j1
   
-    components[2] <- sum.region1*sum.nation2/sum.nation1-sum.region1
     
-    components[3] <- sum (region1*(nation2/nation1))-(sum.region1*(sum.nation2/sum.nation1))
+    components[3] <- sum (e_ij1*(e_i2/e_i1))-(e_j1*(e2/e1))
+   
     
-    he_region1 <- sum.region1*(nation1/sum.nation1)
+    he_e_ij1 <- e_j1*(e_i1/e1)
+  
     
-    components[4] <- sum (he_region1*(region2/region1-nation2/nation1))
-
-    components[5] <-  sum((region1-he_region1)*(region2/region1-nation2/nation1))
+    components[4] <- sum (he_e_ij1*(e_ij2/e_ij1-e_i2/e_i1))
+ 
+    
+    components[5] <-  sum((e_ij1-he_e_ij1)*(e_ij2/e_ij1-e_i2/e_i1))
+  
+    
   }
-
-
-    if (shift.method == "Gerfin")
+  
+  
+  
+  if (shift.method == "Gerfin")
   {
 
     components <- matrix (nrow = 3, ncol = 1)
@@ -84,13 +96,13 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
     rownames(components) <- c("Industrial mix", "Regional shift", "Net total shift")
     colnames(components) <- c("Components")
     
-    growthin.prop <- growth (nation1, nation2, growth.type = "growth")  
-    growthir.exp <- region1*growthin.prop
-    components[1] <- (sum(growthir.exp)/sum.region1)/(sum.nation2/sum.nation1)
+    growthin.prop <- growth (e_i1, e_i2, growth.type = "growth")  
+    growthir.exp <- e_ij1*growthin.prop
+    components[1] <- (sum(growthir.exp)/e_j1)/(e2/e1)
 
-    components[2] <- (sum.region2/sum.region1)/(sum(growthir.exp)/sum.region1)
+    components[2] <- (e_j2/e_j1)/(sum(growthir.exp)/e_j1)
 
-    components[3] <- (sum.region2/sum.region1)/(sum.nation2/sum.nation1)
+    components[3] <- (e_j2/e_j1)/(e2/e1)
 
   }
 
@@ -109,8 +121,8 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
     cat ("\n")
     
     cat ("Calculation for", industries, "industries", "\n")
-    cat ("Regional employment at time t: ", sum.region1, ", at time t+1: ", sum.region2, " (", growth(sum.region1, sum.region2, growth.type = "abs"), " / ", growth(sum.region1, sum.region2, growth.type = "rate"), " %)", sep="", "\n")
-    cat ("National employment at time t: ", sum.nation1, ", at time t+1: ", sum.nation2, " (", growth(sum.nation1, sum.nation2, growth.type = "abs"), " / ", growth(sum.nation1, sum.nation2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("Regional employment at time t: ", e_j1, ", at time t+1: ", e_j2, " (", growth(e_j1, e_j2, growth.type = "abs"), " / ", growth(e_j1, e_j2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("National employment at time t: ", e1, ", at time t+1: ", e2, " (", growth(e1, e2, growth.type = "abs"), " / ", growth(e1, e2, growth.type = "rate"), " %)", sep="", "\n")
     cat ("\n")  
   }
   
@@ -133,11 +145,11 @@ function (region1, region2, nation1, nation2, industry.names = NULL,
   
   if (plot.portfolio == TRUE) {
     
-    dev.new()
-    
-    portfolio (region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, 
+
+    portfolio (e_ij1, e_ij2, e_i1, e_i2, 
                industry.names = industry.names, ...)
   }
+  
   
   results <- list (components = components, growth = growth, method = shift.method)
   

@@ -1,5 +1,5 @@
 lorenz <-
-function (x, weighting = NULL, z = NULL,
+function (x, weighting = NULL, z = NULL, na.rm = TRUE,
                     lcx = "% of objects", lcy = "% of regarded variable", 
                     lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
                     lsize = 1.5, ltype = "solid",
@@ -10,45 +10,49 @@ function (x, weighting = NULL, z = NULL,
 {
   
   if (!is.null(weighting))
-
   {
+    
+    if (na.rm == TRUE) {
+      weighting <- weighting[!is.na(weighting)]
+    }
+    
     if (length(x) != length(weighting))
-
     {
       stop("Frequency and weighting differ in length", call. = FALSE)
-
     }
   }
+  
+  if (na.rm == TRUE) {
+    x <- x[!is.na(x)]
+  }
+  
   
   x_sort <- sort(x)   
 
   i <- length(x)   
 
   if (add.lc == FALSE)
-
   {
     
     k <- c(0,1)
     l <- c(0,1)
 
+    
     plot(k, l, type = "l", col = le.col, xlab = lcx, ylab = lcy, main = lctitle, lwd = lsize, lty = ltype)
 
-  
     rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = bg.col)
 
-    
     if (bgrid == TRUE)
-
     {
       grid (col = bgrid.col, lty = bgrid.type, lwd = bgrid.size)
     }   
     
     lines(k, l, col = le.col, xlab = lcx, ylab = lcy, main = lctitle, lwd = lsize, lty = ltype)
 
-    
   }
 
   if (is.null(weighting)) { 
+
 
   sum_x <- sum(x_sort)
   

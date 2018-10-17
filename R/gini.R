@@ -1,5 +1,5 @@
 gini <-
-function (x, coefnorm = FALSE, weighting = NULL,
+function (x, coefnorm = FALSE, weighting = NULL, na.rm = TRUE,
                   lc = FALSE, 
                   lcx = "% of objects", lcy = "% of regarded variable", 
                   lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
@@ -11,24 +11,29 @@ function (x, coefnorm = FALSE, weighting = NULL,
 {   
 
   if (!is.null(weighting))
-
   {
+    
+    if (na.rm == TRUE) {
+      weighting <- weighting[!is.na(weighting)]
+    }
+    
     if (length(x) != length(weighting))
-
     {
       stop("Frequency and weighting differ in length", call. = FALSE)
-
     }
   }
   
+  if (na.rm == TRUE) {
+    x <- x[!is.na(x)]
+  }
+  
+  
   x_sort <- sort(x)   
 
-  
   i <- length(x)   
 
-  
   if (is.null(weighting)) { 
-
+ 
     sum_x <- sum(x_sort)
 
     a_i <- x_sort/sum(x)
@@ -50,7 +55,6 @@ function (x, coefnorm = FALSE, weighting = NULL,
     }
     
     G <- 1-1/i*sum(sum_y_i)   
-
   }
   
   else { 
@@ -62,7 +66,7 @@ function (x, coefnorm = FALSE, weighting = NULL,
     x_j <- x_sort
     x_j_n_j <- (x_j*n_j)/sum(x_j*n_j)
     y_j <- cumsum(x_j_n_j)
-    
+
     j <- 0
     sum_y_j <- 0
     
@@ -73,29 +77,23 @@ function (x, coefnorm = FALSE, weighting = NULL,
     }
     
     G <- 1-sum(sum_y_j*n_j_n)
-
   }
   
   if (lc == TRUE) { 
-    
     lorenz (x, weighting = NULL, 
             lcx = lcx, lcy = lcy, lctitle = lctitle, le.col = le.col, lc.col = lc.col, 
             lsize = lsize, ltype = ltype, bg.col = bg.col, bgrid = bgrid, bgrid.col = bgrid.col,
             bgrid.size = bgrid.size, bgrid.type = bgrid.type, 
-            lcg = lcg, lcgn = lcgn, lcg.lab.x = lcg.lab.x, lcg.lab.y = lcg.lab.y,
+            lcg = lcg, lcgn = lcgn, lcg.caption = lcg.caption, lcg.lab.x = lcg.lab.x, lcg.lab.y = lcg.lab.y,
             add.lc = add.lc)
   }
   
   if (coefnorm == FALSE) {   
-
     return(G)   
-
   } 
   else {
     G.norm <- (i/(i-1))*G   
-
     return (G.norm)   
-
   }
   
 }

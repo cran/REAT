@@ -10,7 +10,7 @@ Calculating the Gini coefficient of inequality (or concentration), standardized 
 }
 
 \usage{
-gini(x, coefnorm = FALSE, weighting = NULL, lc = FALSE, 
+gini(x, coefnorm = FALSE, weighting = NULL, na.rm = TRUE, lc = FALSE, 
 lcx = "\% of objects", lcy = "\% of regarded variable", 
 lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
 lsize = 1, ltype = "solid",
@@ -29,6 +29,9 @@ logical argument that indicates if the function output is the non-standardized o
 }
   \item{weighting}{
 A numeric vector containing the weighting data (e.g. size of income classes when calculating a Gini coefficient for aggregated income data)
+}
+  \item{na.rm}{
+logical argument that indicates whether NA values should be excluded before computing results
 }
   \item{lc}{
 logical argument that indicates if the Lorenz curve is plotted additionally (default: \code{lc = FALSE}, so no Lorenz curve is displayed)
@@ -147,10 +150,24 @@ sizeofclass <- c(1000, 1200, 1600, 400, 200, 600)
 gini (income, weighting = sizeofclass)
 # returns the non-standardized Gini coefficient (0.5278)
 
+# Market concentration in automotive industry
+data(Automotive)
+gini(Automotive$Turnover2008, lsize=1, lc=TRUE, le.col = "black", 
+lc.col = "orange", lcx = "Shares of companies", lcy = "Shares of turnover / cars", 
+lctitle = "Automotive industry: market concentration", 
+lcg = TRUE, lcgn = TRUE, lcg.caption = "Turnover 2008:", lcg.lab.x = 0, lcg.lab.y = 1)
+# Gini coefficient and Lorenz curve for turnover 2008
+gini(Automotive$Turnover2013, lsize=1, lc = TRUE, add.lc = TRUE, lc.col = "red", 
+lcg = TRUE, lcgn = TRUE, lcg.caption = "Turnover 2013:", lcg.lab.x = 0, lcg.lab.y = 0.85)
+# Adding Gini coefficient and Lorenz curve for turnover 2013
+gini(Automotive$Quantity2014_car, lsize=1, lc = TRUE, add.lc = TRUE, lc.col = "blue", 
+lcg = TRUE, lcgn = TRUE, lcg.caption = "Cars 2014:", lcg.lab.x = 0, lcg.lab.y = 0.7)
+# Adding Gini coefficient and Lorenz curve for cars 2014
+
 # Regional disparities in Germany:
 gdp <- c(460.69, 549.19, 124.16, 65.29, 31.59, 109.27, 263.44, 39.87, 258.53, 
 645.59, 131.95, 35.03, 112.66, 56.22, 85.61, 56.81)
-# GDP of german regions 2015 (in billion EUR)
+# GDP of german regions (Bundeslaender) 2015 (in billion EUR)
 gini(gdp)
 # returs the non-standardized Gini coefficient (0.5009)
 }

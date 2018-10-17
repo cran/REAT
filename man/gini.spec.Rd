@@ -126,4 +126,10 @@ E_i <- Freiburg$e_Germany2014
 # industry-specific employment in Germany 2014
 gini.spec (E_ij, E_i)
 # Returns the Gini coefficient of regional specialization (0.2089009)
+
+# Example Goettingen
+data(Goettingen)
+# Loads the data
+gini.spec(Goettingen$Goettingen2017[2:16], Goettingen$BRD2017[2:16])
+# Returns the Gini coefficient of regional specialization 2017 (0.359852)
 }

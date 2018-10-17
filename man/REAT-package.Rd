@@ -5,25 +5,25 @@
 \title{
 Regional Economic Analysis Toolbox
 }
+
 \description{
 In regional and urban economics and economic geography, very frequent research fields are the existence and evolution of agglomerations due to (internal and external) agglomeration economies, regional economic growth and regional disparities, where these concepts and relationships are closely related to each other (Capello/Nijkamp 2009, Dinc 2015, Farhauer/Kroell 2013, McCann/van Oort 2009). Also accessibility and spatial interaction modeling is mostly regarded as related to these disciplines (Aoyama et al. 2011, Guessefeldt 1999). The group of the related analysis methods is sometimes summarized by the term \emph{regional analysis} or \emph{regional economic analysis} (Dinc 2015, Guessefeldt 1999, Isard 1960). 
 
-This package contains a collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided in seven groups: 
+This package contains a collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography. The functions in this package can be divided into seven groups: 
 
-(1) analysis of regional disparities and inequality, including \emph{Gini coefficient}, the \emph{Lorenz curve} and the \emph{(weighted) coefficient of variation}
+(1) Inequality, concentration and dispersion, including \emph{Gini coefficient}, \emph{Lorenz curve}, \emph{Herfindahl-Hirschman-coefficient}, \emph{Theil coefficient}, \emph{Hoover coefficient} and \emph{(weighted) coefficient of variation}
 
-(2) specialization of regions, including \emph{spatial Gini coefficient of regional specialization} and \emph{Krugman coefficient for regional specialization}
+(2) Specialization of regions and spatial concentration of industries, including \emph{location quotient}, \emph{spatial Gini coefficients} for regional specialization and industry concentration and \emph{Krugman coefficients} for regional specialization and industry concentration
 
-(3) spatial concentration of industries, including \emph{location quotients} and \emph{spatial Gini coefficient for industry concentration}
+(3) Regional disparities and regional convergence, especially analysis of \emph{beta and sigma convergence} for cross-sectional data
 
-(4) regional growth and convergence, including traditional \emph{shift-share analysis} and \emph{analysis of beta and sigma convergence for cross-sectional data}
+(4) Regional growth, including \emph{portfolio matrix}, several types of \emph{shift-share analysis} and \emph{commercial area prognosis} ("GIFPRO")
 
-(5) spatial interaction and accessibility models, including \emph{Huff Model} and \emph{Hansen accessibility}
+(5) Spatial interaction and accessibility models, including \emph{Huff model} and \emph{Hansen accessibility}
 
-(6) proximity analysis, including calculation of \emph{distance matrices} and \emph{buffers} 
+(6) Proximity analysis, including calculation of \emph{distance matrices} and \emph{buffers} 
 
-(7) additional tools for data preparation und visualization. 
-
+(7) Additional tools for data preparation und visualization, such as for creating \emph{dummy variables} and calculating \emph{standardized regression coefficients}. 
 The package also contains data examples. 
 }
 

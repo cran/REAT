@@ -10,32 +10,35 @@ Portfolio matrix plot comparing two numeric vectors
 }
 
 \usage{
-portfolio(region1, region2, nation1, nation2, industry.names = NULL, 
+portfolio(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
 psize, psize.factor = 10, 
-pmx = "Regional growth", pmy = "National growth", pmtitle = "Portfolio matrix", 
-pcol = NULL, leg = FALSE, leg.fsize = 1, leg.x = -max_val, leg.y = -max_val/2, 
-bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", bgrid.size = 2, 
-bgrid.type = "solid", seg.x = 0, seg.y = 0)
+pmx = "Regional growth", pmy = "National growth", 
+pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
+leg = FALSE, leg.fsize = 1, 
+leg.x = -max_val, leg.y = -max_val*1.5,
+bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", 
+bgrid.size = 2, bgrid.type = "solid",
+seg.x = 0, seg.y = 0)
 }
 
 \arguments{
-  \item{region1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 1
+  \item{e_ij1}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 1
 }
-  \item{region2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 2
+  \item{e_ij2}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 2
 }
-  \item{nation1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 1
+  \item{e_i1}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 1
 }
-  \item{nation2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 2
+  \item{e_i2}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 2
 }
   \item{industry.names}{
-Industry names
+Industry names (e.g. from the relevant statistical classification of economic activities)
 }
   \item{psize}{
-Point size in the portfolio matrix plot (mostly the absolute values of employment in \eqn{i} industries in the region at time 2)
+Point size in the portfolio matrix plot (mostly the absolute values of employment in \eqn{i} industries in region \eqn{j} at time 2)
 }
   \item{psize.factor}{
 Enlargement factor for the points in the plot
@@ -51,6 +54,9 @@ Plot title
 }
   \item{pcol}{
 Industry-specific point colors
+}
+  \item{pcol.border}{
+Color of point border
 }
   \item{leg}{
 Logical argument that indicates if a legend has to be added to the plot

@@ -9,7 +9,7 @@ Calculating the coefficient of variation (cv), standardized and non-standardized
 }
 \usage{
 cv (x, is.sample = TRUE, coefnorm = FALSE, weighting = NULL, 
-wmean = FALSE, na.rm = FALSE)
+wmean = FALSE, na.rm = TRUE)
 }
 
 \arguments{

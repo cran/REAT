@@ -10,15 +10,18 @@ Calculating the Theil inequality index
 }
 
 \usage{
-theil(x)
+theil(x, na.rm = TRUE)
 }
 
 \arguments{
   \item{x}{
 a \code{numeric} vector
 }
-
+  \item{na.rm}{
+logical argument that indicates whether NA values should be excluded before computing results
 }
+}
+
 \details{
 Since there are several Theil measures of inequality, this function uses the formulation from Stoermann (2009).
 }

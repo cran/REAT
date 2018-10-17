@@ -2,6 +2,7 @@ dist.buf <-
 function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, lon_end, ep_sum = NULL, bufdist = 500, extract_local = TRUE, unit = "m")
 {
   
+
   distmat_workfile <- dist.mat(startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, lon_end, unit = "m")
   distmat_workfile <- distmat_workfile[!is.na(distmat_workfile$distance),]
 
@@ -32,7 +33,8 @@ function (startpoints, sp_id, lat_start, lon_start, endpoints, ep_id, lat_end, l
     count_table_full <- count_table
     
     distmat_workfile_hit <- distmat_workfile[distmat_workfile$count == 1,]
-
+ 
+    
     distmat_workfile_hit_data <- merge(distmat_workfile_hit, endpoints, by.x = "to", by.y = ep_id)
 
     sum_table <- aggregate(distmat_workfile_hit_data[[ep_sum]], by = list(from=distmat_workfile_hit_data$from), FUN = sum)

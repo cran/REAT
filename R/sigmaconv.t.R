@@ -7,7 +7,6 @@ function (gdp1, time1, gdp2, time2,
                          output.results = FALSE)
 {
 
-  
   gdp2_all <- cbind (gdp1, gdp2)
 
   
@@ -45,7 +44,6 @@ function (gdp1, time1, gdp2, time2,
   scestimates <- coef(summary(trendmodel))
 
   rownames(scestimates) <- c("Intercept", "Time")
-
 
   scmodelstat <- matrix (nrow = 1, ncol = 5)
   colnames(scmodelstat) <- c("Estimate", "F value", "df 1", "df 2", "Pr (>F)")

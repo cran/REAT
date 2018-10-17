@@ -10,25 +10,25 @@ This function calculates industry-specific growth rates which are part of the sh
 }
 
 \usage{
-shift.growth(region1, region2, nation1, nation2, industry.names = NULL)
+shift.growth(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL)
 }
 
 
 \arguments{
-  \item{region1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 1
+  \item{e_ij1}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 1
 }
-  \item{region2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 2
+  \item{e_ij2}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 2
 }
-  \item{nation1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 1
+  \item{e_i1}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 1
 }
-  \item{nation2}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 2
+  \item{e_i2}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 2
 }
   \item{industry.names}{
-Industry names
+Industry names (e.g. from the relevant statistical classification of economic activities)
 }
 }
 

@@ -1,37 +1,53 @@
 shift.growth <-
-function (region1, region2, nation1, nation2, industry.names = NULL) 
+function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL) 
 {
   
-  if ((ncol(as.data.frame(region1)) > 1) | (ncol(as.data.frame(nation1)) > 1))
+  if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
   {
     stop (paste("Datasets for initial time period must consist of 1 column (= 1 time period)"), call. = FALSE)
   }
   
-  industries <- length(region1)
+  industries <- length(e_ij1)
 
   if (is.null(industry.names)) {
     industry.names <- as.character(1:industries)
   }
   
-  sum.region1 <- sum(region1)
-  sum.region2 <- sum(region2)
-  sum.nation1 <- sum(nation1)
-  sum.nation2 <- sum(nation2)
+  e_j1 <- sum(e_ij1)
+  e_j2 <- sum(e_ij2)
+  e1 <- sum(e_i1)
+  e2 <- sum(e_i2)
 
-  growthir.abs <- growth (region1, region2, growth.type = "abs") 
-  growthin.abs <- growth (nation1, nation2, growth.type = "abs") 
+  growthir.abs <- growth (e_ij1, e_ij2, growth.type = "abs") 
+  growthin.abs <- growth (e_i1, e_i2, growth.type = "abs") 
 
-  growthir.rel <- growth (region1, region2, growth.type = "rate")
-  growthin.rel <- growth (nation1, nation2, growth.type = "rate")
+  growthir.rel <- growth (e_ij1, e_ij2, growth.type = "rate")
+  growthin.rel <- growth (e_i1, e_i2, growth.type = "rate")
 
-  if ((ncol(as.data.frame(region2)) > 1) | (ncol(as.data.frame(nation2)) > 1)) {
-    growth <- data.frame(industry.names, region1, region2[,ncol(region2)], growthir.abs, growthir.rel, nation1, nation2[,ncol(nation2)], growthin.abs, growthin.rel)
-  }
-  else {
-    growth <- data.frame(industry.names, region1, region2, growthir.abs, growthir.rel, nation1, nation2, growthin.abs, growthin.rel)  
-  }
+  growth <- matrix (ncol = 8, nrow = industries)
   
-  colnames(growth) <- c("Industry", "Region t", "Region t+1", "R growth", "R growth %", "Nation t", "Nation t+1", "N growth", "N growth %")
+  growth[,1] <- e_ij1
+  
+  if ((ncol(as.data.frame(e_ij2)) > 1) | (ncol(as.data.frame(e_i2)) > 1)) {
+    growth[,2] <- e_ij2[,ncol(e_ij2)]
+  }
+  else { growth[,2] <- e_ij2 }
+  
+  growth[,3] <- growthir.abs
+  growth[,4] <- growthir.rel
+  growth[,5] <- e_i1
+  
+  if ((ncol(as.data.frame(e_ij2)) > 1) | (ncol(as.data.frame(e_i2)) > 1)) {
+    growth[,6] <- e_i2[,ncol(e_i2)]
+  }
+  else {  growth[,6] <- e_i2 }
+  
+  growth[,7] <- growthin.abs
+  growth[,8] <- growthin.rel
+  
+  rownames(growth) <- industry.names
+  
+  colnames(growth) <- c("e_ij", "e_ij_t1", "e_ij_growth_abs", "e_ij_growth_rel", "e_i", "e_i_t1", "e_i_growth_abs", "e_i_growth_rel")
   
   return(growth)
 }

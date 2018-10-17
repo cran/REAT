@@ -9,7 +9,7 @@ Calculating the Herfindahl-Hirschman coefficient of concentration, standardized 
 }
 
 \usage{
-herf(x, coefnorm = FALSE, output = "HHI")
+herf(x, coefnorm = FALSE, output = "HHI", na.rm = TRUE)
 }
 
 \arguments{
@@ -22,8 +22,11 @@ logical argument that indicates if the function output is the non-standardized o
   \item{output}{
 argument to state the output. If \code{output = "HHI"} (default), the Herfindahl-Hirschman coefficient is returned (standardized or non-standardized). If \code{output = "eq"}, the Herfindahl-Hirschman coefficient equivalent number is returned
 }
-
+  \item{na.rm}{
+logical argument that indicates whether NA values should be excluded before computing results
 }
+}
+
 \details{
 The \emph{Herfindahl-Hirschman coefficient} is a popular measure of statistical dispersion, especially used for analyzing concentration in markets, regarding sales turnovers or sizes of \eqn{n} competing firms in an industry. This indicator is especially used as a measure of market power and distortions of competition in the governmental competition policy (Roberts 2014). But the coefficient is also utilized as a measure of geographic concentration of industries (Lessmann 2005, Nakamura/Morrison Paul 2009).
 

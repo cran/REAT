@@ -1,5 +1,5 @@
 shifti <-
-function (region1, region2, nation1, nation2, 
+function (e_ij1, e_ij2, e_i1, e_i2, 
                     industry.names = NULL, 
                     shift.method = "Dunn", 
                     output.results = TRUE, 
@@ -8,20 +8,21 @@ function (region1, region2, nation1, nation2,
 
 {
   
-  industries <- length(region1)
+  industries <- length(e_ij1)
 
   if (is.null(industry.names)) {
     industry.names <- as.character(1:industries)
   }
   
-  sum.region1 <- sum(region1)
-  sum.region2 <- sum(region2)
-  sum.nation1 <- sum(nation1)
-  sum.nation2 <- sum(nation2)
+  e_j1 <- sum(e_ij1)
+  e_j2 <- sum(e_ij2)
+  e1 <- sum(e_i1)
+  e2 <- sum(e_i2)
 
-  growth <- shift.growth(region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, industry.names = industry.names)
   
-  shift_all <- shift (region1, region2, nation1, nation2, shift.method = shift.method, output.results = FALSE)
+  growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
+  
+  shift_all <- shift (e_ij1, e_ij2, e_i1, e_i2, shift.method = shift.method, output.results = FALSE)
 
   components.industry <- matrix(ncol = industries, nrow = nrow(shift_all$components)) 
 
@@ -29,7 +30,7 @@ function (region1, region2, nation1, nation2,
   
   for (i in 1:industries)
   {
-    shift_industry <- shift ((region1[i]), (region2[i]), (nation1[i]), (nation2[i]),
+    shift_industry <- shift ((e_ij1[i]), (e_ij2[i]), (e_i1[i]), (e_i2[i]),
                          shift.method = shift.method, output.results = FALSE)
     
     components.industry[,i] <- shift_industry$components[,1]
@@ -41,6 +42,7 @@ function (region1, region2, nation1, nation2,
   components.industry <- components.industry[rownames(components.industry) != "Industrial mix",] 
 
 
+  
   if (output.results == TRUE) { 
 
     cat ("\n")
@@ -69,16 +71,15 @@ function (region1, region2, nation1, nation2,
     }
     
     shiftplot <- barplot (components.industry, names.arg = NULL, col = plot.colours, legend = NULL, main = plot.title, beside = TRUE)
-    legend("topright", legend = rownames(components.industry), fill = plot.colours)
+    legend("topright", legend = rownames(components.industry), fill = plot.colours, cex = 0.5)
     text(shiftplot, components.industry/2, labels = round(components.industry, 2), cex = 0.8)
 
   }
   
   if (plot.portfolio == TRUE) {
     
-    dev.new()
-    
-    portfolio (region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, 
+
+    portfolio (e_ij1, e_ij2, e_i1, e_i2, 
                industry.names = industry.names, ...)
   }
   

@@ -10,7 +10,7 @@ Calculating and plotting the Lorenz curve
 }
 
 \usage{
-lorenz(x, weighting = NULL, z = NULL,
+lorenz(x, weighting = NULL, z = NULL, na.rm = TRUE,
 lcx = "\% of objects", lcy = "\% of regarded variable", 
 lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
 lsize = 1.5, ltype = "solid", bg.col = "gray95", bgrid = TRUE, 
@@ -28,6 +28,9 @@ A numeric vector containing the weighting data (e.g. size of income classes when
 }
   \item{z}{
 A numeric vector for (optionally) comparing the cumulative distribution 
+}
+  \item{na.rm}{
+logical argument that indicates whether NA values should be excluded before computing results
 }
   \item{lcx}{
 defines the x axis label

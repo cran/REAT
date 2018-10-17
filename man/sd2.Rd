@@ -10,7 +10,7 @@ Calculating the standard deviation (sd), weighted or non-weighted, for samples o
 }
 
 \usage{
-sd2 (x, is.sample = TRUE, weighting = NULL, wmean = FALSE, na.rm = FALSE)
+sd2 (x, is.sample = TRUE, weighting = NULL, wmean = FALSE, na.rm = TRUE)
 }
 
 \arguments{

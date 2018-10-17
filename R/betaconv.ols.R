@@ -22,8 +22,6 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
   regdata <- data.frame(gdp1, gdp2, growth, ln_initial, ln_growth)
 
   
-
-
   conv_model <- lm (ln_growth ~ ln_initial)
 
   alpha <- coef(summary(conv_model))[1, 1]
@@ -36,7 +34,6 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
   halflife <- speed[2]
   
   
-
 
   bestimates <- matrix (nrow = 4, ncol = 4)
   rownames(bestimates) <- c("Alpha", "Beta", "Lambda", "Halflife")
@@ -78,7 +75,7 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
 
     conv_model_c <- lm (bcmodelc, data = cond)
 
-
+   
     alpha <- coef(summary(conv_model_c))[1, 1]
 
     beta <- coef(summary(conv_model_c))[2, 1]

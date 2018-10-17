@@ -8,6 +8,7 @@ function (val1, val2, growth.type = "growth") {
   
   if ((ncol(as.data.frame(val2)) > 1)) { 
 
+    
     val_all <- cbind (val1, val2)
 
     no_years <- ncol(val2)
@@ -15,7 +16,7 @@ function (val1, val2, growth.type = "growth") {
     i <- 0
 
     growth_annual <- matrix(ncol = no_years, nrow = nrow(val_all))
-  
+
     if (growth.type == "abs")
     {
       for (i in 1:no_years) {

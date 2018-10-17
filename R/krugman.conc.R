@@ -1,6 +1,6 @@
 krugman.conc <-
 function (e_ij, e_uj) {
-
+ 
   regions <- length(e_ij)
 
   s_ij <- vector()

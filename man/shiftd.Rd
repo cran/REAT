@@ -10,7 +10,7 @@ Analyzing regional growth with the dynamic shift-share analysis
 }
 
 \usage{
-shiftd(region1, region2, nation1, nation2, time1, time2, 
+shiftd(e_ij1, e_ij2, e_i1, e_i2, time1, time2, 
 industry.names = NULL, shift.method = "Dunn", 
 gerfin.shifts = "sum", output.results = TRUE, 
 plot.results = FALSE, plot.colours = NULL, plot.title = NULL, 
@@ -18,17 +18,17 @@ plot.portfolio = FALSE, ...)
 }
 
 \arguments{
-  \item{region1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in a region at time 1
+  \item{e_ij1}{
+a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in region \eqn{j} at time 1
 }
-  \item{region2}{
-a data frame with \eqn{i} rows containing the employment in \eqn{i} industries in a region for \eqn{j} years
+  \item{e_ij2}{
+a numeric data frame or matrix with \eqn{i} rows containing the employment in \eqn{i} industries in region \eqn{j} and \eqn{t} columns, representing \eqn{t} (\eqn{t > 1}) years
 }
-  \item{nation1}{
-a numeric vector with \eqn{i} values containing the employment in \eqn{i} industries in the whole nation at time 1
+  \item{e_i1}{
+a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 1
 }
-  \item{nation2}{
-a data frame with \eqn{i} rows containing the employment in \eqn{i} industries in the whole nation for \eqn{j} years
+  \item{e_i2}{
+a numeric data frame or matrix with \eqn{i} rows containing the total employment in \eqn{i} industries and \eqn{t} columns, representing \eqn{t} (\eqn{t > 1}) years
 }
   \item{time1}{
 Initial year
@@ -37,7 +37,7 @@ Initial year
 Final year
 }
   \item{industry.names}{
-Industry names
+Industry names (e.g. from the relevant statistical classification of economic activities)
 }
   \item{shift.method}{
 Method of shift-share-analysis to be used ("Dunn", "Gerfin") (default: \code{shift.method = "Dunn"})

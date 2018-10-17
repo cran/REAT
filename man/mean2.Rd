@@ -9,7 +9,7 @@ Calculating the arithmetic mean, weighted or non-weighted, or the geometric mean
 }
 
 \usage{
-mean2(x, weighting = NULL, output = "mean", na.rm = FALSE)
+mean2(x, weighting = NULL, output = "mean", na.rm = TRUE)
 }
 
 \arguments{

@@ -10,7 +10,7 @@ Calculating the variance (var), weighted or non-weighted, for samples or populat
 }
 
 \usage{
-var2(x, is.sample = TRUE, weighting = NULL, wmean = FALSE, na.rm = FALSE)
+var2(x, is.sample = TRUE, weighting = NULL, wmean = FALSE, na.rm = TRUE)
 }
 
 \arguments{

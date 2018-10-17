@@ -1,36 +1,37 @@
 shiftd <-
-function (region1, region2, nation1, nation2, time1, time2,
+function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
                     industry.names = NULL, 
-                    shift.method = "Dunn",
-                    gerfin.shifts = "sum", 
+                    shift.method = "Dunn", 
+                    gerfin.shifts = "sum",
                     output.results = TRUE, 
                     plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                     plot.portfolio = FALSE, ...)
+ 
 {
   
-  if ((ncol(as.data.frame(region1)) > 1) | (ncol(as.data.frame(nation1)) > 1))
+  if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
   {
     stop (paste("Datasets for initial time period must consist of 1 column (= 1 time period)"), call. = FALSE)
   }
   
-  if ((ncol(as.data.frame(region2)) == 1) & (ncol(as.data.frame(nation2)) == 1))
+  if ((ncol(as.data.frame(e_ij2)) == 1) & (ncol(as.data.frame(e_i2)) == 1))
   {
-    shift (region1, region2, nation1, nation2, industry.names = industry.names, 
+    shift (e_ij1, e_ij2, e_i1, e_i2, industry.names = industry.names, 
     shift.method = shift.method, output.results = output.results, 
     plot.results = plot.results, plot.colours = plot.colours, plot.title = plot.title,
     plot.portfolio = plot.portfolio, ...)
     
-    stop ("No dynamic shift-share analysis (region2 and nation2 consist of only one time period). Function shift() used.", call. = FALSE)
+    stop ("No dynamic shift-share analysis (e_ij2 and e_i2 consist of only one time period). Function shift() used.", call. = FALSE)
     
   }
   
-  if (ncol(as.data.frame(region2)) != ncol(as.data.frame(nation2)))
+  if (ncol(as.data.frame(e_ij2)) != ncol(as.data.frame(e_i2)))
   {
     stop ("Compared region data must consist of the same time periods", call. = FALSE)
   }
   
   
-  industries <- length(region1)
+  industries <- length(e_ij1)
 
   if (is.null(industry.names)) {
     industry.names <- as.character(1:industries)
@@ -38,15 +39,16 @@ function (region1, region2, nation1, nation2, time1, time2,
   
   
   
-  sum.region1 <- sum(region1)
-  sum.region2 <- sum(region2[,ncol(region2)])
-  sum.nation1 <- sum(nation1)
-  sum.nation2 <- sum(nation2[,ncol(nation2)])
+  e_j1 <- sum(e_ij1)
+  e_j2 <- sum(e_ij2[,ncol(e_ij2)])
+  e1 <- sum(e_i1)
+  e2 <- sum(e_i2[,ncol(e_i2)])
 
-  growth <- shift.growth(region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, industry.names = industry.names)
+
+  growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
-  region_all <- cbind (region1, region2)
-  nation_all <- cbind (nation1, nation2)
+  region_all <- cbind (e_ij1, e_ij2)
+  nation_all <- cbind (e_i1, e_i2)
 
   years <- time1:time2
   no_years <- length(time1:time2)-1
@@ -71,7 +73,7 @@ function (region1, region2, nation1, nation2, time1, time2,
   {
     shift_year <- shift ((region_all[,i]), (region_all[,(i+1)]), (nation_all[,i]), (nation_all[,(i+1)]),
            shift.method = shift.method, output.results = FALSE)
-    
+
     components.year[,i] <- shift_year$components[,1]
   }
   
@@ -79,6 +81,7 @@ function (region1, region2, nation1, nation2, time1, time2,
   colnames(components.year) <- years.growth
   rownames(components.year) <- rownames(shift_year$components)
 
+  
   if ((shift.method == "Gerfin") && (gerfin.shifts == "mean"))
   {
     components <- as.matrix(rowMeans (components.year))
@@ -103,8 +106,8 @@ function (region1, region2, nation1, nation2, time1, time2,
     cat ("\n")
     
     cat ("Calculation for", industries, "industries", "\n")
-    cat ("Regional employment at time t: ", sum.region1, ", at time t+1: ", sum.region2, " (", growth(sum.region1, sum.region2, growth.type = "abs"), " / ", growth(sum.region1, sum.region2, growth.type = "rate"), " %)", sep="", "\n")
-    cat ("National employment at time t: ", sum.nation1, ", at time t+1: ", sum.nation2, " (", growth(sum.nation1, sum.nation2, growth.type = "abs"), " / ", growth(sum.nation1, sum.nation2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("Regional employment at time t: ", e_j1, ", at time t+1: ", e_j2, " (", growth(e_j1, e_j2, growth.type = "abs"), " / ", growth(e_j1, e_j2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("National employment at time t: ", e1, ", at time t+1: ", e2, " (", growth(e1, e2, growth.type = "abs"), " / ", growth(e1, e2, growth.type = "rate"), " %)", sep="", "\n")
     cat ("\n")  
   }
   
@@ -127,9 +130,8 @@ function (region1, region2, nation1, nation2, time1, time2,
   
   if (plot.portfolio == TRUE) {
     
-    dev.new()
-    
-    portfolio (region1 = region1, region2 = region2, nation1 = nation1, nation2 = nation2, 
+
+    portfolio (e_ij1, e_ij2, e_i1, e_i2, 
                industry.names = industry.names, ...)
   }
   

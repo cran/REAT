@@ -1,17 +1,48 @@
 locq <-
-function (e_ij, e_j, e_i, e) {
+function (e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE, bar.col = "lightblue", line.col = "red", arg.size = 1) {
 
-  if (e_ij > e_j) { return (NA) }
+  if (nrow(as.matrix(e_ij)) != nrow(as.matrix(e_i))) {
+    stop("Regional and national employment vectors must have the same length")
+  }
+  
+  if ((nrow(as.matrix(e_j)) > 1) | (nrow(as.matrix(e)) > 1)) {
+    stop("Total industry and national employment must be a single value")
+  }
+  
+  if (sum(e_ij) > sum(e_j)) { return (NA) }
 
-  if (e_i > e) { return (NA) }
-
-  if (e_j > e) { return (NA) }
+  if (sum(e_i) > sum(e)) { return (NA) }
+ 
+  if (sum(e_j) > sum(e)) { return (NA) }
 
   s_ij <- e_ij/e_i
-
+ 
   s_j <- e_j/e  
-
+ 
   LQ <- s_ij/s_j
 
+  if ((length(e_ij) > 1) & (plot.results == TRUE)) {
+    
+    if (is.null(industry.names)) {
+      industry.names <- as.character(1:length(e_ij))
+    }
+    
+    dev.new()
+    
+    expandval <- (max(nchar(as.character(industry.names))))*0.33
+    
+    par(mar=c(5.1, ((4.1+expandval)*arg.size), 4.1, 2.1), xpd=FALSE)
+    
+    LQ_mat <- matrix(nrow = length(LQ), ncol = 1)
+    LQ_mat[,1] <- LQ
+    rownames(LQ_mat) <- industry.names
+    LQ_mat <- LQ_mat[order(rownames(LQ_mat), decreasing = TRUE),]
+    
+    barplot (LQ_mat, horiz = TRUE, cex.names = arg.size, las = 1, col = bar.col)
+    abline (v = 1, lwd = 2,  col = line.col)
+    
+    par(mar=c(5.1, 4.1, 4.1, 2.1)) 
+  }
+  
   return(LQ)
 }

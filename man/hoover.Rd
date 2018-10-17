@@ -8,7 +8,7 @@ Hoover Concentration Index
 Calculating the Hoover Concentration Index with respect to regional income (e.g. GDP) and population
 }
 \usage{
-hoover(x, weighting = NULL)
+hoover(x, weighting = NULL, na.rm = TRUE)
 }
 
 \arguments{
@@ -17,6 +17,9 @@ A \code{numeric} vector (dataset of regional income, e.g. GDP)
 }
   \item{weighting}{
 A \code{numeric} weighting vector (dataset of regional population). If \code{weighting = NULL}, the shares of income are compared with the shares of regions (\eqn{1/n})
+}
+  \item{na.rm}{
+logical argument that indicates whether NA values should be excluded before computing results
 }
 }
 

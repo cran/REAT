@@ -1,5 +1,5 @@
-mssd <- 
-  function (x) {
+mssd <-
+function (x) {
   
   samplesize <- length(x)
   
@@ -13,11 +13,11 @@ mssd <-
     diffscores[j] <- x[i]-x[i-1]
     j <- j+1
   }
-  
+
   diffscores_sq <- diffscores^2
- 
+
   mssd_val <- sum(diffscores_sq)/(samplesize-1)
-  
+
   return(mssd_val)
   
 }
