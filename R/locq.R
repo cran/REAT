@@ -1,5 +1,5 @@
 locq <-
-function (e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE, bar.col = "lightblue", line.col = "red", arg.size = 1) {
+function (e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE, plot.title = "Localization quotients", bar.col = "lightblue", line.col = "red", arg.size = 1) {
 
   if (nrow(as.matrix(e_ij)) != nrow(as.matrix(e_i))) {
     stop("Regional and national employment vectors must have the same length")
@@ -38,7 +38,7 @@ function (e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE, bar.co
     rownames(LQ_mat) <- industry.names
     LQ_mat <- LQ_mat[order(rownames(LQ_mat), decreasing = TRUE),]
     
-    barplot (LQ_mat, horiz = TRUE, cex.names = arg.size, las = 1, col = bar.col)
+    barplot (LQ_mat, horiz = TRUE, cex.names = arg.size, las = 1, col = bar.col, main = plot.title)
     abline (v = 1, lwd = 2,  col = line.col)
     
     par(mar=c(5.1, 4.1, 4.1, 2.1)) 

@@ -2,7 +2,7 @@ shiftd <-
 function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
                     industry.names = NULL, 
                     shift.method = "Dunn", 
-                    gerfin.shifts = "sum",
+                    gerfin.shifts = "mean",
                     output.results = TRUE, 
                     plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                     plot.portfolio = FALSE, ...)

@@ -1,24 +1,25 @@
-\name{portfolio}
-\alias{portfolio}
+\name{locq.growth}
+\alias{locq.growth}
 
 \title{
-Portfolio matrix
+Portfolio matrix for specialization and growth
 }
 
 \description{
-Portfolio matrix plot comparing two numeric vectors
+Portfolio matrix plot comparing two numeric vectors (here: specialization and growth)
 }
 
 \usage{
-portfolio(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
+locq.growth(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
+y.axis = "r", 
 psize, psize.factor = 10, 
-pmx = "Regional growth", pmy = "National growth", 
+pmx = "Regional specialization", pmy = "Regional growth", 
 pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
 leg = FALSE, leg.fsize = 1, 
-leg.x = -max_val, leg.y = -max_val*1.5,
+leg.x = 0, leg.y = y_min*1.5,
 bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", 
 bgrid.size = 2, bgrid.type = "solid",
-seg.x = 0, seg.y = 0)
+seg.x = 1, seg.y = 0)
 }
 
 \arguments{
@@ -36,6 +37,9 @@ a numeric vector with \eqn{i} values containing the total employment in \eqn{i} 
 }
   \item{industry.names}{
 Industry names (e.g. from the relevant statistical classification of economic activities)
+}
+  \item{y.axis}{
+Declares which values shall be plotted on the Y axis: If \code{y.axis = "r"}, the Y axis shows the \emph{regional} growth. If \code{y.axis = "n"}, the Y axis shows the \emph{national} growth. To set both growths in ratio, choose \code{y.axis = "rn"} (regional vs. national growth)
 }
   \item{psize}{
 Point size in the portfolio matrix plot (mostly the absolute values of employment in \eqn{i} industries in region \eqn{j} at time 2)
@@ -95,10 +99,17 @@ Y coordinate of segmentation of the plot
 
 \details{
 The \emph{portfolio matrix} is a graphic tool displaying the development of one variable compared to another variable. The plot shows the regarded variable on the \eqn{x} axis and a variable with which it is confronted on the \eqn{y} axis while the graph is divided in four quadrants. Originally, the \emph{portfolio matrix} was developed by the \emph{Boston Consulting Group} to analyze the performance of product lines in marketing, also known as the \emph{growth-share matrix}. The quadrants show the performace of the regarded objects (stars, cash cows, question marks, dogs) (Henderson 1973). But the \emph{portfolio matrix} can also be used to analyze/illustrate the world market integration of a region or a national economy by confronting e.g. the increase in world market share (\eqn{x} axis) and the world trade growth (\eqn{y} axis) (Baker et al. 2002). Another option is to analyze/illustrate the economic performance of a region (Howard 2007). E.g. it is possible to confront the growth of industries in a region with the all-over growth of these industries in the national economy. 
+
+This function is a special case of portfolio matrix, showing the regional specialization on the X axis instead of the regional growth (which can be plotted on the Y axis).
 }
 
 \value{
-A portfolio matrix plot and a \code{data frame} containing the related data (invisible).
+A portfolio matrix plot.
+
+Invisible: a \code{list} containing the following items:
+\item{portfolio.data }{The data related to the plot}
+\item{locq }{The localization quotients for each year}
+\item{growth }{The growth values for each industry}
 }
 
 \references{
@@ -114,16 +125,16 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{shift}}, \code{\link{shiftd}}, \code{\link{shifti}}
+\code{\link{locq}}, \code{\link{portfolio}}, \code{\link{shift}}, \code{\link{shiftd}}, \code{\link{shifti}}
 }
 
 \examples{
-data(Freiburg)
-# Loads employment data for Freiburg and Germany (2008 and 2014)
+data(Goettingen)
+# Loads employment data for Goettingen and Germany (2008-2017)
 
-portfolio(Freiburg$e_Freiburg2008, Freiburg$e_Freiburg2014, 
-Freiburg$e_Germany2008, Freiburg$e_Germany2014, 
-industry.names = Freiburg$industry, Freiburg$e_Freiburg2014, psize.factor = 12,
-pmx = "Freiburg", pmy = "Deutschland", pmtitle = "Freiburg und BRD", 
-pcol = Freiburg$color, leg = TRUE, leg.fsize = 0.6, bgrid = TRUE, leg.y = -0.17)
+locq.growth(Goettingen$Goettingen2008[2:16], Goettingen$Goettingen2017[2:16],
+Goettingen$BRD2008[2:16], Goettingen$BRD2017[2:16], 
+psize = Goettingen$Goettingen2017[2:16], 
+industry.names = Goettingen$WA_WZ2008[2:16], pcol.border = "grey", 
+leg = TRUE, leg.fsize = 0.4, leg.x = -0.2)
 }

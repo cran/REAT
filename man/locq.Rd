@@ -8,8 +8,9 @@ Location quotient
 Calculating the \emph{location quotient}
 }
 \usage{
-locq(e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE, 
-bar.col = "lightblue", line.col = "red", arg.size = 1)
+locq(e_ij, e_j, e_i, e, industry.names = NULL, plot.results = FALSE,
+plot.title = "Localization quotients", bar.col = "lightblue", 
+line.col = "red", arg.size = 1)
 }
 
 \arguments{
@@ -31,6 +32,9 @@ Industry names (e.g. from the relevant statistical classification of economic ac
   \item{plot.results}{
 Logical argument that indicates if the results have to be plotted (only available if \eqn{i > 1})
 }
+  \item{plot.title}{
+If \code{plot.results = TRUE}: Plot title 
+}
   \item{bar.col}{
 If \code{plot.results = TRUE}: Bar colour 
 }
@@ -46,7 +50,7 @@ If \code{plot.results = TRUE}: Size of industry names in bar plot
 The \emph{location quotient} is a simple measure for the concentration of an industry (\eqn{i}) in a region (\eqn{j}) and is also the mathematical basis for other related indicators in regional economics (e.g. \code{gini.conc()}). The function returns the value \eqn{LQ} which is equal to 1 if the concentration of the regarded industry is exactly the same as the over-all concentration (that means, it is proportionally represented in region \eqn{j}). If the value of \eqn{LQ} is smaller (bigger) than 1, the industry is underrepresented (overrepresented). The function checks the input values for errors (i.e. if employment in a region is bigger than over-all employment).
 }
 \value{
-A single numeric value of (\eqn{LQ}) or a vector with respect to all \eqn{i} industries
+A single numeric value of (\eqn{LQ}) or a vector with respect to all \eqn{i} industries. Optional: plot.
 }
 
 \references{

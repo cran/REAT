@@ -2,7 +2,7 @@
 \alias{shifti}
 
 \title{
-Shift-share analysis
+Shift-share analysis for industries
 }
 
 \description{

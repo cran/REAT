@@ -1,16 +1,16 @@
-\name{shiftd}
-\alias{shiftd}
+\name{shiftid}
+\alias{shiftid}
 
 \title{
-Dynamic shift-share analysis
+Dynamic shift-share analysis for industries
 }
 
 \description{
-Analyzing regional growth with the dynamic shift-share analysis 
+Analyzing industry-specific regional growth with the dynamic shift-share analysis 
 }
 
 \usage{
-shiftd(e_ij1, e_ij2, e_i1, e_i2, time1, time2, 
+shiftid(e_ij1, e_ij2, e_i1, e_i2, time1, time2, 
 industry.names = NULL, shift.method = "Dunn", 
 gerfin.shifts = "mean", output.results = TRUE, 
 plot.results = FALSE, plot.colours = NULL, plot.title = NULL, 
@@ -123,7 +123,7 @@ data.frame(nation_X_t1, nation_X_t2), time1 = 2000, time2 = 2002,
 plot.results = TRUE, plot.portfolio = TRUE, psize = region_A_t1)
 
 data(Goettingen)
-shiftd(Goettingen$Goettingen2008[2:16], Goettingen[2:16,3:11], 
+shiftid(Goettingen$Goettingen2008[2:16], Goettingen[2:16,3:11], 
 Goettingen$BRD2008[2:16], Goettingen[2:16,13:21],
 time1 = 2008, time2 = 2017, industry.names = Goettingen$WA_WZ2008[2:16], 
 shift.method = "Dunn")
