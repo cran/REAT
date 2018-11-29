@@ -1,13 +1,13 @@
 Package: REAT
 Type: Package
 Title: Regional Economic Analysis Toolbox
-Version: 2.1.1
-Date: 2018-11-16
+Version: 2.2.0
+Date: 2018-11-29
 Author: Thomas Wieland
 Maintainer: Thomas Wieland <thomas.wieland.geo@googlemail.com>
 Description: Collection of models and analysis methods used in regional and urban economics and (quantitative) economic geography, e.g. measures of inequality, regional disparities and convergence, regional specialization as well as accessibility and spatial interaction models.
 License: GPL (>= 2)
 NeedsCompilation: no
-Packaged: 2018-11-16 15:16:49 UTC; Thomas
+Packaged: 2018-11-29 23:23:53 UTC; Thomas
 Repository: CRAN
-Date/Publication: 2018-11-16 15:40:03 UTC
+Date/Publication: 2018-11-29 23:50:03 UTC

@@ -41,8 +41,10 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
     pcol <- as.character(pcol)
   }
   
-  
   point_size <- (psize/max(psize))*psize.factor
+
+  locq_col <- data.frame(rownames(shift_growth), pcol, point_size)
+  locq_col_sorted <- locq_col[order(-point_size),]
 
   locq_growth <- matrix (ncol = 3, nrow = length(locqs))
   locq_growth[,1] <- locqs
@@ -51,7 +53,7 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
     locq_growth[,2] <- shift_growth[,8]*100
   }
   else if (y.axis == "rn") {
-    locq_growth[,2] <- ((shift_growth[,4]/shift_growth[,8])-1)*100
+    locq_growth[,2] <- ((shift_growth[,4]/shift_growth[,8])-1)
   }
   
   else {
@@ -97,7 +99,7 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
   abline (h = seg.y, v = seg.x)
   
   points(locq_growth_sorted[,1], locq_growth_sorted[,2], xlim = x_range, ylim = y_range, cex = locq_growth_sorted[,3],
-         pch = 21, col = as.character(pcol.border), bg = as.character(pcol))
+         pch = 21, col = as.character(pcol.border), bg = as.character(locq_col_sorted$pcol))
   
   
   if (leg == TRUE) {

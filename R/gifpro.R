@@ -72,7 +72,7 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij, time.base, tinterval = 1
   
   results <- list(peryear = carea_j_t, allover = carea_j)
   
-
+  if (!is.null(output)) {
 
   cat ("\n")
   cat ("GIFPRO", "\n")
@@ -94,6 +94,8 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij, time.base, tinterval = 1
   cat ("Calculation for", industries, "industries", "\n")
   cat ("\n")  
 
+  }
+  
   invisible(list(components = components, results = results))
   
 }

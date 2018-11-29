@@ -11,9 +11,10 @@ Curve fitting (similar to SPSS and Excel)
 
 \usage{
 curvefit(x, y, y.max = NULL, extrapol = NULL, 
-plot.curves = TRUE, pcol = "black", ptype = 19, psize = 1, 
-lin.col = "blue", pow.col = "green", exp.col = "orange", 
-logi.col = "red")
+plot.curves = TRUE, pcol = "black", ptype = 19, psize = 1,
+lin.col = "blue", pow.col = "green", exp.col = "orange", logi.col = "red",
+plot.title = "Curve fitting", plot.legend = TRUE,
+xlab = "x", ylab = "y", y.min = NULL, ..., output.results = TRUE)
 }
 
 \arguments{
@@ -53,6 +54,27 @@ If \code{plot.curves = TRUE}: Color of exponential function regression line
   \item{logi.col}{
 If \code{plot.curves = TRUE}: Color of logistic function regression line
 }
+  \item{plot.title}{
+If \code{plot.curves = TRUE}: Plot title
+}
+  \item{plot.legend}{
+If \code{plot.curves = TRUE}: Logical argument that indicates whether a legend is added to the plot or not
+}
+  \item{xlab}{
+If \code{plot.curves = TRUE}: X axis label
+}
+  \item{ylab}{
+If \code{plot.curves = TRUE}: Y axis label
+}
+  \item{y.min}{
+Optional: Y axis minimum
+}
+  \item{\dots}{
+Optional: other plot parameters
+}
+  \item{output.results}{
+Logical argument that indicates whether the model results are shown or not
+}
 }
 
 \details{
@@ -84,18 +106,26 @@ x <- runif(20, min = 0, max = 100)
 # some random data
 
 # linear
-y <- 3+(-0.112*x)
+y_resid <- runif(20, min = 0, max = 10)
+# random residuals
+y <- 3+(-0.112*x)+y_resid
 curvefit(x, y)
 
 # power
-y <- 3*(x^-0.112)
+y_resid <- runif(20, min = 0.1, max = 0.2)
+# random residuals
+y <- 3*(x^-0.112)*y_resid
 curvefit(x, y)
 
 # exponential
-y <- 3*exp(-0.112*x)
+y_resid <- runif(20, min = 0.1, max = 0.2)
+# random residuals
+y <- 3*exp(-0.112*x)*y_resid
 curvefit(x, y)
 
 # logistic
-y <- 100/(1+exp(3+(-0.112*x)))
+y_resid <- runif(20, min = 0.1, max = 0.2)
+# random residuals
+y <- 100/(1+exp(3+(-0.112*x)))*y_resid
 curvefit(x, y)
 }

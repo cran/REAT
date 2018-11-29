@@ -11,7 +11,6 @@ Calculating market areas using the probabilistic market area model by Huff
 huff(huffdataset, origins, locations, attrac, dist, gamma = 1, lambda = -2, 
 atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL,  
 localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, 
-output.shares = FALSE, output.totals = FALSE,
 check_df = TRUE)
 }
 
@@ -58,12 +57,6 @@ the ID variable of the origins in \code{localmarket_dataset}
   \item{localmarket}{
 the customer/purchasing power potential of the origins in \code{localmarket_dataset}
 }
-  \item{output.shares}{
-logical argument that indicates if the market shares are shown (default: \code{FALSE})
-}
-  \item{output.totals}{
-logical argument that indicates if the location totals are shown (default: \code{FALSE})
-}
   \item{check_df}{
 logical argument that indicates if the given dataset is checked for correct input, only for internal use, should not be deselected (default: \code{TRUE})
 }
@@ -77,7 +70,7 @@ This function computes the market shares from a given interaction matrix and giv
 
 \value{
 A \code{list} containing the following objects:
-\item{ijmatrix }{A data frame containing the Huff interaction matrix}
+\item{huffmat }{A data frame containing the Huff interaction matrix}
 \item{totals }{If total turnovers are estimated: a data frame containing the total values (turnovers) of each location}
 }
 
@@ -134,8 +127,7 @@ huff_shares$ijmatrix[huff_shares$ijmatrix$locations == "New Store",]
 
 
 huff_all <- huff(interactionmatrix, "communities", "locations", "S_j", "d_ij",
-localmarket_dataset = community_data, origin_id = "communities", localmarket = "C_i",
-output.totals = TRUE, output.shares = TRUE)
+localmarket_dataset = community_data, origin_id = "communities", localmarket = "C_i")
 
 huff_all
 

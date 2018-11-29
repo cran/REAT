@@ -1,9 +1,9 @@
 huff <-
 function (huffdataset, origins, locations, attrac, dist,    
-                         gamma = 1, lambda = -2, atype = "pow", dtype = "pow", 
-                         gamma2 = NULL, lambda2 = NULL,
-                         localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, 
-                         output.shares = FALSE, output.totals = FALSE, check_df = TRUE)
+          gamma = 1, lambda = -2, atype = "pow", dtype = "pow", 
+          gamma2 = NULL, lambda2 = NULL,
+          localmarket_dataset = NULL, origin_id = NULL, localmarket = NULL, 
+          check_df = TRUE)
 {   
   
   if (check_df == TRUE)
@@ -36,14 +36,14 @@ function (huffdataset, origins, locations, attrac, dist,
   else { 
     atype <- "pow"
     attrac_w <- huffworkfile[[attrac]]^gamma 
-    }
+  }
 
   if (dtype == "exp") { dist_w <- exp(lambda*huffworkfile[[dist]]) }
   else if (dtype == "logistic") { dist_w <- (1/(1+exp(lambda2+lambda*huffworkfile[[dist]]))) }
   else { 
     dtype <- "pow"
     dist_w <- huffworkfile[[dist]]^lambda 
-    }
+  }
 
   U_ij <- attrac_w * dist_w 
 
@@ -71,7 +71,6 @@ function (huffdataset, origins, locations, attrac, dist,
 
   if (!is.null(localmarket_dataset)) {
 
-    
     if (check_df == TRUE)
     {
       if (exists(as.character(substitute(localmarket_dataset)))) { 
@@ -88,19 +87,19 @@ function (huffdataset, origins, locations, attrac, dist,
     huffworkfile$E_ij <- as.numeric(huffworkfile$p_ij) * as.numeric(huffworkfile[[localmarket]])
 
     totals <- aggregate (huffworkfile$E_ij, by = list(huffworkfile[[locations]]), FUN = sum, na.rm = TRUE)
-
+    
     colnames (totals) <- c(colnames(huffworkfile[locations]), "T_j")
     
     totals$T_j_share <- totals$T_j/sum(totals$T_j, na.rm = TRUE)   
 
-    results <- list (ijmatrix = huffworkfile, totals = totals)
+    results <- list (huffmat = huffworkfile, totals = totals)
   }
-
+  
   else 
   {
     results <- list (ijmatrix = huffworkfile)
   }
- 
+  
 
   cat ("Huff Model", "\n")
   cat ("\n")
@@ -124,17 +123,16 @@ function (huffdataset, origins, locations, attrac, dist,
   
   
   if (!is.null(localmarket_dataset)) { 
-  cat ("Mean of total market areas =", mean(totals$T_j), "\n")  
+    cat ("Mean of total market areas =", mean(totals$T_j), "\n")  
     
-    }
-  
-  if (output.shares == TRUE) {
-    cat ("\n")
-    cat ("Interaction matrix", "\n")
-    print (as.data.frame(huffworkfile))
   }
-    
-  if ((!is.null(localmarket_dataset)) && output.totals == TRUE) {
+  
+  cat ("\n")
+  cat ("Interaction matrix", "\n")
+  print (as.data.frame(huffworkfile))
+  
+  
+  if (!is.null(localmarket_dataset)) {
     cat ("\n")
     cat ("Total market areas", "\n")
     print (as.data.frame(totals))
@@ -142,6 +140,5 @@ function (huffdataset, origins, locations, attrac, dist,
   
   
   invisible(results)
-
   
 }
