@@ -1,11 +1,10 @@
-hansen <-
-function (od_dataset, origins, destinations, attrac, dist, 
+hansen <- function (od_dataset, origins, destinations, attrac, dist, 
                     gamma = 1, lambda = -2, atype = "pow", dtype = "pow", 
                     gamma2 = NULL, lambda2 = NULL, dist_const = 0, dist_max = NULL,
                     extract_local = FALSE, accnorm = FALSE, check_df = TRUE,
-                    output.results = TRUE)
+                    print.results = TRUE)
 {
-
+  
   if (check_df == TRUE) 
   {
     if (exists(as.character(substitute(od_dataset)))) { 
@@ -88,7 +87,7 @@ function (od_dataset, origins, destinations, attrac, dist,
     if (dtype=="pow") { 
       if (dist_const == 0) { dist_const <- 1 }
       dist_w_c <- dist_const^lambda 
-      } 
+    } 
     if (dtype=="exp") { dist_w_c <- exp(lambda*dist_const) }
     if (dtype=="logistic") { dist_w_c <- 1/(1+exp(lambda2+lambda*dist_const)) }
     
@@ -114,9 +113,8 @@ function (od_dataset, origins, destinations, attrac, dist,
   
   cat ("Hansen Accessibility", "\n")
   cat ("\n")
-  cat ("Summary:", "\n")
-  cat (locations_count, "locations with mean attractivity =", mean(attractivity), "\n")
-  cat (origins_count, "origins with mean transport costs =", mean(distance), "\n")
+  cat ("J =", locations_count, "locations with mean attractivity =", mean(attractivity), "\n")
+  cat ("I =", origins_count, "origins with mean transport costs =", mean(distance), "\n")
   
   if (atype == "logistic") {
     cat (paste0("Attractivity weighting (", atype, ") with Gamma1 = ", gamma, " and Gamma2 = ", gamma2), "\n")  
@@ -132,7 +130,7 @@ function (od_dataset, origins, destinations, attrac, dist,
     cat (paste0("Distance weighting (", dtype, ") with Lambda = ", lambda), "\n")  
   }
   
-  if (output.results == TRUE)
+  if (print.results == TRUE)
   {
     cat ("\n")
     print(as.data.frame(results))

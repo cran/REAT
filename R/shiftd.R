@@ -1,12 +1,11 @@
-shiftd <-
-function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
+shiftd <- function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
                     industry.names = NULL, 
                     shift.method = "Dunn", 
                     gerfin.shifts = "mean",
-                    output.results = TRUE, 
+                    print.results = TRUE, 
                     plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                     plot.portfolio = FALSE, ...)
- 
+
 {
   
   if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
@@ -17,9 +16,9 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   if ((ncol(as.data.frame(e_ij2)) == 1) & (ncol(as.data.frame(e_i2)) == 1))
   {
     shift (e_ij1, e_ij2, e_i1, e_i2, industry.names = industry.names, 
-    shift.method = shift.method, output.results = output.results, 
-    plot.results = plot.results, plot.colours = plot.colours, plot.title = plot.title,
-    plot.portfolio = plot.portfolio, ...)
+           shift.method = shift.method, print.results = print.results, 
+           plot.results = plot.results, plot.colours = plot.colours, plot.title = plot.title,
+           plot.portfolio = plot.portfolio, ...)
     
     stop ("No dynamic shift-share analysis (e_ij2 and e_i2 consist of only one time period). Function shift() used.", call. = FALSE)
     
@@ -44,7 +43,6 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   e1 <- sum(e_i1)
   e2 <- sum(e_i2[,ncol(e_i2)])
 
-
   growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
   region_all <- cbind (e_ij1, e_ij2)
@@ -61,26 +59,26 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
     years.growth[i] <- paste0 (years[i], "-", years[i+1])
   }
   
-
+  
   i <- 0
 
   shift_test <- shift ((region_all[,1]), (region_all[,2]), (nation_all[,1]), (nation_all[,2]), 
-                       shift.method = shift.method, output.results = FALSE)
+                       shift.method = shift.method, print.results = FALSE)
 
   components.year <- matrix(ncol = no_years, nrow = nrow(shift_test$components)) 
 
   for (i in 1:no_years)
   {
     shift_year <- shift ((region_all[,i]), (region_all[,(i+1)]), (nation_all[,i]), (nation_all[,(i+1)]),
-           shift.method = shift.method, output.results = FALSE)
+                         shift.method = shift.method, print.results = FALSE)
 
     components.year[,i] <- shift_year$components[,1]
   }
   
-
+  
   colnames(components.year) <- years.growth
   rownames(components.year) <- rownames(shift_year$components)
-
+  
   
   if ((shift.method == "Gerfin") && (gerfin.shifts == "mean"))
   {
@@ -91,9 +89,9 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   }
   
   colnames(components) <- c("Components")
-
   
-  if (output.results == TRUE) { 
+  
+  if (print.results == TRUE) { 
 
     cat ("\n")
     cat ("Dynamic Shift-Share Analysis", "\n")
@@ -102,7 +100,7 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
     cat ("Shift-share components", "\n")
     
     print(as.data.frame(components))
-
+    
     cat ("\n")
     
     cat ("Calculation for", industries, "industries", "\n")
@@ -130,7 +128,6 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   
   if (plot.portfolio == TRUE) {
     
-
     portfolio (e_ij1, e_ij2, e_i1, e_i2, 
                industry.names = industry.names, ...)
   }

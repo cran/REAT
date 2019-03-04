@@ -1,7 +1,6 @@
-krugman.conc <-
-function (e_ij, e_uj) {
- 
-  regions <- length(e_ij)
+krugman.conc <- function (e_ij, e_uj) {
+
+  regions <- nrow(as.matrix(e_ij))
 
   s_ij <- vector()
   s_il <- vector()

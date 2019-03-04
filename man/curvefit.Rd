@@ -14,7 +14,7 @@ curvefit(x, y, y.max = NULL, extrapol = NULL,
 plot.curves = TRUE, pcol = "black", ptype = 19, psize = 1,
 lin.col = "blue", pow.col = "green", exp.col = "orange", logi.col = "red",
 plot.title = "Curve fitting", plot.legend = TRUE,
-xlab = "x", ylab = "y", y.min = NULL, ..., output.results = TRUE)
+xlab = "x", ylab = "y", y.min = NULL, ..., print.results = TRUE)
 }
 
 \arguments{
@@ -72,7 +72,7 @@ Optional: Y axis minimum
   \item{\dots}{
 Optional: other plot parameters
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates whether the model results are shown or not
 }
 }

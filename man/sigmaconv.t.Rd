@@ -17,7 +17,7 @@ sigma.plotRLine = FALSE, sigma.plotRLineCol = "blue",
 sigma.Ymin = 0, sigma.plotX = "Time", sigma.plotY = "Variation", 
 sigma.plotTitle = "Sigma convergence", sigma.bgCol = "gray95", sigma.bgrid = TRUE, 
 sigma.bgridCol = "white", sigma.bgridSize = 2, sigma.bgridType = "solid", 
-output.results = FALSE)
+print.results = FALSE)
 }
 
 \arguments{
@@ -87,7 +87,7 @@ If \code{sigma.plot = TRUE} and \code{sigma.bgrid = TRUE}: Size of the grid
   \item{sigma.bgridType}{
 If \code{sigma.plot = TRUE} and \code{sigma.bgrid = TRUE}: Type of the grid
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
 }
@@ -130,10 +130,10 @@ data(G.counties.gdp)
 
 # Sigma convergence 2010-2014:
 sigmaconv.t (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:68], 2014, 
-sigma.plot = TRUE, output.results = TRUE)
+sigma.plot = TRUE, print.results = TRUE)
 # Using the standard deviation with logged GDP per capita
 
 sigmaconv.t (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:68], 2014, 
-sigma.measure = "cv", sigma.log = FALSE, output.results = TRUE)
+sigma.measure = "cv", sigma.log = FALSE, print.results = TRUE)
 # Using the coefficient of variation (GDP per capita not logged)
 }

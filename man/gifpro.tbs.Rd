@@ -78,7 +78,7 @@ Bonny, H.-W./Kahnert, R. (2005): \dQuote{Zur Ermittlung des Gewerbeflaechenbedar
 
 Deutsches Institut fuer Urbanistik (ed.) (2010): \dQuote{Stadtentwicklungskonzept Gewerbe fuer die Landeshauptstadt Potsdam}. Berlin. \url{https://www.potsdam.de/sites/default/files/documents/STEK_Gewerbe_Langfassung_2010.pdf} (accessed October 13, 2017).
 
-Vallee, D./Witte, A./Brandt, T./Bischof, T. (2012): \dQuote{Bedarfsberechnung fuer die Darstellung von Allgemeinen Siedlungsbereichen (ASB) und Gewerbe- und Industrieansiedlungsbereichen (GIB) in Regionalplaenen}. Im Auftrag der Staatskanzlei des Landes Nordrhein-Westfalen. Abschlussbericht Oktober 2012. Aachen. \url{https://www.land.nrw/sites/default/files/asset/document/lep_nrw_flaechenbedarf_endbericht_endfassung_04122012.pdf} (accessed August 16, 2018).
+Vallee, D./Witte, A./Brandt, T./Bischof, T. (2012): \dQuote{Bedarfsberechnung fuer die Darstellung von Allgemeinen Siedlungsbereichen (ASB) und Gewerbe- und Industrieansiedlungsbereichen (GIB) in Regionalplaenen}. Im Auftrag der Staatskanzlei des Landes Nordrhein-Westfalen. Abschlussbericht Oktober 2012.
 }
 
 \author{
@@ -97,26 +97,11 @@ anteileGOE <- rep(100,15)
 nvquote <- rep (0.3, 15)
 vlquote <- rep (0.7, 15)
 
-gifpro.tbs (e_ij = Goettingen[2:16,2:11], a_i = anteileGOE, 
-sq_ij = nvquote, rq_ij = vlquote, tinterval = 12, 
-prog.func = rep("lin", nrow(Goettingen[2:16,2:11])),
-ai_ij = 150, time.base = 2008, output = "full",
-industry.names = Goettingen$WA_WZ2008[2:16],
-prog.plot = TRUE, plot.single = FALSE)
-
-gifpro.tbs (e_ij = Goettingen[2:16,2:11], 
+gifpro.tbs (e_ij = Goettingen[2:16,3:12], 
 a_i = anteileGOE, sq_ij = nvquote,
-rq_ij = vlquote, tinterval = 12, 
-prog.func = rep("lin", nrow(Goettingen[2:16,2:11])),
+rq_ij = vlquote, tinterval = 12, prog.func = 
+rep("lin", nrow(Goettingen[2:16,3:12])),
 ai_ij = 150, time.base = 2008, output = "full",
-industry.names = Goettingen$WA_WZ2008[2:16],
-prog.plot = TRUE, plot.single = TRUE)
-
-gifpro.tbs (e_ij = Goettingen[2:10,2:11], 
-a_i = rep(100, 9), sq_ij = rep(100, 9),
-rq_ij = rep(100, 9), tinterval = 12, 
-prog.func = rep("exp", nrow(Goettingen[2:10,2:11])),
-ai_ij = 150, time.base = 2008, output = "full",
-industry.names = Goettingen$WA_WZ2008[2:10],
+industry.names = Goettingen$WZ2008_Code[2:16],
 prog.plot = TRUE, plot.single = FALSE)
 }

@@ -22,7 +22,7 @@ function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL
                        beta.plot = beta.plot, beta.plotPSize = beta.plotPSize, beta.plotPCol = beta.plotPCol, beta.plotLine = beta.plotLine, beta.plotLineCol = beta.plotLineCol, 
                        beta.plotX = beta.plotX, beta.plotY = beta.plotY, beta.plotTitle = beta.plotTitle,
                        beta.bgCol = beta.bgCol, beta.bgrid = beta.bgrid, beta.bgridCol = beta.bgridCol, beta.bgridSize = beta.bgridSize, beta.bgridType = beta.bgridType,
-                       output.results = TRUE)
+                       print.results = TRUE)
     
   }
   
@@ -31,7 +31,7 @@ function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL
                        beta.plot = beta.plot, beta.plotPSize = beta.plotPSize, beta.plotPCol = beta.plotPCol, beta.plotLine = beta.plotLine, beta.plotLineCol = beta.plotLineCol, 
                        beta.plotX = beta.plotX, beta.plotY = beta.plotY, beta.plotTitle = beta.plotTitle,
                        beta.bgCol = beta.bgCol, beta.bgrid = beta.bgrid, beta.bgridCol = beta.bgridCol, beta.bgridSize = beta.bgridSize, beta.bgridType = beta.bgridType,
-                       output.results = TRUE)
+                       print.results = TRUE)
     
   }
   
@@ -49,12 +49,12 @@ function (gdp1, time1, gdp2, time2, conditions = NULL, conditions.formula = NULL
                  sigma.plot = sigma.plot, sigma.plotLSize = sigma.plotLSize, sigma.plotLineCol = sigma.plotLineCol, sigma.plotRLine = sigma.plotRLine, sigma.plotRLineCol = sigma.plotRLineCol, sigma.Ymin = sigma.Ymin,
                  sigma.plotX = sigma.plotX, sigma.plotY = sigma.plotY, sigma.plotTitle = sigma.plotTitle,
                  sigma.bgCol = sigma.bgCol, sigma.bgrid = sigma.bgrid, sigma.bgridCol = sigma.bgridCol, sigma.bgridSize = sigma.bgridSize, sigma.bgridType = sigma.bgridType,
-                 output.results = TRUE)
+                 print.results = TRUE)
   } 
   else {
     sigmaconv <- sigmaconv (gdp1, time1, gdp2, time2, 
                  sigma.measure = sigma.measure, sigma.log = sigma.log, sigma.weighting = sigma.weighting, sigma.issample = sigma.issample,
-                 output.results = TRUE)
+                 print.results = TRUE)
     
   }
   

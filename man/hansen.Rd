@@ -11,7 +11,7 @@ Calculating the Hansen accessibility for given origins and destinations
 hansen(od_dataset, origins, destinations, attrac, dist, gamma = 1, lambda = -2, 
 atype = "pow", dtype = "pow", gamma2 = NULL, lambda2 = NULL, dist_const = 0, 
 dist_max = NULL, extract_local = FALSE, accnorm = FALSE, check_df = TRUE,
-output.results = TRUE)
+print.results = TRUE)
 }
 
 \arguments{
@@ -63,7 +63,7 @@ logical argument that indicates if the Hansen accessibility should be standardiz
   \item{check_df}{
 logical argument that indicates if the given dataset is checked for correct input, only for internal use, should not be deselected (default: \code{TRUE})
 }
-  \item{output.results}{
+  \item{print.results}{
 logical argument that indicates if the results are shown (default: \code{TRUE})
 }
 }

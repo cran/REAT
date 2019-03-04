@@ -4,7 +4,7 @@ function (gdp1, time1, gdp2, time2,
                          sigma.plot = FALSE, sigma.plotLSize = 1, sigma.plotLineCol = "black", sigma.plotRLine = FALSE, sigma.plotRLineCol = "blue", sigma.Ymin = 0,
                          sigma.plotX = "Time", sigma.plotY = "Variation", sigma.plotTitle = "Sigma convergence",
                          sigma.bgCol = "gray95", sigma.bgrid = TRUE, sigma.bgridCol = "white", sigma.bgridSize = 2, sigma.bgridType = "solid",
-                         output.results = FALSE)
+                         print.results = FALSE)
 {
 
   gdp2_all <- cbind (gdp1, gdp2)
@@ -77,7 +77,7 @@ function (gdp1, time1, gdp2, time2,
     
   }
   
-  if (output.results == TRUE) {
+  if (print.results == TRUE) {
     cat ("Sigma convergence (Trend regression)", "\n")
     print (as.data.frame(scestimates))
     cat ("Model summary", "\n")

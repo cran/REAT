@@ -10,12 +10,15 @@ Calculating the Theil inequality index
 }
 
 \usage{
-theil(x, na.rm = TRUE)
+theil(x, weighting = NULL, na.rm = TRUE)
 }
 
 \arguments{
   \item{x}{
 a \code{numeric} vector
+}
+  \item{weighting}{
+a \code{numeric} weighting vector, e.g. population
 }
   \item{na.rm}{
 logical argument that indicates whether NA values should be excluded before computing results
@@ -31,6 +34,8 @@ A single numeric value of the \emph{Theil inequality index} (\eqn{0 < TI < 1}).
 }
 
 \references{
+Portnov, B.A./Felsenstein, D. (2010): \dQuote{On the suitability of income inequality measures for regional analysis: Some evidence from simulation analysis and bootstrapping tests}. In: \emph{Socio-Economic Planning Sciences}, \bold{44}, 4, p. 212-219.
+
 Stoermann, W. (2009): \dQuote{Regionaloekonomik: Theorie und Politik}. Muenchen : Oldenbourg.
 }
 

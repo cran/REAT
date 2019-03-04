@@ -15,7 +15,7 @@ beta.plotPSize = 1, beta.plotPCol = "black", beta.plotLine = FALSE,
 beta.plotLineCol = "red", beta.plotX = "Ln (initial)", beta.plotY = "Ln (growth)", 
 beta.plotTitle = "Beta convergence", beta.bgCol = "gray95", beta.bgrid = TRUE,
 beta.bgridCol = "white", beta.bgridSize = 2, beta.bgridType = "solid", 
-output.results = FALSE)
+print.results = FALSE)
 }
 
 \arguments{
@@ -73,7 +73,7 @@ If \code{beta.plot = TRUE} and \code{beta.bgrid = TRUE}: Size of the grid
   \item{beta.bgridType}{
 If \code{beta.plot = TRUE} and \code{beta.bgrid = TRUE}: Type of the grid
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
 
@@ -117,7 +117,7 @@ Thomas Wieland
 data (G.counties.gdp)
 
 betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011, 
-conditions = NULL, output.results = TRUE)
+conditions = NULL, print.results = TRUE)
 # Two years, no conditions (Absolute beta convergence)
 
 regionaldummies <- to.dummy(G.counties.gdp$regional)
@@ -127,27 +127,27 @@ G.counties.gdp$East <- regionaldummies[,1]
 # Adding dummy variables to data
 
 betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011, 
-conditions = G.counties.gdp[c(70,71)], output.results = TRUE)
+conditions = G.counties.gdp[c(70,71)], print.results = TRUE)
 # Two years, with condition (dummy for West/East)
 # (Absolute and conditional beta convergence)
 
 betaconverg1 <- betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011,
-conditions = G.counties.gdp[c(70,71)], output.results = TRUE)
+conditions = G.counties.gdp[c(70,71)], print.results = TRUE)
 # Store results in object
 betaconverg1$cbeta$estimates
 # Addressing estimates for the conditional beta model
 
 
 betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:66], 2012, 
-conditions = NULL, output.results = TRUE)
+conditions = NULL, print.results = TRUE)
 # Three years (2010-2012), no conditions (Absolute beta convergence)
 
 betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:66], 2012, 
-conditions = G.counties.gdp[c(70,71)], output.results = TRUE)
+conditions = G.counties.gdp[c(70,71)], print.results = TRUE)
 # Three years (2010-2012), with conditions (Absolute and conditional beta convergence)
 
 betaconverg2 <- betaconv.ols (G.counties.gdp$gdppc2010, 2010, G.counties.gdp[65:66],
-2012, conditions = G.counties.gdp[c(70,71)], output.results = TRUE)
+2012, conditions = G.counties.gdp[c(70,71)], print.results = TRUE)
 # Store results in object
 betaconverg2$cbeta$estimates
 # Addressing estimates for the conditional beta model

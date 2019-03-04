@@ -13,9 +13,10 @@ This dataset contains the employees in 15 economic sections (German Classificati
 \usage{data("Goettingen")}
 
 \format{
-  A data frame with 16 observations on the following 21 variables.
+  A data frame with 16 observations on the following 22 variables.
   \describe{
-    \item{\code{WA_WZ2008}}{a factor containing the industry (15 economic sections from the German Classification of Economic Activities WZ2008 + total employees), in German language}
+\item{\code{WZ2008_Code}}{a factor containing the code of the industry (15 economic sections from the German Classification of Economic Activities WZ2008 + total employees), in German language}
+    \item{\code{WZ2008_Name}}{a factor containing the name of the industry (15 economic sections from the German Classification of Economic Activities WZ2008 + total employees), in German language}
     \item{\code{Goettingen2008}}{industry employees in the city of Goettingen 2008}
     \item{\code{Goettingen2009}}{industry employees in the city of Goettingen 2009}
     \item{\code{Goettingen2010}}{industry employees in the city of Goettingen 2010}

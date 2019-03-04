@@ -10,7 +10,8 @@ This function calculates the growth from two input numeric vectors
 }
 
 \usage{
-growth(val1, val2, growth.type = "growth")
+growth(val1, val2, growth.type = "growth",
+output = "rate", log.rate = FALSE, factor.mean = "mean")
 }
 
 \arguments{
@@ -22,6 +23,15 @@ Second numeric vector (e.g. employment at time \eqn{t}) or data frame for times 
 }
   \item{growth.type}{
 Type of growth value that has to be calculated (absolute values or growth rate)
+}
+  \item{output}{
+Type of output in the case of several years: growth rate (default: \code{output = "rate"}) or annual values (\code{output = "annual"})
+}
+  \item{log.rate}{
+Logical argument that indicates whether growth rates are logged or not
+}
+  \item{factor.mean}{
+If growth factors are returned: arithmetic mean (\code{factor.mean = "mean"}) or geometric mean (\code{factor.mean = "geom"})
 }
 }
 

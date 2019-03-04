@@ -1,10 +1,9 @@
-betaconv.ols <-
-function (gdp1, time1, gdp2, time2, conditions = NULL, 
-                      beta.plot = FALSE, beta.plotPSize = 1, beta.plotPCol = "black", beta.plotLine = FALSE, beta.plotLineCol = "red", 
-                      beta.plotX = "Ln (initial)", beta.plotY = "Ln (growth)", beta.plotTitle = "Beta convergence",
-                      beta.bgCol = "gray95", beta.bgrid = TRUE, beta.bgridCol = "white", beta.bgridSize = 2, beta.bgridType = "solid",
-                      output.results = FALSE)
-  {
+betaconv.ols <- function (gdp1, time1, gdp2, time2, conditions = NULL, 
+                          beta.plot = FALSE, beta.plotPSize = 1, beta.plotPCol = "black", beta.plotLine = FALSE, beta.plotLineCol = "red", 
+                          beta.plotX = "Ln (initial)", beta.plotY = "Ln (growth)", beta.plotTitle = "Beta convergence",
+                          beta.bgCol = "gray95", beta.bgrid = TRUE, beta.bgridCol = "white", beta.bgridSize = 2, beta.bgridType = "solid",
+                          print.results = FALSE)
+{
   tinterval <- time2-time1
   
   N <- length(gdp1)
@@ -13,15 +12,41 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
   gdp2_all <- cbind (gdp1, gdp2)
   
   no_years <- ncol(gdp2_all)-1
+
+
+  if ((tinterval > 1) && (no_years > 1)) {
+
+    
+    growth_an <- growth(gdp1, gdp2, output = "annual")
+    growth_an_log <- log (growth_an)
+    ln_growth <- apply(growth_an_log, 1, mean2)
+
+    
+  } 
   
-  growth <- growth(gdp1, gdp2)
+  else if ((tinterval > 1) && (no_years == 1)) {
+
+    growth <- growth(gdp1, gdp2)  
+    
+    ln_growth <- (log (growth))/tinterval
+
+  }
   
-  ln_growth <- log (growth) 
+  else {
+ 
+    
+    growth <- growth(gdp1, gdp2)  
+    
+    ln_growth <- log (growth)
+ 
+  }
+  
   ln_initial <- log (gdp1)
 
-  regdata <- data.frame(gdp1, gdp2, growth, ln_initial, ln_growth)
+  regdata <- data.frame(ln_initial, ln_growth) #neu
 
   
+
   conv_model <- lm (ln_growth ~ ln_initial)
 
   alpha <- coef(summary(conv_model))[1, 1]
@@ -29,11 +54,12 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
   beta <- coef(summary(conv_model))[2, 1]
 
 
-  speed <- betaconv.speed(beta = beta, tinterval = tinterval, output.results = FALSE)
+  speed <- betaconv.speed(beta = beta, tinterval = tinterval, print.results = FALSE)
   lambda <- speed[1]
   halflife <- speed[2]
   
   
+
 
   bestimates <- matrix (nrow = 4, ncol = 4)
   rownames(bestimates) <- c("Alpha", "Beta", "Lambda", "Halflife")
@@ -75,13 +101,13 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
 
     conv_model_c <- lm (bcmodelc, data = cond)
 
-   
+
     alpha <- coef(summary(conv_model_c))[1, 1]
 
     beta <- coef(summary(conv_model_c))[2, 1]
 
 
-    speed <- betaconv.speed(beta = beta, tinterval = tinterval, output.results = FALSE)
+    speed <- betaconv.speed(beta = beta, tinterval = tinterval, print.results = FALSE)
     lambda <- speed[1]
     halflife <- speed[2]
     
@@ -121,7 +147,7 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
   }
   
 
-  if (output.results == TRUE) {
+  if (print.results == TRUE) {
     cat ("Absolute Beta Convergence", "\n")
     cat ((paste0("Model coefficients (Estimation method: OLS)", "\n")))
     print (as.data.frame(bestimates))
@@ -142,7 +168,7 @@ function (gdp1, time1, gdp2, time2, conditions = NULL,
     }
     
   }
-
+  
   if (beta.plot == TRUE) {
     
     plot(ln_initial, ln_growth, type = "p", xlab = beta.plotX, ylab = beta.plotY, main = beta.plotTitle)

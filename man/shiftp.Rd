@@ -11,7 +11,7 @@ Forecasting regional employment growth with the shift-share analysis (Gerfin mod
 
 \usage{
 shiftp(e_ij1, e_ij2, e_i1, e_i2, e_i3, time1, time2, time3,
-industry.names = NULL, output.results = TRUE, 
+industry.names = NULL, print.results = TRUE, 
 plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
 plot.portfolio = FALSE, ...)
 }
@@ -44,7 +44,7 @@ year of prognosis (single value)
   \item{industry.names}{
 Industry names (e.g. from the relevant statistical classification of economic activities)
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
   \item{plot.results}{

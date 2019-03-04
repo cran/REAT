@@ -2,7 +2,7 @@ sigmaconv <-
 function (gdp1, time1, gdp2, time2, 
                        sigma.measure = "sd", 
                        sigma.log = TRUE, sigma.weighting = NULL, sigma.norm = FALSE, sigma.issample = FALSE,
-                       output.results = FALSE)
+                       print.results = FALSE)
 {
   
   if (ncol(as.data.frame(gdp1)) > 1)
@@ -59,7 +59,7 @@ function (gdp1, time1, gdp2, time2,
   colnames(sigmaconv) <- c("Estimate", "F value", "df1", "df2", "Pr (>F)")
   
 
-  if (output.results == TRUE) {
+  if (print.results == TRUE) {
     cat ("Sigma convergence for two periods (ANOVA)", "\n")
     print (as.data.frame(sigmaconv))
   }

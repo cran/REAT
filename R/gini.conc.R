@@ -1,5 +1,4 @@
-gini.conc <-
-function (e_ij, e_j, 
+gini.conc <- function (e_ij, e_j, 
                        lc = FALSE, 
                        lcx = "% of objects", lcy = "% of regarded variable", 
                        lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
@@ -13,7 +12,7 @@ function (e_ij, e_j,
 
   e <- sum(e_j)
 
-  regions <- length(e_ij)
+  regions <- nrow(as.matrix(e_ij))
 
   C_j <- vector()
 

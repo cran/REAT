@@ -1,12 +1,11 @@
-shift <-
-function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
+shift <- function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
                    shift.method = "Dunn", 
-                   output.results = TRUE, 
+                   print.results = TRUE, 
                    plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                    plot.portfolio = FALSE, ...) 
-  {
+{
 
-
+  
   if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
   {
     stop (paste("Datasets for initial time period must consist of 1 column (= 1 time period)"), call. = FALSE)
@@ -35,57 +34,55 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
 
   growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
-
+  
   if (shift.method == "Dunn") {
     
 
     components <- matrix (nrow = 5, ncol = 1)
 
-    rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional shift", "Net total shift")
+    rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional share", "Net total shift")
     colnames(components) <- c("Components")
     
     components[1] <- growth (e_j1, e_j2, growth.type = "abs") 
 
     components[2] <- e_j1*e2/e1-e_j1
- 
+
     
     components[3] <- sum (e_ij1*(e_i2/e_i1))-(e_j1*(e2/e1))
- 
+
+    
     components[4] <- sum (e_ij1*(e_ij2/e_ij1-e_i2/e_i1))
  
-    components[5] <- e_j2-(e_j1*(e2/e1))
- 
     
+    components[5] <- e_j2-(e_j1*(e2/e1))
+
   }
   
-
+  
   if (shift.method == "Esteban") {
     
 
     components <- matrix (nrow = 5, ncol = 1)
 
-    rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional shift", "Allocation effect")
+    rownames(components) <- c("Growth (t1-t)", "National share", "Industrial mix", "Regional share", "Allocation effect")
     colnames(components) <- c("Components")
     
-    components[1] <- growth (e_j1, e_j2, growth.type = "abs") 
+    components[1] <- growth (e_j1, e_j2, growth.type = "abs") #e_j2-e_j1
 
     components[2] <- e_j1*e2/e1-e_j1
-  
-    
-    components[3] <- sum (e_ij1*(e_i2/e_i1))-(e_j1*(e2/e1))
-   
-    
-    he_e_ij1 <- e_j1*(e_i1/e1)
-  
-    
-    components[4] <- sum (he_e_ij1*(e_ij2/e_ij1-e_i2/e_i1))
  
     
-    components[5] <-  sum((e_ij1-he_e_ij1)*(e_ij2/e_ij1-e_i2/e_i1))
+    components[3] <- sum (e_ij1*(e_i2/e_i1))-(e_j1*(e2/e1))
   
     
+    he_e_ij1 <- e_j1*(e_i1/e1)
+
+    components[4] <- sum (he_e_ij1*(e_ij2/e_ij1-e_i2/e_i1))
+
+    
+    components[5] <-  sum((e_ij1-he_e_ij1)*(e_ij2/e_ij1-e_i2/e_i1))
+
   }
-  
   
   
   if (shift.method == "Gerfin")
@@ -93,10 +90,10 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
 
     components <- matrix (nrow = 3, ncol = 1)
 
-    rownames(components) <- c("Industrial mix", "Regional shift", "Net total shift")
+    rownames(components) <- c("Industrial mix", "Regional share", "Net total shift")
     colnames(components) <- c("Components")
     
-    growthin.prop <- growth (e_i1, e_i2, growth.type = "growth")  
+    growthin.prop <- growth (e_i1, e_i2, growth.type = "growth")  #(e_i2/e_i1)
     growthir.exp <- e_ij1*growthin.prop
     components[1] <- (sum(growthir.exp)/e_j1)/(e2/e1)
 
@@ -106,8 +103,8 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
 
   }
 
-    
-  if (output.results == TRUE) { 
+  
+  if (print.results == TRUE) { 
 
     
     cat ("\n")
@@ -115,7 +112,7 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
     cat ("Method:", shift.method, "\n")
     cat ("\n")
     cat ("Shift-share components", "\n")
-  
+    
     print(as.data.frame(components))
 
     cat ("\n")

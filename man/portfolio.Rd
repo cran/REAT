@@ -14,7 +14,7 @@ portfolio(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
 psize, psize.factor = 10, 
 pmx = "Regional growth", pmy = "National growth", 
 pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
-leg = FALSE, leg.fsize = 1, 
+leg = FALSE, leg.fsize = 1, leg.col = NULL,
 leg.x = -max_val, leg.y = -max_val*1.5,
 bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", 
 bgrid.size = 2, bgrid.type = "solid",
@@ -63,6 +63,9 @@ Logical argument that indicates if a legend has to be added to the plot
 }
   \item{leg.fsize}{
 If \code{leg = TRUE}: Font size in the plot legend
+}
+  \item{leg.col}{
+No. of columns in the legend
 }
   \item{leg.x}{
 If \code{leg = TRUE}: X coordinate of the legend

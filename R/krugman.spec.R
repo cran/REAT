@@ -1,7 +1,6 @@
-krugman.spec <-
-function (e_ij, e_il) {
+krugman.spec <- function (e_ij, e_il) {
 
-  industries <- length(e_ij)
+  industries <- nrow(as.matrix(e_ij))
 
   s_ij <- vector()
   s_il <- vector()

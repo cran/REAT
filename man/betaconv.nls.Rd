@@ -16,7 +16,7 @@ beta.plotPCol = "black", beta.plotLine = FALSE, beta.plotLineCol = "red",
 beta.plotX = "Ln (initial)", beta.plotY = "Ln (growth)", 
 beta.plotTitle = "Beta convergence", beta.bgCol = "gray95", beta.bgrid = TRUE, 
 beta.bgridCol = "white", beta.bgridSize = 2, beta.bgridType = "solid", 
-output.results = TRUE)
+print.results = TRUE)
 }
 
 \arguments{
@@ -80,7 +80,7 @@ If \code{beta.plot = TRUE} and \code{beta.bgrid = TRUE}: Size of the grid
   \item{beta.bgridType}{
 If \code{beta.plot = TRUE} and \code{beta.bgrid = TRUE}: Type of the grid
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
 
@@ -124,6 +124,6 @@ Thomas Wieland
 data (G.counties.gdp)
 # Loading GDP data for Germany (counties = Landkreise)
 betaconv.nls (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011, 
-conditions = NULL, output.results = TRUE)
+conditions = NULL, print.results = TRUE)
 # Two years, no conditions (Absolute beta convergence)
 }

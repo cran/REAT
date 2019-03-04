@@ -56,8 +56,9 @@ The function is based on the idea of a buffer analysis in GIS (Geographic Inform
 }
 
 \value{
-The function returns a \code{data.frame} containing 2 columns: The start point IDs (\code{from}) and the number of counted points in the given buffer distance (\code{count_location}).
-
+The function returns a \code{list} containing:
+\item{count_table }{A \code{data.frame} containing two columns: The start point IDs (\code{from}) and the number of counted points in the given buffer distance (\code{count_location})}
+\item{distmat }{A \code{data.frame} containing the corresponding distance matrix wiht \eqn{I x J} rows}
 }
 
 \references{

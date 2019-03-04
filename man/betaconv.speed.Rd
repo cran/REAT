@@ -10,7 +10,7 @@ This function calculates the beta convergence speed and half-life based on a giv
 }
 
 \usage{
-betaconv.speed(beta, tinterval, output.results = TRUE)
+betaconv.speed(beta, tinterval, print.results = TRUE)
 }
 
 
@@ -21,7 +21,7 @@ Beta value
   \item{tinterval}{
 Time interval (in time units, such as years)
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
 

@@ -11,7 +11,7 @@ Analyzing regional growth with the shift-share analysis
 
 \usage{
 shift(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
-shift.method = "Dunn", output.results = TRUE, plot.results = FALSE, 
+shift.method = "Dunn", print.results = TRUE, plot.results = FALSE, 
 plot.colours = NULL, plot.title = NULL, plot.portfolio = FALSE, ...)
 }
 
@@ -34,7 +34,7 @@ Industry names (e.g. from the relevant statistical classification of economic ac
   \item{shift.method}{
 Method of shift-share-analysis to be used ("Dunn", "Esteban", "Gerfin") (default: \code{shift.method = "Dunn"})
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
   \item{plot.results}{

@@ -1,8 +1,7 @@
-shifti <-
-function (e_ij1, e_ij2, e_i1, e_i2, 
+shifti <- function (e_ij1, e_ij2, e_i1, e_i2, 
                     industry.names = NULL, 
                     shift.method = "Dunn", 
-                    output.results = TRUE, 
+                    print.results = TRUE, 
                     plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                     plot.portfolio = FALSE, ...)
 
@@ -19,10 +18,9 @@ function (e_ij1, e_ij2, e_i1, e_i2,
   e1 <- sum(e_i1)
   e2 <- sum(e_i2)
 
-  
   growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
-  shift_all <- shift (e_ij1, e_ij2, e_i1, e_i2, shift.method = shift.method, output.results = FALSE)
+  shift_all <- shift (e_ij1, e_ij2, e_i1, e_i2, shift.method = shift.method, print.results = FALSE)
 
   components.industry <- matrix(ncol = industries, nrow = nrow(shift_all$components)) 
 
@@ -31,7 +29,7 @@ function (e_ij1, e_ij2, e_i1, e_i2,
   for (i in 1:industries)
   {
     shift_industry <- shift ((e_ij1[i]), (e_ij2[i]), (e_i1[i]), (e_i2[i]),
-                         shift.method = shift.method, output.results = FALSE)
+                             shift.method = shift.method, print.results = FALSE)
     
     components.industry[,i] <- shift_industry$components[,1]
   }
@@ -40,10 +38,9 @@ function (e_ij1, e_ij2, e_i1, e_i2,
   rownames(components.industry) <- rownames(shift_industry$components)
   
   components.industry <- components.industry[rownames(components.industry) != "Industrial mix",] 
-
-
   
-  if (output.results == TRUE) { 
+  
+  if (print.results == TRUE) { 
 
     cat ("\n")
     cat ("Shift-Share Analysis", "\n")
@@ -70,17 +67,17 @@ function (e_ij1, e_ij2, e_i1, e_i2,
       plot.title <- "Shift-share analysis"
     }
     
-    shiftplot <- barplot (components.industry, names.arg = NULL, col = plot.colours, legend = NULL, main = plot.title, beside = TRUE)
-    legend("topright", legend = rownames(components.industry), fill = plot.colours, cex = 0.5)
-    text(shiftplot, components.industry/2, labels = round(components.industry, 2), cex = 0.8)
-
+    dev.new()
+    
+    shiftplot <- barplot (components.industry, names.arg = NULL, col = plot.colours, legend = NULL, main = plot.title, beside = TRUE, cex.names = 0.6)
+    legend("topright", legend = rownames(components.industry), fill = plot.colours, cex = 0.7)
+    text(shiftplot, components.industry/2, labels = round(components.industry, 2), cex = 0.6)
+    
   }
   
   if (plot.portfolio == TRUE) {
     
-
-    portfolio (e_ij1, e_ij2, e_i1, e_i2, 
-               industry.names = industry.names, ...)
+    portfolio (e_ij1, e_ij2, e_i1, e_i2, industry.names = industry.names, ...)
   }
   
   

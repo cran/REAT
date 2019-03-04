@@ -1,5 +1,4 @@
-betaconv.speed <-
-function (beta, tinterval, output.results = TRUE) 
+betaconv.speed <- function (beta, tinterval, print.results = TRUE) 
 {
   if (beta < 0)
   {
@@ -19,7 +18,7 @@ function (beta, tinterval, output.results = TRUE)
   rownames(results) <- c("Lambda", "Half-Life")
   colnames(results) <- c("Estimates")
   
-  if (output.results == TRUE) {
+  if (print.results == TRUE) {
     cat ("Beta Convergence: Speed and Half-Life", "\n", "\n")
     print(as.data.frame(results))
   }

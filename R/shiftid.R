@@ -1,9 +1,8 @@
-shiftid <- 
-function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
+shiftid <- function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
                      industry.names = NULL, 
                      shift.method = "Dunn",
                      gerfin.shifts = "mean",
-                     output.results = TRUE, 
+                     print.results = TRUE, 
                      plot.results = FALSE, plot.colours = NULL, plot.title = NULL,
                      plot.portfolio = FALSE, ...)
 
@@ -18,13 +17,13 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   }
   
   e_j1 <- sum(e_ij1)
-  e_j2 <- sum(e_ij2)
+  e_j2 <- sum(e_ij2[,ncol(e_ij2)])
   e1 <- sum(e_i1)
-  e2 <- sum(e_i2)
+  e2 <- sum(e_i2[,ncol(e_i2)])
 
   growth <- shift.growth(e_ij1 = e_ij1, e_ij2 = e_ij2, e_i1 = e_i1, e_i2 = e_i2, industry.names = industry.names)
   
-  shift_all <- shiftd (e_ij1, e_ij2, e_i1, e_i2, time1, time2, shift.method = shift.method, output.results = FALSE)
+  shift_all <- shiftd (e_ij1, e_ij2, e_i1, e_i2, time1, time2, shift.method = shift.method, gerfin.shifts = gerfin.shifts, print.results = FALSE)
 
   components.industry <- matrix(ncol = industries, nrow = nrow(shift_all$components)) 
 
@@ -35,7 +34,7 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
     
     shift_industry <- shiftd ((e_ij1[i]), (e_ij2[i,]), (e_i1[i]), (e_i2[i,]), time1, time2,
                               shift.method = shift.method, gerfin.shifts = gerfin.shifts, 
-                              output.results = FALSE)
+                              print.results = FALSE)
     
     components.industry[,i] <- shift_industry$components[,1]
   }
@@ -47,10 +46,10 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
   components.industry <- components.industry[rownames(components.industry) != "Industrial mix",] 
   
   
-  if (output.results == TRUE) { 
+  if (print.results == TRUE) { 
 
     cat ("\n")
-    cat ("Shift-Share Analysis", "\n")
+    cat ("Dynamic Shift-Share Analysis", "\n")
     cat ("Method:", shift.method, "\n")
     cat ("\n")
     cat ("Shift-share components", "\n")
@@ -60,6 +59,8 @@ function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
     cat ("\n")
     
     cat ("Calculation for", industries, "industries", "\n")
+    cat ("Regional employment at time t: ", e_j1, ", at time t+1: ", e_j2, " (", growth(e_j1, e_j2, growth.type = "abs"), " / ", growth(e_j1, e_j2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("National employment at time t: ", e1, ", at time t+1: ", e2, " (", growth(e1, e2, growth.type = "abs"), " / ", growth(e1, e2, growth.type = "rate"), " %)", sep="", "\n")
     cat ("\n")  
   }
   

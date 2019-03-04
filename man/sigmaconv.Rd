@@ -12,7 +12,7 @@ This function provides the analysis of regional economic sigma convergence (decl
 \usage{
 sigmaconv(gdp1, time1, gdp2, time2, sigma.measure = "sd", 
 sigma.log = TRUE, sigma.weighting = NULL, sigma.norm = FALSE, 
-sigma.issample = FALSE, output.results = FALSE)
+sigma.issample = FALSE, print.results = FALSE)
 }
 
 \arguments{
@@ -43,7 +43,7 @@ Logical argument that indicates if a normalized coefficient of variation should 
   \item{sigma.issample}{
 logical argument that indicates if the dataset is a sample or the population (default: \code{is.sample = FALSE}, so the denominator of variance is \eqn{n}) 
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
 }
@@ -85,10 +85,10 @@ data(G.counties.gdp)
 # Loading GDP data for Germany (counties = Landkreise)
 
 sigmaconv (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011, 
-sigma.measure = "cv", output.results =  TRUE)
+sigma.measure = "cv", print.results =  TRUE)
 # Using the coefficient of variation
 
 sigmaconv (G.counties.gdp$gdppc2010, 2010, G.counties.gdp$gdppc2011, 2011, 
-sigma.log = TRUE, output.results =  TRUE)
+sigma.log = TRUE, print.results =  TRUE)
 # Using the standard deviation with logged GDP per capita
 }

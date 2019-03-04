@@ -12,7 +12,7 @@ Analyzing industry-specific regional growth with the dynamic shift-share analysi
 \usage{
 shiftid(e_ij1, e_ij2, e_i1, e_i2, time1, time2, 
 industry.names = NULL, shift.method = "Dunn", 
-gerfin.shifts = "mean", output.results = TRUE, 
+gerfin.shifts = "mean", print.results = TRUE, 
 plot.results = FALSE, plot.colours = NULL, plot.title = NULL, 
 plot.portfolio = FALSE, ...)
 }
@@ -45,7 +45,7 @@ Method of shift-share-analysis to be used ("Dunn", "Gerfin") (default: \code{shi
   \item{gerfin.shifts}{
 If \code{shift.method = "Gerfin"}: Logical argument that indicates if the shifts are calculated as sums or as means (default: \code{gerfin = "mean"})
 }
-  \item{output.results}{
+  \item{print.results}{
 Logical argument that indicates if the function shows the results or not
 }
   \item{plot.results}{

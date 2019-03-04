@@ -62,7 +62,7 @@ Bonny, H.-W./Kahnert, R. (2005): \dQuote{Zur Ermittlung des Gewerbeflaechenbedar
 
 Deutsches Institut fuer Urbanistik (ed.) (2010): \dQuote{Stadtentwicklungskonzept Gewerbe fuer die Landeshauptstadt Potsdam}. Berlin. \url{https://www.potsdam.de/sites/default/files/documents/STEK_Gewerbe_Langfassung_2010.pdf} (accessed October 13, 2017).
 
-Vallee, D./Witte, A./Brandt, T./Bischof, T. (2012): \dQuote{Bedarfsberechnung fuer die Darstellung von Allgemeinen Siedlungsbereichen (ASB) und Gewerbe- und Industrieansiedlungsbereichen (GIB) in Regionalplaenen}. Im Auftrag der Staatskanzlei des Landes Nordrhein-Westfalen. Abschlussbericht Oktober 2012. Aachen. \url{https://www.land.nrw/sites/default/files/asset/document/lep_nrw_flaechenbedarf_endbericht_endfassung_04122012.pdf} (accessed August 16, 2018).
+Vallee, D./Witte, A./Brandt, T./Bischof, T. (2012): \dQuote{Bedarfsberechnung fuer die Darstellung von Allgemeinen Siedlungsbereichen (ASB) und Gewerbe- und Industrieansiedlungsbereichen (GIB) in Regionalplaenen}. Im Auftrag der Staatskanzlei des Landes Nordrhein-Westfalen. Abschlussbericht Oktober 2012. Aachen.
 }
 
 \author{

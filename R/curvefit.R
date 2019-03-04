@@ -1,10 +1,9 @@
-curvefit <- 
-function (x, y, y.max = NULL,
-          extrapol = NULL,
-          plot.curves = TRUE, pcol = "black", ptype = 19, psize = 1, 
-          lin.col = "blue", pow.col = "green", exp.col = "orange", logi.col = "red",
-          plot.title = "Curve fitting", plot.legend = TRUE, xlab = "x", ylab = "y", y.min = NULL, ...,
-          output.results = TRUE)
+curvefit <- function (x, y, y.max = NULL,
+                      extrapol = NULL,
+                      plot.curves = TRUE, pcol = "black", ptype = 19, psize = 1, 
+                      lin.col = "blue", pow.col = "green", exp.col = "orange", logi.col = "red",
+                      plot.title = "Curve fitting", plot.legend = TRUE, xlab = "x", ylab = "y", y.min = NULL, ...,
+                      print.results = TRUE)
 {
   
   x_old <- x
@@ -200,7 +199,7 @@ function (x, y, y.max = NULL,
   rownames(models_comp) <- c("Linear", "Power", "Exponential", "Logistic")
   
 
-  if (output.results == TRUE)
+  if (print.results == TRUE)
   {  
     cat("Curve fitting", "\n")
     cat("\n")

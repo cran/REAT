@@ -1,5 +1,4 @@
-gini.spec <-
-function (e_ij, e_i,
+gini.spec <- function (e_ij, e_i,
                        lc = FALSE, 
                        lcx = "% of objects", lcy = "% of regarded variable", 
                        lctitle = "Lorenz curve", le.col = "blue", lc.col = "black",
@@ -13,7 +12,7 @@ function (e_ij, e_i,
 
   e <- sum(e_i)
 
-  industries <- length(e_ij)
+  industries <- nrow(as.matrix(e_ij))
 
   R_i <- vector()
 

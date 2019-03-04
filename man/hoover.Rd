@@ -4,19 +4,27 @@
 \title{
 Hoover Concentration Index
 }
+
 \description{
 Calculating the Hoover Concentration Index with respect to regional income (e.g. GDP) and population
 }
+
 \usage{
-hoover(x, weighting = NULL, na.rm = TRUE)
+hoover(x, ref = NULL, weighting = NULL, output = "HC", na.rm = TRUE)
 }
 
 \arguments{
   \item{x}{
 A \code{numeric} vector (dataset of regional income, e.g. GDP)
 }
+  \item{ref}{
+A \code{numeric} vector containing the reference distribution for the Hoover Index, e.g. population. If \code{reg = NULL}, the reference distribution is set to \eqn{1/n}
+}
   \item{weighting}{
-A \code{numeric} weighting vector (dataset of regional population). If \code{weighting = NULL}, the shares of income are compared with the shares of regions (\eqn{1/n})
+A \code{numeric} containing the weightings for the Hoover Index, e.g. population
+}
+  \item{output}{
+Default option is the output of the Hoover Index. If \code{output = "data"}, the corresponding data table is returned instead
 }
   \item{na.rm}{
 logical argument that indicates whether NA values should be excluded before computing results
@@ -35,6 +43,8 @@ A single numeric value of the \emph{Hoover Concentration Index} (\eqn{0 < CI < 1
 Bahrenberg, G./Giese, E./Mevenkamp, N./Nipper, J. (2010): \dQuote{Statistische Methoden in der Geographie. Band 1: Univariate und bivariate Statistik}. Stuttgart: Borntraeger.
 
 Huang, Y./Leung, Y. (2009): \dQuote{Measuring Regional Inequality: A Comparison of Coefficient of Variation and Hoover Concentration Index}. In: In: \emph{The Open Geography Journal}, \bold{2}, p. 25-34.
+
+Portnov, B.A./Felsenstein, D. (2010): \dQuote{On the suitability of income inequality measures for regional analysis: Some evidence from simulation analysis and bootstrapping tests}. In: \emph{Socio-Economic Planning Sciences}, \bold{44}, 4, p. 212-219.
 }
 
 \author{
@@ -42,7 +52,7 @@ Thomas Wieland
 }
 
 \seealso{
-\code{\link{cv}}, \code{\link{gini}}, \code{\link{herf}}
+\code{\link{cv}}, \code{\link{gini}}, \code{\link{herf}}, \code{\link{theil}}, \code{\link{atkinson}}, \code{\link{coulter}}, \code{\link{disp}} 
 }
 
 \examples{

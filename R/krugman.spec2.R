@@ -1,10 +1,9 @@
-krugman.spec2 <-
-function (e_ij, e_il) {
-
+krugman.spec2 <- function (e_ij, e_il) {
+  
   compreg <- length(e_il)
   
-  industries <- nrow(e_il)
-
+  industries <- nrow(as.matrix(e_il))
+  
   s_ij <- vector()
   s_il <- vector()
   
@@ -21,7 +20,7 @@ function (e_ij, e_il) {
   
   s_il <- matrix(nrow = compreg, ncol = industries)
   e_l <- vector()
-
+  
   for (j in 1:compreg)
   {
     
@@ -41,5 +40,5 @@ function (e_ij, e_il) {
   K_j <- sum(s_ij_minus_mean)
   
   return(K_j)
- 
+  
 }
