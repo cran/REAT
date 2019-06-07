@@ -10,7 +10,8 @@ This function calculates industry-specific growth rates which are part of the sh
 }
 
 \usage{
-shift.growth(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL)
+shift.growth(e_ij1, e_ij2, e_i1, e_i2, time.periods = NULL, 
+industry.names = NULL)
 }
 
 
@@ -26,6 +27,9 @@ a numeric vector with \eqn{i} values containing the total employment in \eqn{i} 
 }
   \item{e_i2}{
 a numeric vector with \eqn{i} values containing the total employment in \eqn{i} industries at time 2
+}
+  \item{time.periods}{
+No. of regarded time periods (for average growth rates)
 }
   \item{industry.names}{
 Industry names (e.g. from the relevant statistical classification of economic activities)

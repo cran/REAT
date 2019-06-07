@@ -24,7 +24,7 @@ howard.xcl2 <- function (k, industry, region, print.results = TRUE) {
   
   if (print.results == TRUE) {
     
-    cat("Howard-Newman-Tarp Cluster Index", "\n")
+    cat("Howard-Newman-Tarp Excess Colocation Index", "\n")
     cat(paste0("K = ", nrow(as.matrix(k)), " firms, I = ", nlevels(as.factor(industry)), " industries, J = ", nlevels(as.factor(region)), " regions"), "\n")
     cat("\n")
     

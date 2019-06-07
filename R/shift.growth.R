@@ -1,5 +1,5 @@
 shift.growth <-
-function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL) 
+function (e_ij1, e_ij2, e_i1, e_i2, time.periods = NULL, industry.names = NULL) 
 {
   
   if ((ncol(as.data.frame(e_ij1)) > 1) | (ncol(as.data.frame(e_i1)) > 1))
@@ -18,11 +18,11 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL)
   e1 <- sum(e_i1)
   e2 <- sum(e_i2)
 
-  growthir.abs <- growth (e_ij1, e_ij2, growth.type = "abs") 
-  growthin.abs <- growth (e_i1, e_i2, growth.type = "abs") 
+  growthir.abs <- growth (e_ij1, e_ij2, growth.type = "abs") # e_ij2-e_ij1
+  growthin.abs <- growth (e_i1, e_i2, growth.type = "abs") # e_i2-e_i1
 
-  growthir.rel <- growth (e_ij1, e_ij2, growth.type = "rate")
-  growthin.rel <- growth (e_i1, e_i2, growth.type = "rate")
+  growthir.rel <- growth (e_ij1, e_ij2, growth.type = "rate", time.periods = time.periods)
+  growthin.rel <- growth (e_i1, e_i2, growth.type = "rate", time.periods = time.periods)
 
   growth <- matrix (ncol = 8, nrow = industries)
   

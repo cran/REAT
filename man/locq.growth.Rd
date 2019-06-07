@@ -12,10 +12,10 @@ Portfolio matrix plot comparing two numeric vectors (here: specialization and gr
 \usage{
 locq.growth(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
 y.axis = "r", 
-psize, psize.factor = 10, 
+psize, psize.factor = 10, time.periods = NULL,
 pmx = "Regional specialization", pmy = "Regional growth", 
 pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
-leg = FALSE, leg.fsize = 1, 
+leg = FALSE, leg.fsize = 1, leg.col = NULL,
 leg.x = 0, leg.y = y_min*1.5,
 bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", 
 bgrid.size = 2, bgrid.type = "solid",
@@ -47,6 +47,9 @@ Point size in the portfolio matrix plot (mostly the absolute values of employmen
   \item{psize.factor}{
 Enlargement factor for the points in the plot
 }
+\item{time.periods}{
+  No. of regarded time periods (for average growth rates)
+}
   \item{pmx}{
 Name of the X axis in the plot
 }
@@ -67,6 +70,9 @@ Logical argument that indicates if a legend has to be added to the plot
 }
   \item{leg.fsize}{
 If \code{leg = TRUE}: Font size in the plot legend
+}
+  \item{leg.col}{
+No. of columns in the plot legend
 }
   \item{leg.x}{
 If \code{leg = TRUE}: X coordinate of the legend

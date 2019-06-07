@@ -51,10 +51,10 @@ Thomas Wieland
 \examples{
 \dontrun{
 # example data from Farhauer/Kroell (2014):
-data (FK2014_EGK)
+data (FK2014_EGC)
 
-howard.xcl2 (FK2014_EGK$Betrieb, FK2014_EGK$Branche, 
-FK2014_EGK$Region)
+howard.xcl2 (FK2014_EGC$firm, FK2014_EGC$industry, 
+FK2014_EGC$region)
 # this may take a while!
 }
 }

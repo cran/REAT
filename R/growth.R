@@ -1,4 +1,4 @@
-growth <- function (val1, val2, growth.type = "growth", output = "rate", log.rate = FALSE, factor.mean = "mean") {
+growth <- function (val1, val2, growth.type = "growth", output = "rate", rate.perc = FALSE, log.rate = FALSE, factor.mean = "mean", time.periods = NULL) {
   
   if (nrow(as.matrix(val2)) != nrow(as.matrix(val1))) {
     stop (paste("Datasets", as.character(substitute(val1)), "and", 
@@ -6,14 +6,15 @@ growth <- function (val1, val2, growth.type = "growth", output = "rate", log.rat
   }
   
   if ((ncol(as.data.frame(val2)) > 1)) { 
-    
+
     val_all <- cbind (val1, val2)
-    
+
     no_years <- ncol(val2)
-    
+
     i <- 0
-    
+
     growth_annual <- matrix(ncol = no_years, nrow = nrow(val_all))
+
     
     if (growth.type == "abs")
     {
@@ -52,6 +53,10 @@ growth <- function (val1, val2, growth.type = "growth", output = "rate", log.rat
     }
     else {
       growth <- val2/val1
+
+      if (!is.null(time.periods)) {
+        growth <- growth/time.periods
+      }
     }
     
   }
@@ -59,9 +64,16 @@ growth <- function (val1, val2, growth.type = "growth", output = "rate", log.rat
   if (growth.type == "rate")
   {
     growth <- growth-1
+    
+    if (!is.null(time.periods)) {
+      growth <- growth/time.periods
+    }
+
+    if (rate.perc == TRUE) {
+      growth <- growth*100
+    }
   }
   
   return(growth)  
-  
   
 }

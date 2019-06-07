@@ -1,5 +1,5 @@
 portfolio <- function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
-                       psize, psize.factor = 10, 
+                       psize, psize.factor = 10, time.periods = NULL,
                        pmx = "Regional growth", pmy = "National growth", 
                        pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
                        leg = FALSE, leg.fsize = 1, leg.col = NULL,
@@ -33,12 +33,13 @@ portfolio <- function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
   
   shiftgrowth <- shift.growth (e_ij1_workfile[,2], e_ij2_workfile[,2:(ncol(as.matrix(e_ij2_workfile))-1)],
                                e_i1_workfile[,2], e_i2_workfile[,2:(ncol(as.matrix(e_i2_workfile))-1)],
-                               industry.names = e_ij1_workfile[,1])
+                               industry.names = e_ij1_workfile[,1], time.periods = time.periods)
   
   max_val <- (max((shiftgrowth[,4]*100), (shiftgrowth[,8]*100)))*1.2
 
   point_size <- (e_ij1_workfile$psize/max(e_ij1_workfile$psize))*psize.factor
 
+  
   max_val_inc <- 0
   
   dev.new(width = 1000, height = 1000, unit = "px")

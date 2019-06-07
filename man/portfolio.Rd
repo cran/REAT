@@ -11,7 +11,7 @@ Portfolio matrix plot comparing two numeric vectors
 
 \usage{
 portfolio(e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL, 
-psize, psize.factor = 10, 
+psize, psize.factor = 10, time.periods = NULL,
 pmx = "Regional growth", pmy = "National growth", 
 pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
 leg = FALSE, leg.fsize = 1, leg.col = NULL,
@@ -42,6 +42,9 @@ Point size in the portfolio matrix plot (mostly the absolute values of employmen
 }
   \item{psize.factor}{
 Enlargement factor for the points in the plot
+}
+  \item{time.periods}{
+No. of regarded time periods (for average growth rates)
 }
   \item{pmx}{
 Name of the X axis in the plot

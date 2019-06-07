@@ -1,19 +1,19 @@
 locq.growth <-
 function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
-                         y.axis = "r",
-                         psize, psize.factor = 10, 
-                         pmx = "Regional specialization", pmy = "Regional growth", 
-                         pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
-                         leg = FALSE, leg.fsize = 1, 
-                         leg.x = 0, leg.y = y_min*1.5,
-                         bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", bgrid.size = 2, bgrid.type = "solid",
-                         seg.x = 1, seg.y = 0) {
+          y.axis = "r",
+          psize, psize.factor = 10, time.periods = NULL,
+          pmx = "Regional specialization", pmy = "Regional growth", 
+          pmtitle = "Portfolio matrix", pcol = NULL, pcol.border = NULL,
+          leg = FALSE, leg.fsize = 1, leg.col = NULL,
+          leg.x = 0, leg.y = y_min*1.5,
+          bg.col = "gray95", bgrid = TRUE, bgrid.col = "white", bgrid.size = 2, bgrid.type = "solid",
+          seg.x = 1, seg.y = 0) {
   
   if (is.null(industry.names)) {
     industry.names <- as.character(1:length(e_ij1))
   }
   
-  shift_growth <- shift.growth (e_ij1, e_ij2, e_i1, e_i2, industry.names = industry.names)
+  shift_growth <- shift.growth (e_ij1, e_ij2, e_i1, e_i2, industry.names = industry.names, time.periods = time.periods)
 
 
   e_ij <- cbind(e_ij1, e_ij2)
@@ -107,7 +107,12 @@ function (e_ij1, e_ij2, e_i1, e_i2, industry.names = NULL,
     par(mar=c(8.1, 5.6, 4.1, 5.6), xpd=TRUE) 
 
 
-    legend(leg.x, leg.y, legend = industry.names, fill = as.character(pcol), cex = leg.fsize, ncol = 2, bg = "white")
+    
+    if (is.null(leg.col)) {
+      leg.col <- 1+(ceiling(sqrt(nrow(as.matrix(e_ij1)))))
+    }
+    
+    legend(leg.x, leg.y, legend = industry.names, fill = as.character(pcol), cex = leg.fsize, ncol = leg.col, bg = "white")
 
     par(mar=c(5.1, 4.1, 4.1, 2.1)) 
   }

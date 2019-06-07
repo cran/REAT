@@ -57,8 +57,9 @@ Thomas Wieland
 
 \examples{
 # Example from Farhauer/Kroell (2014):
-data(FK2014_EGK)
-ellison.c2(FK2014_EGK$Beschaeftigte, FK2014_EGK$Branche, 
-FK2014_EGK$Region, FK2014_EGK$BeschRegion)
+data(FK2014_EGC)
+
+ellison.c2(FK2014_EGC$emp_firm, FK2014_EGC$industry, 
+FK2014_EGC$region, FK2014_EGC$emp_region)
 # this may take a while
 }

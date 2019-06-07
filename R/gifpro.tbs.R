@@ -1,7 +1,7 @@
 gifpro.tbs <-
 function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij, 
           time.base, tinterval = 1, prog.func = rep("lin", nrow(e_ij)), 
-          prog.plot = TRUE, plot.single = FALSE,
+          prog.plot = TRUE, plot.single = FALSE, multiplot.col = NULL, multiplot.row = NULL,
           industry.names = NULL, emp.only = FALSE, output = "short") {
   
   industries <- length(e_ij)
@@ -35,11 +35,23 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij,
     par_adj <- par("adj")
     par_cexmain <- par("cex.main")
     
-    ind_rows <- ceiling(sqrt(industries_no))
-    ind_cols <- ceiling(sqrt(industries_no))+1
+    if (is.null(multiplot.row)) {
+      ind_rows <- ceiling(sqrt(industries_no))+1
+    }
+    else {
+      ind_rows <- multiplot.row
+    }
     
-    par(mfrow=c(ind_rows,ind_cols), xpd = TRUE)
-    par(mar=c(1,1,1,1))
+    if (is.null(multiplot.col)) {
+      ind_cols <- ceiling(sqrt(industries_no))
+    }
+    else {
+      ind_cols <- multiplot.col
+    }
+    
+
+    par (mfrow = c(ind_rows,ind_cols), xpd = TRUE)
+    par (mar = c(1,1,1,1))
     
     plot.legend <- FALSE
     
@@ -54,14 +66,14 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij,
     industry_curvefit <- curvefit (x = time.years_emp, y = as.numeric(unlist(e_ij[i,])), 
                                    extrapol = tinterval, plot.curves = prog.plot, plot.title = "",
                                    xlab = "Time", ylab = "Employment", y.min = NULL, plot.legend = plot.legend, xaxt = "n", yaxt = "n",
-                                   output.results = FALSE)
+                                   print.results = FALSE)
     
     if (prog.plot == TRUE) {
-      axis(1, at = 1:length(x_time), labels = x_time)
+      axis (1, at = 1:length(x_time), labels = x_time)
       abline (v = time.years_prog[1])
 
-      par(adj = 0)
-      par(cex.main = 1)
+      par (adj = 0)
+      par (cex.main = 1.5) 
       
       title(industry.names[i])
     }
@@ -129,7 +141,7 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij,
   results_allover[1,] <- colSums(results_peryear)
   results_allover[2,] <- results_allover[1,]/tinterval 
   rownames(results_allover) <- c("Sum", "Average")
-  colnames(results_allover) <- c("Employment", "CommercialArea")
+  colnames(results_allover) <- c("Employment", "Commercial area")
   
   colnames(resettlement) <- time.years_prog
   rownames(resettlement) <- industry.names
@@ -168,7 +180,6 @@ function (e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij,
     cat ("\n")  
     
   }
-  
   
   invisible (list (components = components, results = results))
   

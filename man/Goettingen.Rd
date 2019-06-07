@@ -49,7 +49,7 @@ Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen
 \references{
 Bundesagentur fuer Arbeit (2018): \dQuote{Beschaeftigungsstatistik, Beschaeftigte nach Wirtschaftszweigen (WZ 2008) (Zeitreihe Quartalszahlen) in Deutschland}. \url{http://statistik.arbeitsagentur.de/Navigation/Statistik/Statistik-nach-Themen/Beschaeftigung/Beschaeftigung-Nav.html} (accessed October 10, 2018).
 
-Federal Statistical Office Germany (2008): \dQuote{Classification of Economic Activities, Edition 2008 (WZ 2008)}. \url{https://www.destatis.de/DE/Methoden/Klassifikationen/GueterWirtschaftklassifikationen/klassifikationWZ08englisch.xls} (accessed October 10, 2018).
+Federal Statistical Office Germany (2008): \dQuote{Classification of Economic Activities, Edition 2008 (WZ 2008)}. \url{https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?variant=wz2008&lang=EN} (accessed June 07, 2019).
 
 Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen: Beschaeftigte nach Wirtschaftsbereichen und Wirtschaftsabschnitten 1980 bis 2017. Table: IS 071.20}. \url{http://www.goesis.goettingen.de/pdf/071_20.pdf} (accessed October 8, 2018).
 }

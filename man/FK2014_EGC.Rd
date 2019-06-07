@@ -1,5 +1,5 @@
-\name{FK2014_EGK}
-\alias{FK2014_EGK}
+\name{FK2014_EGC}
+\alias{FK2014_EGC}
 \docType{data}
 
 \title{
@@ -10,15 +10,15 @@ Fictional sample data of 42 firms
 Dataset with 42 firms from 4 industries in 3 regions (fictional sample data from Farhauer/Kroell 2014)
 }
 
-\usage{data("FK2014_EGK")}
+\usage{data("FK2014_EGC")}
 \format{
   A data frame with 42 observations on the following 5 variables.
   \describe{
-    \item{\code{Region}}{unique ID of the region}
-    \item{\code{Branche}}{name of the industry (German language)}
-    \item{\code{Betrieb}}{firm ID}
-    \item{\code{Beschaeftigte}}{each firm's no. of employees}
-    \item{\code{BeschRegion}}{total employment of the region}
+    \item{\code{region}}{unique ID of the region}
+    \item{\code{industry}}{name of the industry (German language)}
+    \item{\code{firm}}{firm ID}
+    \item{\code{emp_firm}}{each firm's no. of employees}
+    \item{\code{emp_region}}{total employment of the region}
   }
 }
 
@@ -32,7 +32,8 @@ Farhauer, O./Kroell, A. (2014): \dQuote{Standorttheorien: Regional- und Stadtoek
 
 \examples{
 # Example from Farhauer/Kroell (2014):
-data(FK2014_EGK)
-ellison.c(FK2014_EGK$Beschaeftigte, FK2014_EGK$Branche, 
-FK2014_EGK$Region, FK2014_EGK$BeschRegion)
+data(FK2014_EGC)
+
+ellison.c(FK2014_EGC$emp_firm, FK2014_EGC$industry, 
+FK2014_EGC$region, FK2014_EGC$emp_region)
 }

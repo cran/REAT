@@ -104,8 +104,8 @@ shiftd <- function (e_ij1, e_ij2, e_i1, e_i2, time1, time2,
     cat ("\n")
     
     cat ("Calculation for", industries, "industries", "\n")
-    cat ("Regional employment at time t: ", e_j1, ", at time t+1: ", e_j2, " (", growth(e_j1, e_j2, growth.type = "abs"), " / ", growth(e_j1, e_j2, growth.type = "rate"), " %)", sep="", "\n")
-    cat ("National employment at time t: ", e1, ", at time t+1: ", e2, " (", growth(e1, e2, growth.type = "abs"), " / ", growth(e1, e2, growth.type = "rate"), " %)", sep="", "\n")
+    cat ("Regional employment at time t: ", e_j1, ", at time t+1: ", e_j2, " (", growth(e_j1, e_j2, growth.type = "abs"), " / ", growth(e_j1, e_j2, growth.type = "rate", rate.perc = TRUE), " %)", sep="", "\n")
+    cat ("National employment at time t: ", e1, ", at time t+1: ", e2, " (", growth(e1, e2, growth.type = "abs"), " / ", growth(e1, e2, growth.type = "rate", rate.perc = TRUE), " %)", sep="", "\n")
     cat ("\n")  
   }
   

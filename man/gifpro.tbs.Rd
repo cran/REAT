@@ -13,6 +13,7 @@ This function contains the TBS-GIFPRO model for commercial area prognosis (TBS-G
 gifpro.tbs(e_ij, a_i, sq_ij, rq_ij, ru_ij = NULL, ai_ij, 
 time.base, tinterval = 1, prog.func = rep("lin", nrow(e_ij)), 
 prog.plot = TRUE, plot.single = FALSE,
+multiplot.col = NULL, multiplot.row = NULL,
 industry.names = NULL, emp.only = FALSE, output = "short")
 }
 
@@ -49,6 +50,12 @@ Logical argument that indicates if the employment prognoses have to be plotted
 }
   \item{plot.single}{
 If \code{prog.plot = TRUE}: Logical argument that indicates if the plots are stored as single graphic devices or integrated in one plot
+}
+  \item{multiplot.col}{
+No. of columns in plot
+}
+  \item{multiplot.row}{
+No. of rows in plot
 }
   \item{industry.names}{
 a vector containing the industry names (e.g. from the relevant statistical classification of economic activities)

@@ -11,7 +11,8 @@ This function calculates the growth from two input numeric vectors
 
 \usage{
 growth(val1, val2, growth.type = "growth",
-output = "rate", log.rate = FALSE, factor.mean = "mean")
+output = "rate", rate.perc = FALSE, log.rate = FALSE, 
+factor.mean = "mean", time.periods = NULL)
 }
 
 \arguments{
@@ -27,11 +28,17 @@ Type of growth value that has to be calculated (absolute values or growth rate)
   \item{output}{
 Type of output in the case of several years: growth rate (default: \code{output = "rate"}) or annual values (\code{output = "annual"})
 }
+  \item{rate.perc}{
+Logical argument that indicates whether growth rates are expressed in percent or not
+}
   \item{log.rate}{
 Logical argument that indicates whether growth rates are logged or not
 }
   \item{factor.mean}{
 If growth factors are returned: arithmetic mean (\code{factor.mean = "mean"}) or geometric mean (\code{factor.mean = "geom"})
+}
+  \item{time.periods}{
+No. of regarded time periods (for average growth rates)
 }
 }
 
