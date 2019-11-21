@@ -1,0 +1,17 @@
+ citHeader("To cite the 'REAT' package in publications use:")
+ 
+year <- sub("-.*", "", meta$Date)
+note <- sprintf("R package version %s", meta$Version)
+ 
+  citEntry(
+     entry = "Article",
+     title = "{REAT}: A {R}egional {E}conomic {A}nalysis {T}oolbox for {R}",
+     author = as.person("Thomas Wieland [aut]"),
+     year = "2019",
+     journal = "REGION",
+     volume = "6",
+     number = "3",
+     pages = "R1--R57",
+     url = "https://doi.org/10.18335/region.v6i3.267",
+     textVersion = "Wieland, T. (2019). REAT: A Regional Economic Analysis Toolbox for R. REGION, 6(3), R1-R57. URL https://doi.org/10.18335/region.v6i3.267."
+  )

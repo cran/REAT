@@ -43,7 +43,7 @@ This dataset contains the employees in 15 economic sections (German Classificati
 \source{
 Bundesagentur fuer Arbeit (2018): \dQuote{Beschaeftigungsstatistik, Beschaeftigte nach Wirtschaftszweigen (WZ 2008) (Zeitreihe Quartalszahlen) in Deutschland}. \url{http://statistik.arbeitsagentur.de/Navigation/Statistik/Statistik-nach-Themen/Beschaeftigung/Beschaeftigung-Nav.html} (accessed October 10, 2018). Own postprocessing (filtering and aggregation).
 
-Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen: Beschaeftigte nach Wirtschaftsbereichen und Wirtschaftsabschnitten 1980 bis 2017. Table: IS 071.20}. \url{http://www.goesis.goettingen.de/pdf/071_20.pdf} (accessed October 8, 2018).
+Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen: Beschaeftigte nach Wirtschaftsbereichen und Wirtschaftsabschnitten 1980 bis 2018. Table: IS 071.20}. \url{https://duva-stg-extern.kdgoe.de/Informationsportal/Dateien/071.20-2018.pdf} (accessed November 21, 2019).
 }
 
 \references{
@@ -51,7 +51,7 @@ Bundesagentur fuer Arbeit (2018): \dQuote{Beschaeftigungsstatistik, Beschaeftigt
 
 Federal Statistical Office Germany (2008): \dQuote{Classification of Economic Activities, Edition 2008 (WZ 2008)}. \url{https://www.klassifikationsserver.de/klassService/jsp/common/url.jsf?variant=wz2008&lang=EN} (accessed June 07, 2019).
 
-Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen: Beschaeftigte nach Wirtschaftsbereichen und Wirtschaftsabschnitten 1980 bis 2017. Table: IS 071.20}. \url{http://www.goesis.goettingen.de/pdf/071_20.pdf} (accessed October 8, 2018).
+Stadt Goettingen - Referat Statistik und Wahlen (2008): \dQuote{Stadt Goettingen: Beschaeftigte nach Wirtschaftsbereichen und Wirtschaftsabschnitten 1980 bis 2018. Table: IS 071.20}. \url{https://duva-stg-extern.kdgoe.de/Informationsportal/Dateien/071.20-2018.pdf} (accessed November 21, 2019).
 }
 
 \examples{
