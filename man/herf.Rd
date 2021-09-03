@@ -42,7 +42,7 @@ Doersam, P. (2004): \dQuote{Wirtschaftsstatistik anschaulich dargestellt}. Heide
 
 Duranton, G./Puga, D. (2000): \dQuote{Diversity and Specialisation in Cities: Why, Where and When Does it Matter?}. In: \emph{Urban Studies}, \bold{37}, 3, p. 533-555. 
 
-Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/DocDL/ifodb_2005_3_25-33.pdf}.
+Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.ifo.de/DocDL/ifodb_2005_3_25-33.pdf}.
 
 Nakamura, R./Morrison Paul, C. J. (2009): \dQuote{Measuring agglomeration}. In: Capello, R./Nijkamp, P. (eds.): \emph{Handbook of Regional Growth and Development Theories}. Cheltenham: Elgar. p. 305-328.
 

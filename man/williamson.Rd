@@ -45,7 +45,7 @@ Single numeric value. If \code{coefnorm = FALSE} the function returns the non-st
 Gluschenko, K. (2018): \dQuote{Measuring regional inequality: to weight or not to weight?} In: \emph{Spatial
 Economic Analysis}, \bold{13}, 1, p. 36-59.
 
-Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.cesifo-group.de/DocDL/ifodb_2005_3_25-33.pdf}.
+Lessmann, C. (2005): \dQuote{Regionale Disparitaeten in Deutschland und ausgesuchten OECD-Staaten im Vergleich}. \emph{ifo Dresden berichtet}, \bold{3/2005}. \url{https://www.ifo.de/DocDL/ifodb_2005_3_25-33.pdf}.
 
 Huang, Y./Leung, Y. (2009): \dQuote{Measuring Regional Inequality: A Comparison of Coefficient of Variation and Hoover Concentration Index}. In: \emph{The Open Geography Journal}, \bold{2}, p. 25-34.
 

@@ -1,4 +1,4 @@
-1358ca2b286117b2ba5fb8e7c5384d00 *DESCRIPTION
+30d9972181358c543b917d333fbffe26 *DESCRIPTION
 1cbcd2f464e0f61dde219edda6933b81 *NAMESPACE
 748a86d1fd33d62fa427652c33a969e8 *R/atkinson.R
 95573c9316ce226e9b680a1d0a244aa4 *R/betaconv.nls.R
@@ -83,7 +83,7 @@ cc4942d2d5b73f451b1633e109375ebc *man/Freiburg.Rd
 0c70755e7a7766d959c107714b62369c *man/G.counties.gdp.Rd
 ff803bee142cbf8b855384e50389159a *man/G.regions.emp.Rd
 24cbc104f3394882ae121de11497b9ba *man/G.regions.industries.Rd
-f6d1b00db55872ac6d7a2994003bff11 *man/Goettingen.Rd
+3cde62a0ed2e853287531c86dca33393 *man/Goettingen.Rd
 71f64ebb51c06cd0ecc58552648a5408 *man/GoettingenHealth1.Rd
 b66876f1b9541e8c9d89b2f911668a88 *man/GoettingenHealth2.Rd
 b9523da4c8c30e211aa86cbe571f7afd *man/REAT-package.Rd
@@ -95,7 +95,7 @@ ca3117a6daf24ec9a1616e47b89440f1 *man/atkinson.Rd
 456d3d3a0eb2d8301be52d3873119c2c *man/converse.Rd
 1b34a5f9e7deda6fa7f81ee8b5c5d933 *man/coulter.Rd
 f85274ed445529348803756c2774df48 *man/curvefit.Rd
-b995ebcbb0fa5d94ba8b68366601bebf *man/cv.Rd
+6c504776532b6b468967e4c4bdb74f07 *man/cv.Rd
 0e9e72a5d41c1d7acae616f321a98d5c *man/dalton.Rd
 83e635a58320ea331a3b4f917628e60e *man/disp.Rd
 871b7e283c57928cf2c97d889684b5d6 *man/dist.buf.Rd
@@ -108,13 +108,13 @@ f9667504872dc2d00029153fa639c299 *man/ellison.a2.Rd
 79a3940ba9e2ae4963e8d8fda162dbb6 *man/ellison.c2.Rd
 269d67209eb1bdadd7126387e33581d8 *man/gifpro.Rd
 8220164244ddc6c461f2c6c0a16e3e93 *man/gifpro.tbs.Rd
-77e4a986b3864c971bc1ffa070f6ad48 *man/gini.Rd
+224db8ea6a39593efeca835a0c35739f *man/gini.Rd
 5a92fe3279d221022b916981d928af3c *man/gini.conc.Rd
 88c1ad93ec099d6c38b79d02d14d24da *man/gini.spec.Rd
-d97e02601d63be9d4c8d4d1f4ea74540 *man/gini2.Rd
+60bfcb676e4709d8c15a897827f9a51b *man/gini2.Rd
 fbf1e6533268591b51bb1d10eb22675b *man/growth.Rd
-3a0838b7d66f4fe20f781afbe74e6e53 *man/hansen.Rd
-885f61fab5bcea0fcfc3039c09aa17a9 *man/herf.Rd
+18dcc944e1cacf19103a49d14d1d0b08 *man/hansen.Rd
+1df17dc1b42b0f280ab60f82422489d5 *man/herf.Rd
 a4b4c4de08ec0b75079a14f98a9be7c1 *man/hoover.Rd
 375e51a05370ca4b03e4bfef58c765c6 *man/howard.cl.Rd
 9c0ccc5b9221a9336f10465798eefb29 *man/howard.xcl.Rd
@@ -130,14 +130,14 @@ d5110024fa5421db51070ddb5797f6e6 *man/lm.beta.Rd
 388fe47043f56f67bcb93f49b5f1ac81 *man/locq.Rd
 d843fa051d56304d98b088162795ca91 *man/locq.growth.Rd
 a5c5400cce54676facc00bc97d95e751 *man/locq2.Rd
-85123acb8330c8d45cc8f98cca561934 *man/lorenz.Rd
+3da5d5d855d2c04689e0bb7d6919b9b4 *man/lorenz.Rd
 69b01746488bab1aa47feef01048c675 *man/mean2.Rd
 5744a3b978dc41a38ef01c49331fe456 *man/mssd.Rd
 96519644ce1f7508d55f24bde33db012 *man/portfolio.Rd
 ef84c3adc0111aec008e96f86c905209 *man/rca.Rd
 51ad42cf4ed0e65441738268e5879840 *man/reilly.Rd
 7bc669ef4d762ddcfd73bf163c1830a5 *man/ripley.Rd
-3574a9a50bfb8dae5eaf6f3d517caf4b *man/sd2.Rd
+4b1f2e85936b2dac2aade1dcecf7fe02 *man/sd2.Rd
 2bb5a2aebc1f5355aa2323b00a1c0f04 *man/shift.Rd
 7412b2e7918c7271a828055fc6b82476 *man/shift.growth.Rd
 272f08056b3dad3c0c09269a78bd7a0b *man/shiftd.Rd
@@ -149,5 +149,5 @@ a4a76c74bd4d088823a81813984c19b4 *man/sigmaconv.t.Rd
 ca315b2cc88911fb801d7e1c10d52f96 *man/spec.Rd
 4afde356a0cb912e5859712bb022b375 *man/theil.Rd
 728143f978992cadaececf69ac6bb7f8 *man/to.dummy.Rd
-d93601eb959347df1a90c3eccae82d79 *man/var2.Rd
-6632afb9aa4d858abf0a8c3a84d19f4b *man/williamson.Rd
+6289182c168974a338cc2390b5e4981e *man/var2.Rd
+b1733963c5798fe8b47636e8da1696e2 *man/williamson.Rd

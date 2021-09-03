@@ -121,5 +121,5 @@ huff_shares <- huff(shoppingcenters1, "communities", "locations", "S_j", "d_ij")
 # Market shares of the new location:
 huff_shares$ijmatrix[huff_shares$ijmatrix$locations == "New Store",]
 # Hansen accessibility for Oak Hammock and Rock Creek:
-hansen (huff_shares$ijmatrix, "communities", "locations", "S_j", "d_ij")
+# hansen (huff_shares$ijmatrix, "communities", "locations", "S_j", "d_ij")
 }
